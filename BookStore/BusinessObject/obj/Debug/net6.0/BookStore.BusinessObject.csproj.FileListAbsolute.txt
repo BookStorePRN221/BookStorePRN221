@@ -1,0 +1,14 @@
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\bin\Debug\net6.0\BookStore.BusinessObject.deps.json
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\bin\Debug\net6.0\BookStore.BusinessObject.runtimeconfig.json
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\bin\Debug\net6.0\BookStore.BusinessObject.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\bin\Debug\net6.0\BookStore.BusinessObject.pdb
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.csproj.AssemblyReference.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.AssemblyInfoInputs.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.AssemblyInfo.cs
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.csproj.CoreCompileInputs.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\refint\BookStore.BusinessObject.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.pdb
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\BookStore.BusinessObject.genruntimeconfig.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\BusinessObject\obj\Debug\net6.0\ref\BookStore.BusinessObject.dll

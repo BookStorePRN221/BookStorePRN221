@@ -1,0 +1,15 @@
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.csproj.AssemblyReference.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.AssemblyInfoInputs.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.AssemblyInfo.cs
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.csproj.CoreCompileInputs.cache
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\bin\Debug\net6.0\BookStore.Repositories.deps.json
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\bin\Debug\net6.0\BookStore.Repositories.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\bin\Debug\net6.0\BookStore.Repositories.pdb
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\bin\Debug\net6.0\BookStore.BusinessObject.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\bin\Debug\net6.0\BookStore.BusinessObject.pdb
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.csproj.CopyComplete
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\refint\BookStore.Repositories.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\BookStore.Repositories.pdb
+D:\Code C#\PRN221_ProjectBookStore\BookStore\Repositories\obj\Debug\net6.0\ref\BookStore.Repositories.dll
