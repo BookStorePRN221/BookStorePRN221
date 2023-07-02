@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Repositories\BookStore.Repositories.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\AdminPage\" />
-  </ItemGroup>
-
 </Project>
