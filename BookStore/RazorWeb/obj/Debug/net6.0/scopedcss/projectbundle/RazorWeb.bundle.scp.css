@@ -1,3 +1,362 @@
+/* _content/RazorWeb/Pages/AdminPage/AdminManageBook.cshtml.rz.scp.css */
+*[b-rctcgjn8mt] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root[b-rctcgjn8mt] {
+    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
+
+html[b-rctcgjn8mt] {
+    font-size: 62.5%;
+}
+
+body[b-rctcgjn8mt] {
+    min-height: 100vh;
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+/* ========================================================== */
+/* HEADER--LOGO */
+.header[b-rctcgjn8mt] {
+    height: 10%;
+    width: 100%;
+}
+
+    .header .header-menu[b-rctcgjn8mt] {
+        display: flex;
+        align-items: center;
+    }
+
+    .header .sidebar-button__logo[b-rctcgjn8mt] {
+        display: flex;
+        max-width: 27rem;
+        background: linear-gradient(to right, #267871, #136a8a);
+    }
+
+        .header .sidebar-button__logo .sidebar-button[b-rctcgjn8mt] {
+            max-width: 6rem;
+            height: 8rem;
+            display: flex;
+            color: #fff;
+            font-size: 2rem;
+            align-items: center;
+            background: linear-gradient(to right, #267871, #136a8a);
+            padding: 0 20px;
+        }
+
+            .header .sidebar-button__logo .sidebar-button:hover[b-rctcgjn8mt] {
+                background-color: #136a8a;
+            }
+
+        .header .sidebar-button__logo .logo-details img[b-rctcgjn8mt] {
+            max-width: 5rem;
+            max-height: 5rem;
+        }
+
+        .header .sidebar-button__logo .logo-details[b-rctcgjn8mt] {
+            height: 8rem;
+            width: 21rem;
+            display: flex;
+            align-items: center;
+            background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+        }
+
+            .header .sidebar-button__logo .logo-details .logo_name[b-rctcgjn8mt] {
+                font-size: 2.4rem;
+                font-weight: 600;
+                color: #fab804ea;
+                margin-left: 0.8rem;
+            }
+
+/* HEADER--NAV */
+.header-menu .seachbox-profile[b-rctcgjn8mt] {
+    width: calc(100% - 27rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 8rem;
+    padding: 0 2rem;
+}
+
+    .header-menu .seachbox-profile .wraper_searchbox_profile[b-rctcgjn8mt] {
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 10rem;
+    }
+
+.seachbox-profile .search-box[b-rctcgjn8mt] {
+    height: 5rem;
+    width: 55rem;
+    margin: 0 2rem;
+    position: relative;
+}
+
+    .seachbox-profile .search-box input[b-rctcgjn8mt] {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.7rem;
+        padding: 0 1.5rem;
+        font-size: 1.7rem;
+        background: #f5f6fa;
+        border: 2px solid #efeef1;
+        outline-color: none;
+    }
+
+    .seachbox-profile .search-box .bx-search-alt-2[b-rctcgjn8mt] {
+        position: absolute;
+        height: 4rem;
+        width: 4rem;
+        right: 0.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #267871;
+        border-radius: 0.7rem;
+        color: #fff;
+        font-size: 2.2rem;
+        line-height: 4rem;
+        text-align: center;
+    }
+
+.seachbox-profile .profile_details[b-rctcgjn8mt] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    min-width: 19rem;
+    background: #f5f6fa;
+    border: 2px solid #efeef1;
+    border-radius: 0.6rem;
+    padding: 0 1.5rem 0 0.2rem;
+}
+
+    .seachbox-profile .profile_details img[b-rctcgjn8mt] {
+        height: 4rem;
+        width: 4rem;
+        object-fit: cover;
+        border-radius: 0.6rem;
+    }
+
+    .seachbox-profile .profile_details .name_role .name[b-rctcgjn8mt] {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #333;
+        margin: 0 1rem;
+        white-space: nowrap;
+    }
+
+    .seachbox-profile .profile_details i[b-rctcgjn8mt] {
+        color: #333;
+        font-size: 2.5rem;
+    }
+
+/* ========================================================== */
+/* CSS for SIDEBAR */
+
+.sidebar[b-rctcgjn8mt] {
+    position: absolute;
+    height: 120vh;
+    width: 27rem;
+    background: linear-gradient(to right, #267871, #136a8a);
+    transition: all 0.5s ease;
+}
+
+    .sidebar.active[b-rctcgjn8mt] {
+        width: 6rem;
+    }
+
+    .sidebar .nav-links[b-rctcgjn8mt] {
+        margin-bottom: 1.6rem;
+    }
+
+        .sidebar .nav-links li[b-rctcgjn8mt] {
+            height: 5rem;
+            width: 100%;
+            list-style: none;
+        }
+
+            .sidebar .nav-links li a[b-rctcgjn8mt] {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                transition: all 0.4s ease;
+            }
+
+                .sidebar .nav-links li a:hover[b-rctcgjn8mt] {
+                    background-color: #0d465b;
+                }
+
+                .sidebar .nav-links li a i[b-rctcgjn8mt] {
+                    min-width: 6rem;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 1.8rem;
+                }
+
+                .sidebar .nav-links li a .links_name[b-rctcgjn8mt] {
+                    color: #fff;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                }
+
+/* Home secsion CSS */
+.home-section[b-rctcgjn8mt] {
+    background-color: #f5f5f5;
+    position: relative;
+    min-height: 120vh;
+    width: calc(100% - 27rem);
+    left: 27rem;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .home-section[b-rctcgjn8mt] {
+    width: calc(100% - 6rem);
+    left: 6rem;
+}
+
+.home-section nav .sidebar-button[b-rctcgjn8mt] {
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+    .home-section nav .sidebar-button i[b-rctcgjn8mt] {
+        font-size: 35rem;
+        margin-right: 1rem;
+    }
+
+@media (max-width: 1216px) {
+    .sidebar[b-rctcgjn8mt] {
+        width: 6rem;
+    }
+
+        .sidebar.active[b-rctcgjn8mt] {
+            width: 27rem;
+        }
+
+    .home-section[b-rctcgjn8mt] {
+        width: calc(100% - 6rem);
+        left: 6rem;
+        transition: all 0.5s ease;
+    }
+
+    .sidebar.active ~ .home-section[b-rctcgjn8mt] {
+        width: calc(100% - 27rem);
+        left: 27rem;
+    }
+}
+
+@media (max-width: 836px) {
+    .home-content .overview-boxes .box[b-rctcgjn8mt] {
+        width: calc(100% / 2 - 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    .header .sidebar-button__logo .logo-details[b-rctcgjn8mt] {
+        /* display: none; */
+        width: 52px;
+    }
+
+        .header .sidebar-button__logo .logo-details .logo_name[b-rctcgjn8mt] {
+            /* color: #ffffff; */
+            display: none;
+        }
+}
+
+/* ========================================================== */
+
+
+/* ========================================================== */
+/*Start CategoryBox*/
+.home-section .choice[b-rctcgjn8mt] {
+    font-size: 15px;
+    margin-left: 10px;
+    height: 30px;
+    width: 50px;
+    padding: 0px 0px 0px 0px;
+}
+
+.home-section .categoryText[b-rctcgjn8mt] {
+    margin-left: 10px;
+    font-size: 20px;
+    height: 40px;
+}
+
+.home-section .comboxCategory[b-rctcgjn8mt] {
+    color: #17A2B8;
+    margin-left: 10px;
+    width: 115px;
+    height: 100%;
+    font-size: 18px;
+}
+
+.home-section .formCategory[b-rctcgjn8mt] {
+    height: 30px;
+}
+/*End CategoryBox*/
+
+/*Start Border : Khung border bao quanh book*/
+.border[b-rctcgjn8mt] {
+    margin-left: 118px;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    height: 317px;
+    width: 355px;
+}
+/*End Border*/
+
+/*Start Item List: Weight height font book name, price*/
+.item[b-rctcgjn8mt] {
+    width: 50%;
+}
+
+.item[b-rctcgjn8mt] {
+    padding-left: 100px;
+}
+
+    .item img[b-rctcgjn8mt] {
+        height: 230px;
+        width: 330px;
+    }
+
+    .item .name[b-rctcgjn8mt] {
+        font-size: 23px;
+        margin-bottom: 0px;
+    }
+
+    .item .price[b-rctcgjn8mt] {
+        font-size: 20px;
+    }
+
+    .item .viewDetail[b-rctcgjn8mt] {
+        font-size: 15px;
+        height: 30px;
+        width: 100px;
+        margin-left: 115px;
+    }
+/*End Item List*/
+
+/*Page Start*/
+.page[b-rctcgjn8mt] {
+    font-size: 25px;
+}
+
+    .page a[b-rctcgjn8mt] {
+        margin-left: 10px;
+        color: #000000;
+    }
 /* _content/RazorWeb/Pages/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

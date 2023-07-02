@@ -1,20 +1,19 @@
-/* _content/RazorWeb/Pages/AdminPage/AdminManageBook.cshtml.rz.scp.css */
-*[b-rctcgjn8mt] {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-:root[b-rctcgjn8mt] {
+:root {
     --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
 }
 
-html[b-rctcgjn8mt] {
+html {
     font-size: 62.5%;
 }
 
-body[b-rctcgjn8mt] {
+body {
     min-height: 100vh;
     width: 100%;
     font-size: 1.6rem;
@@ -22,23 +21,23 @@ body[b-rctcgjn8mt] {
 
 /* ========================================================== */
 /* HEADER--LOGO */
-.header[b-rctcgjn8mt] {
+.header {
     height: 10%;
     width: 100%;
 }
 
-    .header .header-menu[b-rctcgjn8mt] {
+    .header .header-menu {
         display: flex;
         align-items: center;
     }
 
-    .header .sidebar-button__logo[b-rctcgjn8mt] {
+    .header .sidebar-button__logo {
         display: flex;
         max-width: 27rem;
         background: linear-gradient(to right, #267871, #136a8a);
     }
 
-        .header .sidebar-button__logo .sidebar-button[b-rctcgjn8mt] {
+        .header .sidebar-button__logo .sidebar-button {
             max-width: 6rem;
             height: 8rem;
             display: flex;
@@ -49,16 +48,16 @@ body[b-rctcgjn8mt] {
             padding: 0 20px;
         }
 
-            .header .sidebar-button__logo .sidebar-button:hover[b-rctcgjn8mt] {
+            .header .sidebar-button__logo .sidebar-button:hover {
                 background-color: #136a8a;
             }
 
-        .header .sidebar-button__logo .logo-details img[b-rctcgjn8mt] {
+        .header .sidebar-button__logo .logo-details img {
             max-width: 5rem;
             max-height: 5rem;
         }
 
-        .header .sidebar-button__logo .logo-details[b-rctcgjn8mt] {
+        .header .sidebar-button__logo .logo-details {
             height: 8rem;
             width: 21rem;
             display: flex;
@@ -66,7 +65,7 @@ body[b-rctcgjn8mt] {
             background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
         }
 
-            .header .sidebar-button__logo .logo-details .logo_name[b-rctcgjn8mt] {
+            .header .sidebar-button__logo .logo-details .logo_name {
                 font-size: 2.4rem;
                 font-weight: 600;
                 color: #fab804ea;
@@ -74,7 +73,7 @@ body[b-rctcgjn8mt] {
             }
 
 /* HEADER--NAV */
-.header-menu .seachbox-profile[b-rctcgjn8mt] {
+.header-menu .seachbox-profile {
     width: calc(100% - 27rem);
     display: flex;
     align-items: center;
@@ -83,7 +82,7 @@ body[b-rctcgjn8mt] {
     padding: 0 2rem;
 }
 
-    .header-menu .seachbox-profile .wraper_searchbox_profile[b-rctcgjn8mt] {
+    .header-menu .seachbox-profile .wraper_searchbox_profile {
         width: 90%;
         height: 100%;
         object-fit: cover;
@@ -93,14 +92,14 @@ body[b-rctcgjn8mt] {
         margin-left: 10rem;
     }
 
-.seachbox-profile .search-box[b-rctcgjn8mt] {
+.seachbox-profile .search-box {
     height: 5rem;
     width: 55rem;
     margin: 0 2rem;
     position: relative;
 }
 
-    .seachbox-profile .search-box input[b-rctcgjn8mt] {
+    .seachbox-profile .search-box input {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -112,7 +111,7 @@ body[b-rctcgjn8mt] {
         outline-color: none;
     }
 
-    .seachbox-profile .search-box .bx-search-alt-2[b-rctcgjn8mt] {
+    .seachbox-profile .search-box .bx-search-alt-2 {
         position: absolute;
         height: 4rem;
         width: 4rem;
@@ -127,7 +126,7 @@ body[b-rctcgjn8mt] {
         text-align: center;
     }
 
-.seachbox-profile .profile_details[b-rctcgjn8mt] {
+.seachbox-profile .profile_details {
     position: relative;
     display: flex;
     align-items: center;
@@ -139,14 +138,14 @@ body[b-rctcgjn8mt] {
     padding: 0 1.5rem 0 0.2rem;
 }
 
-    .seachbox-profile .profile_details img[b-rctcgjn8mt] {
+    .seachbox-profile .profile_details img {
         height: 4rem;
         width: 4rem;
         object-fit: cover;
         border-radius: 0.6rem;
     }
 
-    .seachbox-profile .profile_details .name_role .name[b-rctcgjn8mt] {
+    .seachbox-profile .profile_details .name_role .name {
         font-size: 1.8rem;
         font-weight: 500;
         color: #333;
@@ -154,7 +153,7 @@ body[b-rctcgjn8mt] {
         white-space: nowrap;
     }
 
-    .seachbox-profile .profile_details i[b-rctcgjn8mt] {
+    .seachbox-profile .profile_details i {
         color: #333;
         font-size: 2.5rem;
     }
@@ -162,7 +161,7 @@ body[b-rctcgjn8mt] {
 /* ========================================================== */
 /* CSS for SIDEBAR */
 
-.sidebar[b-rctcgjn8mt] {
+.sidebar {
     position: absolute;
     height: 120vh;
     width: 27rem;
@@ -170,21 +169,21 @@ body[b-rctcgjn8mt] {
     transition: all 0.5s ease;
 }
 
-    .sidebar.active[b-rctcgjn8mt] {
+    .sidebar.active {
         width: 6rem;
     }
 
-    .sidebar .nav-links[b-rctcgjn8mt] {
+    .sidebar .nav-links {
         margin-bottom: 1.6rem;
     }
 
-        .sidebar .nav-links li[b-rctcgjn8mt] {
+        .sidebar .nav-links li {
             height: 5rem;
             width: 100%;
             list-style: none;
         }
 
-            .sidebar .nav-links li a[b-rctcgjn8mt] {
+            .sidebar .nav-links li a {
                 height: 100%;
                 width: 100%;
                 display: flex;
@@ -193,25 +192,25 @@ body[b-rctcgjn8mt] {
                 transition: all 0.4s ease;
             }
 
-                .sidebar .nav-links li a:hover[b-rctcgjn8mt] {
+                .sidebar .nav-links li a:hover {
                     background-color: #0d465b;
                 }
 
-                .sidebar .nav-links li a i[b-rctcgjn8mt] {
+                .sidebar .nav-links li a i {
                     min-width: 6rem;
                     text-align: center;
                     color: #fff;
                     font-size: 1.8rem;
                 }
 
-                .sidebar .nav-links li a .links_name[b-rctcgjn8mt] {
+                .sidebar .nav-links li a .links_name {
                     color: #fff;
                     font-size: 1.5rem;
                     font-weight: 400;
                 }
 
 /* Home secsion CSS */
-.home-section[b-rctcgjn8mt] {
+.home-section {
     background-color: #f5f5f5;
     position: relative;
     min-height: 120vh;
@@ -220,56 +219,56 @@ body[b-rctcgjn8mt] {
     transition: all 0.5s ease;
 }
 
-.sidebar.active ~ .home-section[b-rctcgjn8mt] {
+.sidebar.active ~ .home-section {
     width: calc(100% - 6rem);
     left: 6rem;
 }
 
-.home-section nav .sidebar-button[b-rctcgjn8mt] {
+.home-section nav .sidebar-button {
     display: flex;
     align-items: center;
     font-size: 2.4rem;
     font-weight: 500;
 }
 
-    .home-section nav .sidebar-button i[b-rctcgjn8mt] {
+    .home-section nav .sidebar-button i {
         font-size: 35rem;
         margin-right: 1rem;
     }
 
 @media (max-width: 1216px) {
-    .sidebar[b-rctcgjn8mt] {
+    .sidebar {
         width: 6rem;
     }
 
-        .sidebar.active[b-rctcgjn8mt] {
+        .sidebar.active {
             width: 27rem;
         }
 
-    .home-section[b-rctcgjn8mt] {
+    .home-section {
         width: calc(100% - 6rem);
         left: 6rem;
         transition: all 0.5s ease;
     }
 
-    .sidebar.active ~ .home-section[b-rctcgjn8mt] {
+    .sidebar.active ~ .home-section {
         width: calc(100% - 27rem);
         left: 27rem;
     }
 }
 
 @media (max-width: 836px) {
-    .home-content .overview-boxes .box[b-rctcgjn8mt] {
+    .home-content .overview-boxes .box {
         width: calc(100% / 2 - 1.5rem);
         margin-bottom: 15px;
     }
 
-    .header .sidebar-button__logo .logo-details[b-rctcgjn8mt] {
+    .header .sidebar-button__logo .logo-details {
         /* display: none; */
         width: 52px;
     }
 
-        .header .sidebar-button__logo .logo-details .logo_name[b-rctcgjn8mt] {
+        .header .sidebar-button__logo .logo-details .logo_name {
             /* color: #ffffff; */
             display: none;
         }
@@ -280,7 +279,7 @@ body[b-rctcgjn8mt] {
 
 /* ========================================================== */
 /*Start CategoryBox*/
-.home-section .choice[b-rctcgjn8mt] {
+.home-section .choice {
     font-size: 15px;
     margin-left: 10px;
     height: 30px;
@@ -288,13 +287,13 @@ body[b-rctcgjn8mt] {
     padding: 0px 0px 0px 0px;
 }
 
-.home-section .categoryText[b-rctcgjn8mt] {
+.home-section .categoryText {
     margin-left: 10px;
     font-size: 20px;
     height: 40px;
 }
 
-.home-section .comboxCategory[b-rctcgjn8mt] {
+.home-section .comboxCategory {
     color: #17A2B8;
     margin-left: 10px;
     width: 115px;
@@ -302,13 +301,13 @@ body[b-rctcgjn8mt] {
     font-size: 18px;
 }
 
-.home-section .formCategory[b-rctcgjn8mt] {
+.home-section .formCategory {
     height: 30px;
 }
 /*End CategoryBox*/
 
 /*Start Border : Khung border bao quanh book*/
-.border[b-rctcgjn8mt] {
+.border {
     margin-left: 118px;
     margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
@@ -318,29 +317,29 @@ body[b-rctcgjn8mt] {
 /*End Border*/
 
 /*Start Item List: Weight height font book name, price*/
-.item[b-rctcgjn8mt] {
+.item {
     width: 50%;
 }
 
-.item[b-rctcgjn8mt] {
+.item {
     padding-left: 100px;
 }
 
-    .item img[b-rctcgjn8mt] {
+    .item img {
         height: 230px;
         width: 330px;
     }
 
-    .item .name[b-rctcgjn8mt] {
+    .item .name {
         font-size: 23px;
         margin-bottom: 0px;
     }
 
-    .item .price[b-rctcgjn8mt] {
+    .item .price {
         font-size: 20px;
     }
 
-    .item .viewDetail[b-rctcgjn8mt] {
+    .item .viewDetail {
         font-size: 15px;
         height: 30px;
         width: 100px;
@@ -349,60 +348,11 @@ body[b-rctcgjn8mt] {
 /*End Item List*/
 
 /*Page Start*/
-.page[b-rctcgjn8mt] {
+.page {
     font-size: 25px;
 }
 
-    .page a[b-rctcgjn8mt] {
+    .page a {
         margin-left: 10px;
         color: #000000;
     }
-/* _content/RazorWeb/Pages/Shared/_Layout.cshtml.rz.scp.css */
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand[b-ty59ssheti] {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-a[b-ty59ssheti] {
-  color: #0077cc;
-}
-
-.btn-primary[b-ty59ssheti] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active[b-ty59ssheti], .nav-pills .show > .nav-link[b-ty59ssheti] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.border-top[b-ty59ssheti] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-ty59ssheti] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow[b-ty59ssheti] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy[b-ty59ssheti] {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer[b-ty59ssheti] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
