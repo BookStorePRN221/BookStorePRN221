@@ -50,12 +50,12 @@ namespace BookStoreAPI.Infracstructure.Repositories
             return _dbContext.Set<T>().SingleOrDefault(function);
         }
 
-        //public async Task<IEnumerable<T>> TakePage(int number, IEnumerable<T> list)
-        //{
-        //    var numPage = (int)NumberPage.numPage;
-        //    var skip = (numPage * number) - numPage;
-        //    return list.Skip(skip).Take(numPage);
-        //}
-        
+        public async Task<IEnumerable<T>> TakePage(int number, IEnumerable<T> list)
+        {
+            var numPage = 4;
+            var skip = (numPage * number) - numPage;
+            return list.Skip(skip).Take(numPage);
+        }
+
     }
 }

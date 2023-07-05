@@ -12,6 +12,7 @@ namespace Service.Service.IService
     {
         Task<bool> CreateBook(Book book, string url);
         Task<IEnumerable<BookDTO>> GetAllBook();
+        Task<IEnumerable<BookDTO>> TakePageBook(int num);
         Task<IEnumerable<BookDTO>> GetBookByCategory(int cateId);
         Task<BookDetailDTO> GetBookById(Guid bookId);
         Task<IEnumerable<Book>> GetBookByName(string bookName);
