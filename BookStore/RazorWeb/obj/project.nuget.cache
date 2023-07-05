@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "yLoK6TdbwsIygIDGDRdcDybeQPkowrVo1R/LIM5pPO0QEM/z8agTiXs2p5DY7bMH6hm2qgROcrmknJITSjnu/Q==",
+  "dgSpecHash": "2oiXcsYKwrrPiJJNex42MHV2WMputHfKeUGj7oZ74GNmpR6cZnDaJiuEKweutxPG9iSlSKoDvZmmC6YIqWkJVg==",
   "success": true,
   "projectFilePath": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\RazorWeb\\RazorWeb.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\VU\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\VU\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\VU\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\VU\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.8\\microsoft.entityframeworkcore.7.0.8.nupkg.sha512",

@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+
 
 namespace Service.Service
 {
@@ -15,13 +17,15 @@ namespace Service.Service
         IUnitOfWorkRepository _unit;
         ICategoryRepository _cate;
         IImageService _image;
+        IMapper _mapper;
         Book m_book;
         
-        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate,IImageService image)
+        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate,IImageService image, IMapper mapper)
         {
             _unit = unit;
             _cate = cate;
             _image = image;
+            _mapper = mapper;
             m_book = new Book();
         }
         public async Task<bool> CreateBook(Book book,string url)
@@ -200,6 +204,18 @@ namespace Service.Service
             var listDTO = new List<BookDTO>();
             listDTO = await GetDisplay(bookListByCateId, listDTO);
             return listDTO;
+        }
+
+        public async Task<IEnumerable<BookDTO>> TakePageBook(int num)
+        {
+            var listBooks= await GetBook();
+            var bookpage =await _unit.Books.TakePage(num, listBooks);
+            var bookDTOs= _mapper.Map<IEnumerable<BookDTO>>(bookpage);
+            if(bookDTOs != null)
+            {
+                return bookDTOs;
+            }
+            return null;
         }
     }
 }

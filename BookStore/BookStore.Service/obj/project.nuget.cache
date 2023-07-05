@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "+6WKlH5OLOr6MAI0O+BSnm4enaNf9bh0/dOPM6MvCCn56VMxR7+sOsF2bsxpCQ0NAFzjwIOlmvk8QrYwmJ+2lQ==",
+  "dgSpecHash": "7TXsmbfEyK0ZmVtATyLhBNh5Lk0rex7+DEmNm4ByX6XDisBUinMVhLu8Mw9MqIeq8KKYLyaYuMlIiedDCAeF2w==",
   "success": true,
   "projectFilePath": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\BookStore.Service\\BookStore.Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\VU\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\VU\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\VU\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\VU\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\VU\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.8\\microsoft.entityframeworkcore.7.0.8.nupkg.sha512",

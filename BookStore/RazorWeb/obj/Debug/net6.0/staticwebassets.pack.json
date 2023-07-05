@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\RazorWeb\\wwwroot\\images\\admin1.png",
+      "PackagePath": "staticwebassets\\images\\admin1.png"
+    },
+    {
+      "Id": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\RazorWeb\\wwwroot\\images\\logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logo.jpg"
+    },
+    {
+      "Id": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\RazorWeb\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
       "Id": "D:\\Code C#\\PRN221_ProjectBookStore\\BookStore\\RazorWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

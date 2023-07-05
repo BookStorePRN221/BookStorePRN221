@@ -15,3 +15,20 @@ D:\Code C#\PRN221_ProjectBookStore\BookStore\BookStore.Service\obj\Debug\net6.0\
 D:\Code C#\PRN221_ProjectBookStore\BookStore\BookStore.Service\obj\Debug\net6.0\refint\BookStore.Service.dll
 D:\Code C#\PRN221_ProjectBookStore\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.pdb
 D:\Code C#\PRN221_ProjectBookStore\BookStore\BookStore.Service\obj\Debug\net6.0\ref\BookStore.Service.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.Service.deps.json
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.Service.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.Service.pdb
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.BusinessObject.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.Repositories.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.BusinessObject.pdb
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\bin\Debug\net6.0\BookStore.Repositories.pdb
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.csproj.AssemblyReference.cache
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.AssemblyInfoInputs.cache
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.AssemblyInfo.cs
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.csproj.CoreCompileInputs.cache
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.csproj.CopyComplete
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\refint\BookStore.Service.dll
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\BookStore.Service.pdb
+D:\School\clone\ProjectPRN221\BookStore\BookStore.Service\obj\Debug\net6.0\ref\BookStore.Service.dll
