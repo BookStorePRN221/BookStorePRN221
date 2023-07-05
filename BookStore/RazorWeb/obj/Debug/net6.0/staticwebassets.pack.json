@@ -5,8 +5,20 @@
       "PackagePath": "staticwebassets\\RazorWeb.bundle.scp.css"
     },
     {
+      "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\css\\adminHomeStyle.css",
+      "PackagePath": "staticwebassets\\css\\adminHomeStyle.css"
+    },
+    {
+      "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\css\\signUpForm.css",
+      "PackagePath": "staticwebassets\\css\\signUpForm.css"
+    },
+    {
       "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\css\\staffBookManageDetail.css",
+      "PackagePath": "staticwebassets\\css\\staffBookManageDetail.css"
     },
     {
       "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\favicon.ico",
@@ -19,6 +31,14 @@
     {
       "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\images\\logo.jpg",
       "PackagePath": "staticwebassets\\images\\logo.jpg"
+    },
+    {
+      "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\js\\LoginForm.js",
+      "PackagePath": "staticwebassets\\js\\LoginForm.js"
+    },
+    {
+      "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\js\\myChart.js",
+      "PackagePath": "staticwebassets\\js\\myChart.js"
     },
     {
       "Id": "D:\\School\\clone\\ProjectPRN221\\BookStore\\RazorWeb\\wwwroot\\js\\script.js",
