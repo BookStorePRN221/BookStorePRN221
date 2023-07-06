@@ -1,0 +1,571 @@
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+*[b-boyzpj6sak] {
+========
+﻿/* Google font CDN link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+:root[b-boyzpj6sak] {
+    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
+
+html[b-boyzpj6sak] {
+    font-size: 62.5%;
+}
+
+body[b-boyzpj6sak] {
+========
+:root {
+    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    min-height: 100vh;
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+/* ========================================================== */
+/* HEADER--LOGO */
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.header[b-boyzpj6sak] {
+========
+.header {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    height: 10%;
+    width: 100%;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .header .header-menu[b-boyzpj6sak] {
+========
+    .header .header-menu {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        display: flex;
+        align-items: center;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .header .sidebar-button__logo[b-boyzpj6sak] {
+========
+    .header .sidebar-button__logo {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        display: flex;
+        max-width: 27rem;
+        background: linear-gradient(to right, #267871, #136a8a);
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+        .header .sidebar-button__logo .sidebar-button[b-boyzpj6sak] {
+========
+        .header .sidebar-button__logo .sidebar-button {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+            max-width: 6rem;
+            height: 8rem;
+            display: flex;
+            color: #fff;
+            font-size: 2rem;
+            align-items: center;
+            background: linear-gradient(to right, #267871, #136a8a);
+            padding: 0 20px;
+        }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+            .header .sidebar-button__logo .sidebar-button:hover[b-boyzpj6sak] {
+                background-color: #136a8a;
+            }
+
+        .header .sidebar-button__logo .logo-details img[b-boyzpj6sak] {
+========
+            .header .sidebar-button__logo .sidebar-button:hover {
+                background-color: #136a8a;
+            }
+
+        .header .sidebar-button__logo .logo-details img {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+            max-width: 5rem;
+            max-height: 5rem;
+        }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+        .header .sidebar-button__logo .logo-details[b-boyzpj6sak] {
+========
+        .header .sidebar-button__logo .logo-details {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+            height: 8rem;
+            width: 21rem;
+            display: flex;
+            align-items: center;
+            background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+        }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+            .header .sidebar-button__logo .logo-details .logo_name[b-boyzpj6sak] {
+========
+            .header .sidebar-button__logo .logo-details .logo_name {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+                font-size: 2.4rem;
+                font-weight: 600;
+                color: #fab804ea;
+                margin-left: 0.8rem;
+            }
+
+/* HEADER--NAV */
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.header-menu .seachbox-profile[b-boyzpj6sak] {
+========
+.header-menu .seachbox-profile {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    width: calc(100% - 27rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 8rem;
+    padding: 0 2rem;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .header-menu .seachbox-profile .wraper_searchbox_profile[b-boyzpj6sak] {
+========
+    .header-menu .seachbox-profile .wraper_searchbox_profile {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 10rem;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.seachbox-profile .search-box[b-boyzpj6sak] {
+========
+.seachbox-profile .search-box {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    height: 5rem;
+    width: 55rem;
+    margin: 0 2rem;
+    position: relative;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .seachbox-profile .search-box input[b-boyzpj6sak] {
+========
+    .seachbox-profile .search-box input {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.7rem;
+        padding: 0 1.5rem;
+        font-size: 1.7rem;
+        background: #f5f6fa;
+        border: 2px solid #efeef1;
+        outline-color: none;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .seachbox-profile .search-box .bx-search-alt-2[b-boyzpj6sak] {
+========
+    .seachbox-profile .search-box .bx-search-alt-2 {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        position: absolute;
+        height: 4rem;
+        width: 4rem;
+        right: 0.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #267871;
+        border-radius: 0.7rem;
+        color: #fff;
+        font-size: 2.2rem;
+        line-height: 4rem;
+        text-align: center;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.seachbox-profile .profile_details[b-boyzpj6sak] {
+========
+.seachbox-profile .profile_details {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    min-width: 19rem;
+    background: #f5f6fa;
+    border: 2px solid #efeef1;
+    border-radius: 0.6rem;
+    padding: 0 1.5rem 0 0.2rem;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .seachbox-profile .profile_details img[b-boyzpj6sak] {
+========
+    .seachbox-profile .profile_details img {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        height: 4rem;
+        width: 4rem;
+        object-fit: cover;
+        border-radius: 0.6rem;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .seachbox-profile .profile_details .name_role .name[b-boyzpj6sak] {
+========
+    .seachbox-profile .profile_details .name_role .name {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #333;
+        margin: 0 1rem;
+        white-space: nowrap;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .seachbox-profile .profile_details i[b-boyzpj6sak] {
+========
+    .seachbox-profile .profile_details i {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        color: #333;
+        font-size: 2.5rem;
+    }
+
+/* ========================================================== */
+/* CSS for SIDEBAR */
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.sidebar[b-boyzpj6sak] {
+========
+.sidebar {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    position: absolute;
+    height: 120vh;
+    width: 27rem;
+    background: linear-gradient(to right, #267871, #136a8a);
+    transition: all 0.5s ease;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .sidebar.active[b-boyzpj6sak] {
+        width: 6rem;
+    }
+
+    .sidebar .nav-links[b-boyzpj6sak] {
+        margin-bottom: 1.6rem;
+    }
+
+        .sidebar .nav-links li[b-boyzpj6sak] {
+========
+    .sidebar.active {
+        width: 6rem;
+    }
+
+    .sidebar .nav-links {
+        margin-bottom: 1.6rem;
+    }
+
+        .sidebar .nav-links li {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+            height: 5rem;
+            width: 100%;
+            list-style: none;
+        }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+            .sidebar .nav-links li a[b-boyzpj6sak] {
+========
+            .sidebar .nav-links li a {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                transition: all 0.4s ease;
+            }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+                .sidebar .nav-links li a:hover[b-boyzpj6sak] {
+                    background-color: #0d465b;
+                }
+
+                .sidebar .nav-links li a i[b-boyzpj6sak] {
+========
+                .sidebar .nav-links li a:hover {
+                    background-color: #0d465b;
+                }
+
+                .sidebar .nav-links li a i {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+                    min-width: 6rem;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 1.8rem;
+                }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+                .sidebar .nav-links li a .links_name[b-boyzpj6sak] {
+========
+                .sidebar .nav-links li a .links_name {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+                    color: #fff;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                }
+
+/* Home secsion CSS */
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section[b-boyzpj6sak] {
+========
+.home-section {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    background-color: #f5f5f5;
+    position: relative;
+    min-height: 120vh;
+    width: calc(100% - 27rem);
+    left: 27rem;
+    transition: all 0.5s ease;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.sidebar.active ~ .home-section[b-boyzpj6sak] {
+========
+.sidebar.active ~ .home-section {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    width: calc(100% - 6rem);
+    left: 6rem;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section nav .sidebar-button[b-boyzpj6sak] {
+========
+.home-section nav .sidebar-button {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .home-section nav .sidebar-button i[b-boyzpj6sak] {
+========
+    .home-section nav .sidebar-button i {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        font-size: 35rem;
+        margin-right: 1rem;
+    }
+
+@media (max-width: 1216px) {
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .sidebar[b-boyzpj6sak] {
+        width: 6rem;
+    }
+
+        .sidebar.active[b-boyzpj6sak] {
+            width: 27rem;
+        }
+
+    .home-section[b-boyzpj6sak] {
+========
+    .sidebar {
+        width: 6rem;
+    }
+
+        .sidebar.active {
+            width: 27rem;
+        }
+
+    .home-section {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        width: calc(100% - 6rem);
+        left: 6rem;
+        transition: all 0.5s ease;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .sidebar.active ~ .home-section[b-boyzpj6sak] {
+========
+    .sidebar.active ~ .home-section {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        width: calc(100% - 27rem);
+        left: 27rem;
+    }
+}
+
+@media (max-width: 836px) {
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .home-content .overview-boxes .box[b-boyzpj6sak] {
+========
+    .home-content .overview-boxes .box {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        width: calc(100% / 2 - 1.5rem);
+        margin-bottom: 15px;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .header .sidebar-button__logo .logo-details[b-boyzpj6sak] {
+========
+    .header .sidebar-button__logo .logo-details {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        /* display: none; */
+        width: 52px;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+        .header .sidebar-button__logo .logo-details .logo_name[b-boyzpj6sak] {
+========
+        .header .sidebar-button__logo .logo-details .logo_name {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+            /* color: #ffffff; */
+            display: none;
+        }
+}
+
+/* ========================================================== */
+/*Start CategoryBox*/
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section .choice[b-boyzpj6sak] {
+========
+.home-section .choice {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    font-size: 15px;
+    margin-left: 10px;
+    height: 30px;
+    width: 50px;
+    padding: 0px 0px 0px 0px;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section .categoryText[b-boyzpj6sak] {
+========
+.home-section .categoryText {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    margin-left: 10px;
+    font-size: 20px;
+    height: 40px;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section .comboxCategory[b-boyzpj6sak] {
+========
+.home-section .comboxCategory {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    color: #17A2B8;
+    margin-left: 10px;
+    width: 115px;
+    height: 100%;
+    font-size: 18px;
+}
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.home-section .formCategory[b-boyzpj6sak] {
+========
+.home-section .formCategory {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    height: 30px;
+}
+/*End CategoryBox*/
+
+/*Start Border : Khung border bao quanh book*/
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.border[b-boyzpj6sak] {
+========
+.border {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+    margin-left: 118px;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    height: 317px;
+    width: 355px;
+}
+/*End Border*/
+
+/*Start Item List: Weight height font book name, price*/
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.item[b-boyzpj6sak] {
+    width: 50%;
+}
+
+.item[b-boyzpj6sak] {
+    padding-left: 100px;
+}
+
+    .item img[b-boyzpj6sak] {
+========
+.item {
+    width: 50%;
+}
+
+.item {
+    padding-left: 100px;
+}
+
+    .item img {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        height: 230px;
+        width: 330px;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .item .name[b-boyzpj6sak] {
+========
+    .item .name {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        font-size: 23px;
+        margin-bottom: 0px;
+    }
+
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+    .item .price[b-boyzpj6sak] {
+        font-size: 20px;
+    }
+
+    .item .viewDetail[b-boyzpj6sak] {
+========
+    .item .price {
+        font-size: 20px;
+    }
+
+    .item .viewDetail {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        font-size: 15px;
+        height: 30px;
+        width: 100px;
+        margin-left: 115px;
+    }
+/*End Item List*/
+
+/*Page Start*/
+<<<<<<<< HEAD:BookStore/RazorWeb/obj/Debug/net6.0/scopedcss/Pages/AdminManageBook.cshtml.rz.scp.css
+.page[b-boyzpj6sak] {
+    font-size: 25px;
+}
+
+    .page a[b-boyzpj6sak] {
+========
+.page {
+    font-size: 25px;
+}
+
+    .page a {
+>>>>>>>> tan:BookStore/RazorWeb/wwwroot/css/adminManageCategoryBookStyle.css
+        margin-left: 10px;
+        color: #000000;
+    }
+/*Page End*/
