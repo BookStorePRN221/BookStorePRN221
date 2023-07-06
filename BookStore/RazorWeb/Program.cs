@@ -19,7 +19,7 @@ builder.Services.AddScoped<IImportationService, ImportationService>();
 builder.Services.AddScoped<IImportationDetailService, ImportationDetailService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
-//builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
