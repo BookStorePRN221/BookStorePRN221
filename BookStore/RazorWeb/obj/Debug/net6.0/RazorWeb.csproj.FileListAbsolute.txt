@@ -186,3 +186,5 @@ D:\School\clone\ProjectPRN221\BookStore\RazorWeb\obj\Debug\net6.0\refint\RazorWe
 D:\School\clone\ProjectPRN221\BookStore\RazorWeb\obj\Debug\net6.0\RazorWeb.pdb
 D:\School\clone\ProjectPRN221\BookStore\RazorWeb\obj\Debug\net6.0\RazorWeb.genruntimeconfig.cache
 D:\School\clone\ProjectPRN221\BookStore\RazorWeb\obj\Debug\net6.0\ref\RazorWeb.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\RazorWeb\bin\Debug\net6.0\AutoMapper.dll
+D:\Code C#\PRN221_ProjectBookStore\BookStore\RazorWeb\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -210,12 +210,10 @@ namespace Service.Service
         {
             var listBooks= await GetBook();
             var bookpage =await _unit.Books.TakePage(num, listBooks);
-            var bookDTOs= _mapper.Map<IEnumerable<BookDTO>>(bookpage);
-            if(bookDTOs != null)
-            {
-                return bookDTOs;
-            }
-            return null;
+            // get display book từ dto sang book
+            var listDTO = new List<BookDTO>();
+            listDTO = await GetDisplay(bookpage, listDTO);
+            return listDTO;
         }
     }
 }

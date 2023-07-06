@@ -130,10 +130,9 @@
                               action="adminBookAction?action=bookDetail&bookId=${b.book_Id}&categoryId=${b.category}"
                               method="POST">
                             <div class="border">
-                                <img src="<c:url value="/images/${b.image_Book}"/>"/>
+                            <img src="@b.Image_URL" />
                                 <p class="name">@b.Book_Title </p>
                                 <p class="price">
-                                @*<fmt:formatNumber value=@b.Book_Title type="number" />*@
                                     <p>@b.Book_Price</p>
                                     <small style="text-decoration:underline">đ</small>
                                     <button class="viewDetail btn btn-info" type="submit">View Detail
@@ -143,24 +142,6 @@
                         </form>
                 </div>
             }
-            @*<c:forEach asp-for="books" var="b">
-                    <div class="item col-lg-6">
-                        <form style="height: 325px;width: 450px"
-                              action="adminBookAction?action=bookDetail&bookId=${b.book_Id}&categoryId=${b.category}"
-                              method="POST">
-                            <div class="border">
-                                <img src="<c:url value="/images/${b.image_Book}"/>"/>
-                                <p class="name"></p>
-                                <p class="price">
-                                    <fmt:formatNumber value="${b.price_Book}" type="number"/>
-                                    <small style="text-decoration:underline">đ</small>
-                                    <button class="viewDetail btn btn-info" type="submit">View Detail
-                                    </button>
-                                <p>
-                            </div>
-                        </form>
-                    </div>
-                </c:forEach>*@
             </div>
             <div class="page row">
                 <div class="col-lg-4"></div>
