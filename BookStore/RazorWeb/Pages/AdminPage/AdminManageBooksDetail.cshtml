@@ -1,5 +1,6 @@
-﻿@page
+﻿@page "/bookDetail"
 @model RazorWeb.Pages.AdminPage.AdminManageBooksDetailModel
+@using BookStoreAPI.Core.DTO;
 @{
 }
   <head>
@@ -52,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <%-- Form Update --%>
+          @*  <%-- Form Update --%>*@
             <c:set var="toast" value="${update}"></c:set>
             <c:if test="${toast==1}">
                 <div class="toastx">
@@ -65,7 +66,7 @@
                     </div>
                 </div>
             </c:if>
-            <%-- End Form Update --%>
+          @*  <%-- End Form Update --%>*@
         </div>
 
     </div>
@@ -98,10 +99,10 @@
                 </a>
                 </li>
                 <li>
-                    <a type="submit" href="adminBookAction?action=bookPage1">
+                <a asp-page="AdminManageBook" asp-route-number="1">
                         <i class='bx bx-book'></i>
                         <span class="links_name">Books</span>
-                    </a>
+                </a>
                 </li>
                 <li>
                     <a href="./adminShowListImportations">
@@ -129,55 +130,69 @@
         <!-- home-content -->
         <div class="categoryText">
             <a style="color: black" href="adminBookAction?action=bookPage1">Category </a> >
-            <a style="color: #17A2B8" href="adminBookAction?action=${nameCategory}"> ${nameCategory}</a>
+            <a style="color: #17A2B8" href="adminBookAction?action=${nameCategory}"> @Model.bookDetail.Category_Name</a>
         </div>
-        <c:forEach items="${listBook}" var="b" varStatus="loop">
-            <c:set var="bookId" value="${bookIdServlet}"></c:set>
-            <c:if test="${b.book_Id==bookId}">
                 <button class="Check"><i class="fa-regular fa-circle-check"></i></button>
-                <%--  Button Update--%>
+                @*<%--  Button Update--%>*@
                 <button  class="btnUpdate" data-toggle="modal"
-                        data-target="#myModal${loop.index}">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <%--  Item Book Need Show--%>
+                        data-target="#myModal">
+                    <i class="fa-solid fa-pen-to-square"></i></button>
+                @*<%--  Item Book Need Show--%>*@
                 <div class="itemList row">
                     <div class="border col-lg-4">
-                        <img src="<c:url value="/images/${b.image_Book}"/>" class="rounded"/><br/>
+                        <img src="@Model.bookDetail.Image_URL.First()" class="rounded"/><br/>
                     </div>
                     <div class="item col-lg-5">
-                        <strong class="name">${b.name}</strong>
+                        <strong class="name">@Model.bookDetail.Book_Title</strong>
                         <p class="price">
-                                <fmt:formatNumber type="number" value="${b.price_Book}"/>
+                                <p>@Model.bookDetail.Book_Price</p>
                             <small style="text-decoration:underline">đ</small>
                         <p><br/>
-                        <p class="quantity">Quantity: ${b.quantity_Book}</p>
-                        <p class="author">Author: <u>${b.author}</u></p>
-                        <p class="yearPublic">Year Of Public: ${b.year_Of_Public}</p>
+                        <p class="quantity">Quantity: @Model.bookDetail.Book_Quantity</p>
+                        <p class="author">Author: <u>@Model.bookDetail.Book_Author</u></p>
+                        <p class="yearPublic">Year Of Public: @Model.bookDetail.Book_Year_Public</p>
                     </div>
 
                 </div>
-                <%--   Show Description Book   --%>
+                @*<%--   Show Description Book   --%>*@
                 <div class="boxDescription">
                     <div class="description">
                         <strong>Information Detail</strong>
-                        <p class="text">${b.descriptionBook}</p>
+                        <p class="text">@Model.bookDetail.Book_Description</p>
                     </div>
                 </div>
-                <%-- End Show Item Book--%>
-
-                <%--Form Update Book--%>
-                <div class="modal fade" id="myModal${loop.index}">
-                    <div style=" margin-top: 70px;" class="modal-dialog">
+                @*<%-- End Show Item Book--%>*@
+        <!-- Phần modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Tiêu đề modal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Nội dung modal -->
+                        <p>Đây là nội dung của modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                @*<%--Form Update Book--%>*@
+               @* <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div style=" margin-top: 70px;" class="modal-dialog" role="document">
                         <div class="modal-content">
-
                             <header class="head-form mb-0">
                                 <h2 style="padding-left: 28%;font-size: 30px;color: #0d8cba">Update Book</h2>
                             </header>
 
                             <div class="modal-body">
-                                    <%--Form --%>
-                                <form action="adminBookAction?action=updateBook" method="POST">
+                                <form method="POST">
                                       <input type="hidden" name="update"
                                            value="1"/>
                                     <input type="hidden" name="bookId"
@@ -193,7 +208,7 @@
                                                    style="font-size: 20px" value="${b.name}">
                                         </div>
                                     </div>
-                                        <%--  End Name Book --%>
+                                      <%--  End Name Book --%>
 
                                         <%--  Start Author --%>
                                     <div class="form-group">
@@ -206,7 +221,7 @@
                                                    style="font-size: 20px" placeholder="Author" value="${b.author}">
                                         </div>
                                     </div>
-                                        <%--  End Author --%>
+                                       <%--  End Author --%>
 
                                         <%--  Start Quantity Book --%>
                                     <div class="form-group">
@@ -220,7 +235,7 @@
                                                    style="font-size: 20px" value="${b.quantity_Book}">
                                         </div>
                                     </div>
-                                        <%--  End Quantity Book --%>
+                                       <%--  End Quantity Book --%>
 
                                         <%--  Start Price Book --%>
                                     <div class="form-group">
@@ -252,7 +267,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                        <%--  End Category Book --%>
+                                       <%--  End Category Book --%>
 
                                         <%--  Start Public Book --%>
                                     <div class="form-group">
@@ -267,7 +282,7 @@
                                                    value="${b.year_Of_Public}">
                                         </div>
                                     </div>
-                                        <%--  End Public Book --%>
+                                       %--  End Public Book --%>
 
                             
                             <!-- Modal footer -->
@@ -280,11 +295,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <%--End Form Update Book--%>
-            </c:if>
-        </c:forEach>
+                </div>*@
+                @*<%--End Form Update Book--%>*@
     </section>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/popper.js"></script>
     <script src="~/js/script.js"></script>
     </body>

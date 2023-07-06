@@ -37,8 +37,8 @@
                 <div class="seachbox-profile">
                     <div class="wraper_searchbox_profile">
                         <div class="search-box">
-                            <form action="adminBookAction?action=searchBook" method="POST">
-                                <input type="text" placeholder="Search..." name="search" value="${search}">
+                            <form  method="POST">
+                                <input type="text" placeholder="Search..." asp-for="@Model.search">
                                 <button type='submit'><i class='bx bx-search-alt-2'></i></button>
                             </form>
                         </div>
@@ -126,17 +126,15 @@
             @foreach (BookDTO b in Model.books)
             {
                 <div class="item col-lg-6">
-                    <form style="height: 325px;width: 450px"
-                              action="adminBookAction?action=bookDetail&bookId=${b.book_Id}&categoryId=${b.category}"
-                              method="POST">
+                    <form style="height: 325px;width: 450px">
                             <div class="border">
                             <img src="@b.Image_URL" />
                                 <p class="name">@b.Book_Title </p>
                                 <p class="price">
                                     <p>@b.Book_Price</p>
                                     <small style="text-decoration:underline">đ</small>
-                                    <button class="viewDetail btn btn-info" type="submit">View Detail
-                                    </button>
+                                    @*call book detail page*@
+                            <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
                                 <p>
                             </div>
                         </form>

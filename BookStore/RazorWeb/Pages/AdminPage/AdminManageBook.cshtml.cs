@@ -15,11 +15,20 @@ namespace RazorWeb.Pages.AdminPage
         }
         [BindProperty]
         public List<BookDTO> books { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string search { get; set; }
+        public int number { get; set; }
         public async Task OnGet()
         {
-            
-            var listBook = await _book.TakePageBook(1);
-            books = listBook.ToList();
+            var listBook = await _book.GetBook();
+            var listBookPage = await _book.TakePageBook(number,listBook);
+            books = listBookPage.ToList();
+        }
+        public async Task OnPost()
+        {
+            var searchBook= await _book.GetBookByName(search);
+            var listBookPage = await _book.TakePageBook(number, searchBook);
+            books = listBookPage.ToList();
         }
     }
 }
