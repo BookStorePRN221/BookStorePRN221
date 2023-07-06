@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\AdminManageBooksStyle.css" />
+    <Content Remove="wwwroot\css\adminManageCategoryBookStyle.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\adminManageCategoryBookStyle.css" />
+    <None Include="wwwroot\css\adminManageBooksStyle.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BookStore.Service\BookStore.Service.csproj" />
     <ProjectReference Include="..\BusinessObject\BookStore.BusinessObject.csproj" />
     <ProjectReference Include="..\Repositories\BookStore.Repositories.csproj" />
@@ -14,6 +24,11 @@
 
   <ItemGroup>
     <Folder Include="Pages\AdminPage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.0" />
+    <PackageReference Include="jQuery" Version="3.7.0" />
   </ItemGroup>
 
 </Project>

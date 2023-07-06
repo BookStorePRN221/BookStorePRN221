@@ -115,7 +115,7 @@ namespace Service.Service
             return name;
         }
 
-        private async Task<IEnumerable<Book>> GetBook()
+        public async Task<IEnumerable<Book>> GetBook()
         {
             var result = await _unit.Books.GetAll();
             if (result != null)
@@ -206,16 +206,13 @@ namespace Service.Service
             return listDTO;
         }
 
-        public async Task<IEnumerable<BookDTO>> TakePageBook(int num)
+        public async Task<IEnumerable<BookDTO>> TakePageBook(int num,IEnumerable<Book> listBooks)
         {
-            var listBooks= await GetBook();
             var bookpage =await _unit.Books.TakePage(num, listBooks);
-            var bookDTOs= _mapper.Map<IEnumerable<BookDTO>>(bookpage);
-            if(bookDTOs != null)
-            {
-                return bookDTOs;
-            }
-            return null;
+            // get display book từ dto sang book
+            var listDTO = new List<BookDTO>();
+            listDTO = await GetDisplay(bookpage, listDTO);
+            return listDTO;
         }
     }
 }
