@@ -1,60 +1,100 @@
 ﻿@page
 @model RazorWeb.Pages.AdminPage.AdminCreateNewEmployeeModel
-@{
-}
+
 <head>
     <meta charset="UTF-8">
     <title>Create New Employee</title>
     <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
     <link rel="stylesheet" href="~/css/signUpForm.css">
+    <style>
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 100px;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message-text {
+            font-size: 24px;
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .centered-element {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
+    @if (ViewData["Message"] != null)
+    {
+        <div class="message-box">
+            <span class="message-text">@ViewData["Message"]</span>
+            <span class="close-button" onclick="this.parentNode.style.display = 'none';">&times;</span>
+        </div>
+    }
     <!-- partial:index.partial.html -->
-    <section class='login' id='login'>
+    <section class='login centered-element' id='login'>
         <div class='head'>
             <h1 class='company'>Phuong Nam Book Store</h1>
         </div>
-        <c:set var="createEmpMsgAccountID" value="${requestScope.ERROR_ACCOUNT_INSERT_EMPLOYEE_MSG}" />
-        <c:set var="createEmpMsgConfirmPass" value="${requestScope.ERROR_CONFIRM_INSERT_EMPLOYEE_MSG}" />
-        <c:set var="createEmpMsgConfirmPhone" value="${requestScope.ERROR_PHONE_INSERT_EMPLOYEE_MSG}" />
-
         <p class='msg'>Welcome to Create Account</p>
-        <div class='form'>
-            <form action="adminCreateEmployeeAction" method="POST">
-                <input type="text" placeholder='AccountID' name="txtAccountID" class='text' id='AccountID' required minlength="4" maxlength="25"><br>
-                <c:if test="${not empty createEmpMsgAccountID}">
-                    <span class='text' style="color: red">${createEmpMsgAccountID}</span>
-                </c:if>
-                <input type="password" placeholder='Password' name="txtPassword" class='password' required minlength="5" maxlength="20"><br>
-                <input type="password" placeholder='Confirm-Password' name="txtConfirmPassword" class='password' required minlength="5" maxlength="20"><br>
-                <c:if test="${not empty createEmpMsgConfirmPass}">
-                    <span class='text' style="color: red">${createEmpMsgConfirmPass}</span>
-                </c:if>
-                <input type="text" placeholder='Name' name="txtFullName" class='text' required minlength="3" maxlength="30"><br>
-                <input type="number" placeholder='Phone' name="txtPhone" class='number' id='phone'><br>
-                <c:if test="${not empty createEmpMsgConfirmPhone}">
-                    <span class='text' style="color: red">${createEmpMsgConfirmPhone}</span>
-                </c:if>
-                <input type="text" placeholder='Address' name="txtAddress" class='text' id='address' minlength="4" maxlength="30" required><br>
+        <div class='form' >
+            <form  method="POST">
+                <input type="text" placeholder='Account' class='text' asp-for="@Model.User.User_Account" required minlength="4" maxlength="25"><br>
+                @if (!Model.IsAccount)
+                {
+                    <span class='text' style="color: red">@Model.User.User_Account did exists</span>
+                }
+                <input type="password" placeholder='Password' asp-for="@Model.User.User_Password" class='password' required minlength="5" maxlength="20"><br>
+                
+                <input type="text" placeholder='Name' asp-for="@Model.User.User_Name" class='text' required minlength="3" maxlength="30"><br>
+                <input type="text" placeholder='Phone' asp-for="@Model.User.User_Phone" class='text' id='phone'><br>
+                
+                <input type="text" placeholder='Address' asp-for="@Model.User.User_Address" class='text' id='address' minlength="4" maxlength="30" required><br>
+                <input type="text" placeholder='Email' asp-for="@Model.User.User_Email" class='text' id='address' minlength="4" maxlength="30" required><br>
                 <table border="0">
                     <tbody class="text">
                         <tr>
                             <td>Gender</td>
-                            <td><input type="radio" name="radioGender" class="radio" value="Male" checked="checked"> Male</td>
-                            <td><input type="radio" name="radioGender" class="radio" value="Female"> Female</td>
-                            <td><input type="radio" name="radioGender" class="radio" value="Other"> Other</td>
+                            <td><input type="radio" asp-for="@Model.User.Is_User_Gender" class="radio" value="Male" checked="checked"> Male</td>
+                            <td><input type="radio" asp-for="@Model.User.Is_User_Gender" class="radio" value="Female"> Female</td>
+                            <td><input type="radio" asp-for="@Model.User.Is_User_Gender" class="radio" value="Other"> Other</td>
                         </tr>
                         <tr>
                             <td>Role</td>
-                            <td><input type="radio" name="radioRole" class="radio" value="Seller" checked="checked"> Seller<br /></td>
-                            <td><input type="radio" name="radioRole" class="radio" value="Staff"> Staff<br /></td>
+                            <td><input type="radio" asp-for="@Model.User.Role_Id" class="radio" value="3" checked="checked"> Seller<br /></td>
+                            <td><input type="radio" asp-for="@Model.User.Role_Id" class="radio" value="2"> Staff<br /></td>
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="wrapper-button">
                     <a href="./adminShowListEmployees" class='btn-login'>Back Manage Employees</a>
-                    <input type="submit" class='btn-signup' value="Create Account" />
+                    <button type="submit" class='btn-signup' > Create Account</button>
                 </div>
             </form>
 
