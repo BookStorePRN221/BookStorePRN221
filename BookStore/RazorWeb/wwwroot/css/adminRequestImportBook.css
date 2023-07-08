@@ -239,121 +239,86 @@ body {
         margin-right: 1rem;
     }
 
-@media (max-width: 1216px) {
-    .sidebar {
-        width: 6rem;
-    }
-
-        .sidebar.active {
-            width: 27rem;
-        }
-
-    .home-section {
-        width: calc(100% - 6rem);
-        left: 6rem;
-        transition: all 0.5s ease;
-    }
-
-    .sidebar.active ~ .home-section {
-        width: calc(100% - 27rem);
-        left: 27rem;
-    }
+#bookRequest {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 50rem;
 }
 
-@media (max-width: 836px) {
-    .home-content .overview-boxes .box {
-        width: calc(100% / 2 - 1.5rem);
-        margin-bottom: 15px;
-    }
 
-    .header .sidebar-button__logo .logo-details {
-        /* display: none; */
-        width: 52px;
-    }
-
-        .header .sidebar-button__logo .logo-details .logo_name {
-            /* color: #ffffff; */
-            display: none;
-        }
+.overview-tableBookRequest .wraper_addBookingRequest_nameTable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2rem;
+    padding: 2rem 2rem 2rem 2rem;
 }
+
+.wraper_addBookingRequest_nameTable .addBookingRequest {
+    text-decoration: none;
+    color: #fff;
+    background-color: green;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+#nameTable {
+    color: #fab804ea;
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
+}
+
+#statusProcess {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: rgb(215, 21, 21);
+}
+
+.overview-tableBookRequest .tableBookRequest #bookRequest tr .buttonActionUpdate {
+    color: white;
+    background-color: green;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.4rem;
+    border: none;
+}
+
+.select_StatusBook {
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.4em;
+    font-size: 1.3rem;
+    background-color: green;
+    color: #fff;
+    font-weight: 300;
+}
+
+    .select_StatusBook .newBook {
+        padding: 0.5rem 0.8rem;
+        border-radius: 0.4em;
+        font-size: 1.3rem;
+        background-color: green;
+        color: #fff;
+        font-weight: 300;
+    }
+
+    .select_StatusBook .updateBook {
+        padding: 0.5rem 0.8rem;
+        border-radius: 0.4em;
+        font-size: 1.3rem;
+        background-color: goldenrod;
+        color: #fff;
+        font-weight: 300;
+    }
+
+.btnUpdate {
+    position: absolute;
+    font-size: 20px;
+    border: none;
+}
+/*.select_StatusBook {
+    
+}*/
+
 
 /* ========================================================== */
-/*Start CategoryBox*/
-.home-section .choice {
-    font-size: 15px;
-    margin-left: 10px;
-    height: 30px;
-    width: 50px;
-    padding: 0px 0px 0px 0px;
-}
-
-.home-section .categoryText {
-    margin-left: 10px;
-    font-size: 20px;
-    height: 40px;
-}
-
-.home-section .comboxCategory {
-    color: #17A2B8;
-    margin-left: 10px;
-    width: 115px;
-    height: 100%;
-    font-size: 18px;
-}
-
-.home-section .formCategory {
-    height: 30px;
-}
-/*End CategoryBox*/
-
-/*Start Border : Khung border bao quanh book*/
-.border {
-    margin-left: 118px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    height: 317px;
-    width: 355px;
-}
-/*End Border*/
-
-/*Start Item List: Weight height font book name, price*/
-.item {
-    width: 50%;
-}
-
-.item {
-    padding-left: 100px;
-}
-
-    .item img {
-        height: 230px;
-        width: 330px;
-    }
-
-    .item .name {
-        font-size: 23px;
-        margin-bottom: 0px;
-    }
-
-    .item .price {
-        font-size: 20px;
-    }
-
-    .item .viewDetail {
-        font-size: 15px;
-        height: 30px;
-        width: 100px;
-        margin-left: 115px;
-    }
-/*End Item List*/
-
-/*Page Start*/
-.page {
-    font-size: 25px;
-}
-
-    .page a {
-        margin-left: 10px;
-        color: #000000;
-    }
-/*Page End*/
