@@ -1,0 +1,53 @@
+﻿@page
+@model RazorWeb.Pages.InventoryPage.IndexModel
+@{
+}
+
+
+<h1>Inventory Page</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>.NO</th>
+            <th>Image</th>
+            <th>Name Book</th>
+            <th>Quantity</th>
+            <th>Reason</th>
+            <th>Inventory Date</th>
+            <th>Employee Implement</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var b in Model.InventoryDTOs)
+        {
+            <div class="item col-lg-6">
+                <form style="height: 325px;width: 450px">
+                    <div class="border">
+                        <p>@b.Inventory_Id</p>
+                        <img src="@b.Image_URL" />
+                        <p>@b.Book_Title</p>
+                        <p>@b.Inventory_Quantity</p>
+                        <p>@b.Inventory_Note</p>
+                        <p>@b.Inventory_Date_Into</p>
+                        <p>@b.User_Name</p>
+                        <p>@b.Is_Inventory_Status</p>
+
+                        @* <img src="@b.Image_URL" />
+                    <p class="name">@b.Book_Title </p>
+                    <p class="price">
+                    <p>@b.Book_Price</p>
+                    <small style="text-decoration:underline">đ</small>*@
+                        @*call book detail page*@
+                        <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="">View Detail</a>
+                        <p>
+                    </div>
+                </form>
+            </div>
+        }
+    </tbody>
+</table>
+
+
