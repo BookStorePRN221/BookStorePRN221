@@ -14,11 +14,19 @@
     <Content Remove="wwwroot\css\adminRequestImportBook.css" />
     <Content Remove="wwwroot\css\loginFormStyle.css" />
     <Content Remove="wwwroot\css\sellerManageBook.css" />
+    <Content Remove="wwwroot\css\sellerManageBookDetail.css" />
+    <Content Remove="wwwroot\css\sellerManageCart.css" />
+    <Content Remove="wwwroot\css\sellerManageOrder.css" />
+    <Content Remove="wwwroot\css\sellerManageOrderHistory.css" />
     <Content Remove="wwwroot\css\staffManageBook.css" />
     <Content Remove="wwwroot\css\staffManageBookDetail.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\sellerManageOrderHistory.css" />
+    <None Include="wwwroot\css\sellerManageOrder.css" />
+    <None Include="wwwroot\css\sellerManageCart.css" />
+    <None Include="wwwroot\css\sellerManageBookDetail.css" />
     <None Include="wwwroot\css\staffManageBook.css" />
     <None Include="wwwroot\css\sellerManageBook.css" />
     <None Include="wwwroot\css\staffManageBookDetail.css" />
