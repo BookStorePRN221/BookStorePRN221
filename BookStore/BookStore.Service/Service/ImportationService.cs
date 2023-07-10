@@ -76,6 +76,31 @@ namespace Service.Service
             if (display.Count < 1) return null;
             return display;
         }
+        
+        public async Task<Page<DisplayImportationDTO>> GetPaginatedDisplayImport(int pageSize, int currentPage)
+        {
+            // Retrieve the full list of DisplayImportationDTO
+            IEnumerable<DisplayImportationDTO> allItems = await GetDiplayImport();
+
+            // Calculate the total number of items
+            int totalItems = allItems.Count();
+
+            // Apply pagination to get items for the current page
+            List<DisplayImportationDTO> items = allItems
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Create a Paginable object with the paginated items and other details
+            Page<DisplayImportationDTO> paginatedResult = new Page<DisplayImportationDTO>(
+                items,
+                totalItems,
+                pageSize,
+                currentPage
+            );
+
+            return paginatedResult;
+        }
 
         private string GetNameUser(Guid user_Id, IEnumerable<User> userList)
         {
