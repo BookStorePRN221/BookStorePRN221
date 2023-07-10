@@ -14,6 +14,7 @@
 
 html {
     font-size: 62.5%;
+    height: 100%;
 }
 
 body {
@@ -212,9 +213,12 @@ body {
                     font-weight: 400;
                 }
 
+/* ========================================================== */
 /* Home secsion CSS */
+
 .home-section {
     background-color: #f5f5f5;
+    ;
     position: relative;
     min-height: 120vh;
     width: calc(100% - 27rem);
@@ -222,131 +226,190 @@ body {
     transition: all 0.5s ease;
 }
 
-.sidebar.active ~ .home-section {
-    width: calc(100% - 6rem);
-    left: 6rem;
-}
-
-.home-section nav .sidebar-button {
+.home-content {
     display: flex;
-    align-items: center;
-    font-size: 2.4rem;
-    font-weight: 500;
+}
+/*Start Form*/
+.modal-dialog {
+    margin-top: 200px;
 }
 
-    .home-section nav .sidebar-button i {
-        font-size: 35rem;
-        margin-right: 1rem;
-    }
-
-@media (max-width: 1216px) {
-    .sidebar {
-        width: 6rem;
-    }
-
-        .sidebar.active {
-            width: 27rem;
-        }
-
-    .home-section {
-        width: calc(100% - 6rem);
-        left: 6rem;
-        transition: all 0.5s ease;
-    }
-
-    .sidebar.active ~ .home-section {
-        width: calc(100% - 27rem);
-        left: 27rem;
-    }
-}
-
-@media (max-width: 836px) {
-    .home-content .overview-boxes .box {
-        width: calc(100% / 2 - 1.5rem);
-        margin-bottom: 15px;
-    }
-
-    .header .sidebar-button__logo .logo-details {
-        /* display: none; */
-        width: 52px;
-    }
-
-        .header .sidebar-button__logo .logo-details .logo_name {
-            /* color: #ffffff; */
-            display: none;
-        }
-}
-
-/* ========================================================== */
-/*Start CategoryBox*/
-.home-section .choice {
+.add {
+    width: 70px;
+    height: 28px;
+    margin-right: 10px;
     font-size: 15px;
-    margin-left: 10px;
-    height: 30px;
-    width: 50px;
-    padding: 0px 0px 0px 0px;
 }
 
-.home-section .categoryText {
-    margin-left: 10px;
+.xclose {
+    width: 70px;
+    height: 28px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.head-form {
+    color: #ffae00;
+    font-weight: bold;
     font-size: 20px;
-    height: 40px;
+    margin: 25px 0px 0px 75px;
 }
 
-.home-section .comboxCategory {
-    color: #17A2B8;
+#nameTable {
+    color: #fab804ea;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.history {
+    margin-left: 465px;
+    text-align: right;
+    font-size: 30px;
+}
+
+#btnHistory {
+    border: none;
+    color: #ce4426;
+}
+/*Start Order*/
+.order {
+    margin: 0px 37px 15px 37px;
+    border: 2px solid #17A2B8;
+    border-radius: 15px;
+    position: relative;
+}
+
+.itemOrder {
+    display: flex;
     margin-left: 10px;
-    width: 115px;
-    height: 100%;
-    font-size: 18px;
+    margin-top: 5px;
 }
 
-.home-section .formCategory {
-    height: 30px;
-}
-/*End CategoryBox*/
-
-/*Start Border : Khung border bao quanh book*/
-.border {
-    margin-left: 118px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    height: 317px;
-    width: 355px;
-}
-/*End Border*/
-
-/*Start Item List: Weight height font book name, price*/
-.item {
-    width: 50%;
-}
-
-.item {
-    padding-left: 100px;
-}
-
-    .item img {
-        height: 230px;
-        width: 330px;
-    }
-
-    .item .name {
-        font-size: 23px;
-        margin-bottom: 0px;
-    }
-
-    .item .price {
+    .itemOrder p {
         font-size: 20px;
     }
 
-    .item .viewDetail {
-        font-size: 15px;
-        height: 30px;
-        width: 100px;
-        margin-left: 115px;
+    .itemOrder #id {
+        font-weight: bolder;
     }
-/*End Item List*/
 
+    .itemOrder #date {
+        margin-left: 470px;
+    }
+
+    .itemOrder #fullname {
+        margin-left: 50px;
+    }
+
+    .itemOrder #btnReturn {
+        margin-left: 96%;
+        position: absolute;
+        font-size: 20px;
+        border: none;
+    }
+
+/*Order Detail*/
+.orderDetail {
+    margin-left: 10px;
+}
+
+.itemDetail {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+    .itemDetail a {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+
+    .itemDetail #quantity {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .itemDetail #total {
+        font-size: 20px;
+        margin-left: 415px;
+    }
+
+.price {
+    display: flex;
+}
+
+.totalOrder {
+    display: flex;
+    font-size: 20px;
+    margin-left: 79%;
+}
+
+    .totalOrder #priceOrder {
+        font-weight: bolder;
+    }
+
+    .totalOrder #btnAgain {
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        border-radius: 15px;
+    }
+
+.toastx {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 2px;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+    border-left-color: #1ace1a;
+    padding: 20px 0px;
+    width: 320px;
+    height: 73px;
+    margin-left: 78%;
+    position: absolute;
+    animation: slideLeft ease .50s,fadeOut linear 1s 3s forwards;
+}
+/*Animation*/
+@keyframes slideLeft {
+    from {
+        opacity: 0.5;
+        transform: translateX(calc(100% + 20px));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+/*Toast*/
+.toast-icon {
+    font-size: 25px;
+    color: #1ace1a;
+    padding: 0 13px;
+}
+
+.toast-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1ace1a;
+}
+
+.toast-msg {
+    font-size: 12px;
+}
+
+.toast-body {
+    flex-grow: 1;
+}
+/*End Order*/
 /*Page Start*/
 .page {
     font-size: 25px;
@@ -357,3 +420,4 @@ body {
         color: #000000;
     }
 /*Page End*/
+/*End Form*/

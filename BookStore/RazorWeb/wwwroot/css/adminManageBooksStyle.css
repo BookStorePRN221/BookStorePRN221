@@ -308,10 +308,11 @@ body {
 
 /*Start Border : Khung border bao quanh book*/
 .border {
-    margin-left: 118px;
+    border-radius:10px;
+    margin-left: 120px;
     margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
-    height: 317px;
+    height: 340px;
     width: 355px;
 }
 /*End Border*/
