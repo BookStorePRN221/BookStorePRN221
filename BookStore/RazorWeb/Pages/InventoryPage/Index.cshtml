@@ -115,6 +115,9 @@
     </div>
 
     <section class="home-section">
+        <div>
+            <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
+        </div>
         <table class="table" >
             <thead>
                 <tr>
@@ -158,7 +161,7 @@
                             <p>@b.User_Name</p>
                         </td>
                         <td>
-                            <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="">
+                            <a class="viewDetail btn btn-info" asp-page="./Delete" asp-route-Inventory_Id="@b.Inventory_Id">
                                 <i class='bx bxs-chevron-down'></i>
                             </a>
                         </td>
