@@ -1,6 +1,7 @@
 ﻿@page "/adminBook"
 @model RazorWeb.Pages.AdminPage.AdminManageBookModel
 @using BookStoreAPI.Core.DTO;
+@using BookStoreAPI.Core.Model;
 @{
 }
  <head>
@@ -111,15 +112,15 @@
         <!-- home content -->
         <section class="home-section">
             @*Category*@
-            <form class="formCategory" action="adminBookAction" method="POST">
+            <form class="formCategory" method="POST">
                 <spam class="categoryText">Category</spam>
-                <select class="comboxCategory" name="action">
-                    <option value="Romance">Romance</option>
-                    <option value="Self-help">Self-help</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Fantasy">Fantasy</option>
+                <select class="comboxCategory" name="choiceCategory">
+                    @foreach (Category c in Model.categories)
+                    {
+                        <option value="@c.Category_Id">@c.Category_Name</option>
+                    }
                 </select>
-                <button class="choice btn btn-secondary" type="submit">Go</button>
+                <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
             </form><br/>
             <div class="itemList row">
                 @*Display book*@
