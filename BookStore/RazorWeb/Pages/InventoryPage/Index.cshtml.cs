@@ -16,10 +16,10 @@ namespace RazorWeb.Pages.InventoryPage
         }
 
         [BindProperty]
-        public List<DisplayInventoryDTO?> InventoryDTOs { get; set; } = new List<DisplayInventoryDTO?>();
+        public List<DisplayInventoryDTO?> InventoryDTOs { get; set; } 
 
 
-        public async void OnGet()
+        public async Task OnGet()
         {
             InventoryDTOs = (await _inventoryService.GetAllInventory()).ToList();
         }
