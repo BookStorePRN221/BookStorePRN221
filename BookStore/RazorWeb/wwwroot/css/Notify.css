@@ -1,4 +1,7 @@
-﻿* {
+﻿/* Google font CDN link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -209,9 +212,12 @@ body {
                     font-weight: 400;
                 }
 
+/* ========================================================== */
 /* Home secsion CSS */
+
 .home-section {
     background-color: #f5f5f5;
+    ;
     position: relative;
     min-height: 120vh;
     width: calc(100% - 27rem);
@@ -224,136 +230,22 @@ body {
     left: 6rem;
 }
 
-.home-section nav .sidebar-button {
-    display: flex;
-    align-items: center;
-    font-size: 2.4rem;
-    font-weight: 500;
+.home-notify {
+    background: #efefef;
+    color: #fab804ea;
+    border: black 1px solid;
+    border-radius: 15px;
+    margin-left: 5px;
 }
 
-    .home-section nav .sidebar-button i {
-        font-size: 35rem;
-        margin-right: 1rem;
-    }
-
-@media (max-width: 1216px) {
-    .sidebar {
-        width: 6rem;
-    }
-
-        .sidebar.active {
-            width: 27rem;
-        }
-
-    .home-section {
-        width: calc(100% - 6rem);
-        left: 6rem;
-        transition: all 0.5s ease;
-    }
-
-    .sidebar.active ~ .home-section {
-        width: calc(100% - 27rem);
-        left: 27rem;
-    }
+.notify {
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
 }
 
-@media (max-width: 836px) {
-    .home-content .overview-boxes .box {
-        width: calc(100% / 2 - 1.5rem);
-        margin-bottom: 15px;
-    }
-
-    .header .sidebar-button__logo .logo-details {
-        /* display: none; */
-        width: 52px;
-    }
-
-        .header .sidebar-button__logo .logo-details .logo_name {
-            /* color: #ffffff; */
-            display: none;
-        }
-}
-
-/* ========================================================== */
-
-
-/* ========================================================== */
-/*Start CategoryBox*/
-.home-section .choice {
-    font-size: 15px;
-    margin-left: 10px;
-    height: 30px;
-    width: 50px;
-    padding: 0px 0px 0px 0px;
-}
-
-.home-section .categoryText {
-    margin-left: 10px;
+.text {
     font-size: 20px;
-    height: 40px;
-}
-
-.home-section .comboxCategory {
-    color: #17A2B8;
     margin-left: 10px;
-    width: 115px;
-    height: 100%;
-    font-size: 18px;
+    color: black;
 }
-
-.home-section .formCategory {
-    height: 30px;
-}
-/*End CategoryBox*/
-
-/*Start Border : Khung border bao quanh book*/
-.border {
-    border-radius:10px;
-    margin-left: 120px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    height: 340px;
-    width: 355px;
-}
-/*End Border*/
-
-/*Start Item List: Weight height font book name, price*/
-.item {
-    width: 50%;
-}
-
-.item {
-    padding-left: 100px;
-}
-
-    .item img {
-        height: 230px;
-        width: 330px;
-    }
-
-    .item .name {
-        font-size: 23px;
-        margin-bottom: 0px;
-    }
-
-    .item .price {
-        font-size: 20px;
-    }
-
-    .item .viewDetail {
-        font-size: 15px;
-        height: 30px;
-        width: 100px;
-        margin-left: 115px;
-    }
-/*End Item List*/
-
-/*Page Start*/
-.page {
-    font-size: 25px;
-}
-
-    .page a {
-        margin-left: 10px;
-        color: #000000;
-    }

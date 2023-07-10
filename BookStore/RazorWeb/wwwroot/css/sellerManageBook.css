@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     font-size: 1.6rem;
 }
@@ -226,131 +226,131 @@ body {
     transition: all 0.5s ease;
 }
 
-.sidebar.active ~ .home-section {
-    width: calc(100% - 6rem);
-    left: 6rem;
-}
-
-
-
-
-@media (max-width: 1216px) {
-    .sidebar {
-        width: 6rem;
-    }
-
-        .sidebar.active {
-            width: 27rem;
-        }
-
-    .home-section {
-        width: calc(100% - 6rem);
-        left: 6rem;
-        transition: all 0.5s ease;
-    }
-
-    .sidebar.active ~ .home-section {
-        width: calc(100% - 27rem);
-        left: 27rem;
-    }
-}
-
-@media (max-width: 836px) {
-
-
-    .header .sidebar-button__logo .logo-details {
-        /* display: none; */
-        width: 52px;
-    }
-
-        .header .sidebar-button__logo .logo-details .logo_name {
-            /* color: #ffffff; */
-            display: none;
-        }
-}
-
 body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-/*Start CategoryBox*/
-.home-section .choice {
-    font-size: 15px;
-    margin-left: 10px;
-    height: 30px;
-    width: 50px;
-    padding: 0px 0px 0px 0px;
+/*Start Border : Khung border bao quanh book*/
+.border {
+    border-radius: 20px;
+    margin-left: 140px;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 800px;
 }
 
+/*Start Category*/
 .home-section .categoryText {
     margin-left: 10px;
     font-size: 20px;
     height: 40px;
+    color: black;
 }
 
-.home-section .comboxCategory {
-    color: #17A2B8;
-    margin-left: 10px;
-    width: 115px;
-    height: 100%;
-    font-size: 18px;
-}
-
-.home-section .formCategory {
-    height: 30px;
-}
-/*End CategoryBox*/
-
-/*Start Border : Khung border bao quanh book*/
-.border {
-    margin-left: 118px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    height: 317px;
-    width: 355px;
-}
-/*End Border*/
+/*End Category*/
 
 /*Start Item List: Weight height font book name, price*/
-.item {
+.itemList img {
     width: 50%;
+    height: 350px;
+    width: 400px;
 }
 
 .item {
-    padding-left: 100px;
+    margin-left: 40px;
 }
-
-    .item img {
-        height: 230px;
-        width: 330px;
-    }
 
     .item .name {
-        font-size: 23px;
-        margin-bottom: 0px;
+        font-size: 35px;
+        padding-bottom: 20px;
     }
 
     .item .price {
-        font-size: 20px;
+        margin-top: 20px;
+        font-size: 30px;
+        color: #C92127;
     }
 
-    .item .viewDetail {
-        font-size: 15px;
-        height: 30px;
-        width: 100px;
-        margin-left: 115px;
+    .item .quantity {
+        font-size: 25px;
+        padding-bottom: 5px;
     }
-/*End Item List*/
 
-/*Page Start*/
-.page {
-    font-size: 25px;
+    .item .author {
+        font-size: 25px;
+        padding-bottom: 5px;
+    }
+
+    .item .yearPublic {
+        font-size: 25px;
+        padding-bottom: 5px;
+    }
+
+    .item .inventory {
+        font-size: 30px;
+        margin-right: 50px;
+    }
+
+.button {
+    display: flex;
 }
 
-    .page a {
-        margin-left: 10px;
-        color: #000000;
+/*End Item List*/
+
+/*Start Description*/
+.boxDescription {
+    border-radius: 15px;
+    background-color: rgba(224, 219, 219, 0.68);
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.description {
+    margin-top: 20px;
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+    .description .text {
+        padding-top: 10px;
+        font-size: 15px;
     }
-/*Page End*/
+
+/*End Description*/
+
+/*Start Form Add To Inventory*/
+.modal-dialog {
+    height: 100%;
+}
+
+.modal-content {
+    margin-top: 200px;
+}
+
+.input-group {
+    height: 40px;
+}
+
+.form-control {
+    height: 40px;
+}
+
+.add {
+    width: 70px;
+    height: 28px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.xclose {
+    width: 70px;
+    height: 28px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+/*End Form Add To Inventory*/
+
+
