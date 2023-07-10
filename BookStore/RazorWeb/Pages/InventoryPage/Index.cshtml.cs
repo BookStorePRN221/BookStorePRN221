@@ -21,7 +21,7 @@ namespace RazorWeb.Pages.InventoryPage
 
         public async Task OnGet()
         {
-            InventoryDTOs = (await _inventoryService.GetAllInventory()).ToList();
+            InventoryDTOs = (await _inventoryService.GetAllInventory()).Where(i => i.Is_Inventory_Status==true).ToList() ?? null;
         }
     }
 }
