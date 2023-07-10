@@ -1,5 +1,5 @@
 ﻿@page
-@model RazorWeb.Pages.InventoryPage.IndexModel
+@model RazorWeb.Pages.InventoryPage.HistoryInventoryModel
 @{
     int courter = 1;
 }
@@ -116,12 +116,9 @@
 
     <section class="home-section">
         <div>
-            <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
-            <a  class="viewDetail btn btn-info" asp-page="./HistoryInventory">
-                <i class='bx bxs-chevron-down'></i>
-            </a>
+            <h1 style="text-align:center;">LIST HISTORY OF BOOK INVENTORY</h1>
         </div>
-        <table class="table" >
+        <table class="table">
             <thead>
                 <tr>
                     <th>.NO</th>
@@ -131,6 +128,7 @@
                     <th>Reason</th>
                     <th>Inventory Date</th>
                     <th>Employee Implement</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -164,9 +162,13 @@
                             <p>@b.User_Name</p>
                         </td>
                         <td>
-                            <a class="viewDetail btn btn-info" asp-page="./Delete" asp-route-Inventory_Id="@b.Inventory_Id">
-                                <i class='bx bxs-chevron-down'></i>
-                            </a>
+                            <p>@b.Is_Inventory_Status</p>
+                        </td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="id" value="@b.Inventory_Id">
+                                <button type='submit' value="id"><i class='bx bx-log-out'></i></button>
+                            </form>
                         </td>
                     </tr>
                 }
@@ -175,8 +177,3 @@
     </section>
     <script src="~/js/script.js"></script>
 </body>
-
-
-
-
-
