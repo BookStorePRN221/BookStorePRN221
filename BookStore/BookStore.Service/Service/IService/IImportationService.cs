@@ -13,6 +13,7 @@ namespace Service.Service.IService
         Task<bool> CreateImport(Importation import);
         Task<IEnumerable<Importation>> GetAllImport();
         Task<IEnumerable<DisplayImportationDTO>> GetDiplayImport();
+        Task<Page<DisplayImportationDTO>> GetPaginatedDisplayImport(int pageSize, int currentPage);
         Task<Book> GetImportById(Guid importId);
         Task<bool> UpdateImport(Importation import);
         Task<bool> DeleteImport(Guid importId);
