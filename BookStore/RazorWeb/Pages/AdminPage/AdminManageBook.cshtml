@@ -1,6 +1,7 @@
 ﻿@page "/adminBook"
 @model RazorWeb.Pages.AdminPage.AdminManageBookModel
 @using BookStoreAPI.Core.DTO;
+@using BookStoreAPI.Core.Model;
 @{
 }
  <head>
@@ -19,121 +20,34 @@
 
     <body>
 
-        <div class="header">
-            <div class="header-menu">
-                <!-- even menu sidebar -->
-                <div class="sidebar-button__logo" style="padding-right:24px">
-                    <div class="sidebar-button">
-                        <i class='bx bx-menu sidebarBtn'></i>
-                        <!-- <span class="dashboard">Dashboard</span> -->
-                    </div>
-
-                    <!-- div of logo -->
-                    <div class="logo-details">
-                        <img src="~/images/logo.jpg" width="100" height="100" alt="Logo Phuong Nam Bookstore">
-                        <span class="logo_name">Book Store</span>
-                    </div>
-                </div>
-                <div class="seachbox-profile">
-                    <div class="wraper_searchbox_profile">
-                        <div class="search-box">
-                            <form  method="POST">
-                                <input type="text" placeholder="Search..." asp-for="@Model.search">
-                                <button type='submit'><i class='bx bx-search-alt-2'></i></button>
-                            </form>
-                        </div>
-                        <div class="profile_details">
-                            <img src="~/images/admin1.png" width="50px" height="50px" alt="image admin">
-                            <div class="name_role">
-                                <span class="name">${sessionScope.USER["fullName"]}</span>
-                                <i class='bx bxs-chevron-down'></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <!-- link in sidebar -->
-            <ul class="nav-links">
-                <li>
-                    <a href="./adminOverViewPage">
-                        <i class='bx bx-home'></i>
-                        <span class="links_name">Overview</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./adminManageInforDashboard">
-                        <i class='bx bx-grid-alt'></i>
-                        <span class="links_name">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./adminShowListEmployees">
-                        <i class='bx bx-user'></i>
-                        <span class="links_name">Employees</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./adminShowListBookingRequest">
-                        <i class='bx bx-import'></i>
-                        <span class="links_name">Booking Request</span>
-                    </a>
-                </li>
-                <li>
-                    <a type="submit" href="adminBookAction?action=bookPage1">
-                        <i class='bx bx-book'></i>
-                        <span class="links_name">Books</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./adminShowListImportations">
-                        <i class='bx bxs-report'></i>
-                        <span class="links_name">Importation</span>
-                    </a>
-                </li>
-                <!--                    <li>
-                                        <a href="./adminShowListOrders">
-                                            <i class='bx bx-list-ol'></i>
-                                            <span class="links_name">Order</span>
-                                        </a>
-                                    </li>-->
-                <li>
-                    <a href="./logoutAction">
-                        <i class='bx bx-log-out'></i>
-                        <span class="links_name">Log out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
 
         <!-- home content -->
         <section class="home-section">
             @*Category*@
-            <form class="formCategory" action="adminBookAction" method="POST">
+            <form class="formCategory" method="POST">
                 <spam class="categoryText">Category</spam>
-                <select class="comboxCategory" name="action">
-                    <option value="Romance">Romance</option>
-                    <option value="Self-help">Self-help</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Fantasy">Fantasy</option>
+                <select class="comboxCategory" name="choiceCategory">
+                    @foreach (Category c in Model.categories)
+                    {
+                        <option value="@c.Category_Id">@c.Category_Name</option>
+                    }
                 </select>
-                <button class="choice btn btn-secondary" type="submit">Go</button>
+                <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
             </form><br/>
-            <div class="itemList row">
+            <div class="itemList row" style="height:800px">
                 @*Display book*@
             @foreach (BookDTO b in Model.books)
             {
                 <div class="item col-lg-6">
                     <form style="height: 325px;width: 450px">
-                            <div class="border">
+                            <div class="border" >
                             <img src="@b.Image_URL" />
                                 <p class="name">@b.Book_Title </p>
                                 <p class="price">
-                                    <p>@b.Book_Price</p>
+                                    <p>@b.Book_Price</p>                                   
                                     <small style="text-decoration:underline">đ</small>
                                     @*call book detail page*@
+
                             <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
                                 <p>
                             </div>
