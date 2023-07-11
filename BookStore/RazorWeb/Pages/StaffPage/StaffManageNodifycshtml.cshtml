@@ -1,53 +1,56 @@
 ﻿@page
-@model RazorWeb.Pages.SellerPage.SellerManageNodifyModel
+@model RazorWeb.Pages.StaffPage.StaffManageNodifycshtmlModel
 @{
 }
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seller Notify</title>
+    <title>Staff Notify</title>
     <!-- link file CSS -->
     <link rel="stylesheet" href="~/css/Notify.css">
     <!-- BoxIcon CDN Link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
+   
 
     <div class="wrapper-body">
         <div class="sidebar">
             <!-- link in sidebar -->
             <ul class="nav-links">
                 <li>
-                    <a href="sellerNodifyPage">
+                    <a href="staffNodifyPage">
                         <i class='bx bxs-bell'></i>
                         <span class="links_name">Notification</span>
                     </a>
                 </li>
                 <li>
-                    <a href="sellerCartAction?action=viewCart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="links_name">Cart</span>
+                    <a href="staffImportationAction?action=getRequest">
+                        <i class='bx bx-notification'></i>
+                        <span class="links_name">Request</span>
                     </a>
                 </li>
                 <li>
-                    <a href="sellerOrderAction?action=getOrder">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        <span class="links_name">Order</span>
+                    <a href="staffImportationAction?action=getImportation">
+                        <i class='bx bx-add-to-queue'></i>
+                        <span class="links_name">Importation</span>
                     </a>
                 </li>
                 <li>
-                    <a type="submit" href="sellerBookAction?action=bookPage1">
+                    <a type="submit" href="staffBookAction?action=bookPage1">
                         <i class='bx bx-book'></i>
                         <span class="links_name">Books</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="staffInventoryAction?action=getInventory">
+                        <i class='bx bx-carousel'></i>
+                        <span class="links_name">Inventory</span>
+                    </a>
+                </li>
                 <li>
                     <a href="./logoutAction">
                         <i class='bx bx-log-out'></i>
@@ -56,7 +59,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+</div>
         <!-- home content -->
         <div class="home-section">
             <!-- home-content -->
