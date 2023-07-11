@@ -1,180 +1,72 @@
 ﻿@page
 @model RazorWeb.Pages.InventoryPage.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     int courter = 1;
+    Layout = "_Layout";
 }
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
-    <!-- link file CSS -->
-    <link rel="stylesheet" href="~/css/adminManageBooksStyle.css">
-    <!-- BoxIcon CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-</head>
-<body>
-    <div class="header">
-        <div class="header-menu">
-            <!-- even menu sidebar -->
-            <div class="sidebar-button__logo" style="padding-right:24px">
-                <div class="sidebar-button">
-                    <i class='bx bx-menu sidebarBtn'></i>
-                    <!-- <span class="dashboard">Dashboard</span> -->
-                </div>
-
-                <!-- div of logo -->
-                <div class="logo-details">
-                    <img src="~/images/logo.jpg" alt="Logo Phuong Nam Bookstore">
-                    <span class="logo_name">Book Store</span>
-                </div>
-            </div>
-            <div class="seachbox-profile">
-                <div class="wraper_searchbox_profile">
-                    <div class="search-box">
-                        <form method="POST">
-                            <input type="text" placeholder="Search...">
-                            <button type='submit'><i class='bx bx-search-alt-2'></i></button>
-                        </form>
-                    </div>
-                    <div class="profile_details">
-                        <img src="~/images/admin1.png" alt="image admin">
-                        <div class="name_role">
-                            <span class="name">${sessionScope.USER["fullName"]}</span>
-                            <i class='bx bxs-chevron-down'></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="home-section">
+    <div>
+        <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
+        <a class="viewDetail btn btn-info" asp-page="./HistoryInventory">
+            <i class='bx bxs-chevron-down'></i>
+        </a>
     </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>.NO</th>
+                <th>Image</th>
+                <th>Name Book</th>
+                <th>Quantity</th>
+                <th>Reason</th>
+                <th>Inventory Date</th>
+                <th>Employee Implement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-
-    <div class="sidebar">
-        <!-- link in sidebar -->
-        <ul class="nav-links">
-            <li>
-                <a href="./adminOverViewPage">
-                    <i class='bx bx-home'></i>
-                    <span class="links_name">Overview</span>
-                </a>
-            </li>
-            <li>
-                <a href="./adminManageInforDashboard">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="./adminShowListEmployees">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Employees</span>
-                </a>
-            </li>
-            <li>
-                <a href="./adminShowListBookingRequest">
-                    <i class='bx bx-import'></i>
-                    <span class="links_name">Booking Request</span>
-                </a>
-            </li>
-            <li>
-                <a type="submit" href="adminBookAction?action=bookPage1">
-                    <i class='bx bx-book'></i>
-                    <span class="links_name">Books</span>
-                </a>
-            </li>
-            <li>
-                <a href="./adminShowListImportations">
-                    <i class='bx bxs-report'></i>
-                    <span class="links_name">Importation</span>
-                </a>
-            </li>
-            <li>
-                <a asp-page="/inventoryPage/Index">
-                    <i class='bx bxs-report'></i>
-                    <span class="links_name">Inventory</span>
-                </a>
-            </li>
-            <!--                    <li>
-                                    <a href="./adminShowListOrders">
-                                        <i class='bx bx-list-ol'></i>
-                                        <span class="links_name">Order</span>
-                                    </a>
-                                </li>-->
-            <li>
-                <a href="./logoutAction">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Log out</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <section class="home-section">
-        <div>
-            <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
-            <a  class="viewDetail btn btn-info" asp-page="./HistoryInventory">
-                <i class='bx bxs-chevron-down'></i>
-            </a>
-        </div>
-        <table class="table" >
-            <thead>
+            @foreach (var b in @Model.InventoryDTOs)
+            {
                 <tr>
-                    <th>.NO</th>
-                    <th>Image</th>
-                    <th>Name Book</th>
-                    <th>Quantity</th>
-                    <th>Reason</th>
-                    <th>Inventory Date</th>
-                    <th>Employee Implement</th>
-                    <th></th>
+                    <td>
+                        @(courter++)
+                    </td>
+                    <td>
+                        <div>
+                            <img style="width:70px;height:80px;" src="@b.Image_URL" />
+                        </div>
+
+                    </td>
+                    <td>
+                        <p>@b.Book_Title</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Quantity</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Note</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Date_Into</p>
+                    </td>
+                    <td>
+                        <p>@b.User_Name</p>
+                    </td>
+                    <td>
+                        <a class="viewDetail btn btn-info" asp-page="./Delete" asp-route-Inventory_Id="@b.Inventory_Id">
+                            <i class='bx bxs-chevron-down'></i>
+                        </a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
+            }
+        </tbody>
+    </table>
+</section>
+<script src="~/js/script.js"></script>
 
-                @foreach (var b in @Model.InventoryDTOs)
-                {
-                    <tr>
-                        <td>
-                            @(courter++)
-                        </td>
-                        <td>
-                            <div>
-                                <img style="width:70px;height:80px;" src="@b.Image_URL" />
-                            </div>
-
-                        </td>
-                        <td>
-                            <p>@b.Book_Title</p>
-                        </td>
-                        <td>
-                            <p>@b.Inventory_Quantity</p>
-                        </td>
-                        <td>
-                            <p>@b.Inventory_Note</p>
-                        </td>
-                        <td>
-                            <p>@b.Inventory_Date_Into</p>
-                        </td>
-                        <td>
-                            <p>@b.User_Name</p>
-                        </td>
-                        <td>
-                            <a class="viewDetail btn btn-info" asp-page="./Delete" asp-route-Inventory_Id="@b.Inventory_Id">
-                                <i class='bx bxs-chevron-down'></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </section>
-    <script src="~/js/script.js"></script>
-</body>
 
 
 
