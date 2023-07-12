@@ -12,17 +12,9 @@
 
 <body>
 
-    <c:if test="${countLogin==1}">
-        <div class="toast" data-autohide="false">
-            <div>
-                <h1 class="title">Login Failed</h1>
-            </div>
-            <div class="content">
-                Sorry, an unexpected error occurred.Please try again later <hr />
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-            </div>
-        </div>
-    </c:if>
+    <a asp-page="/AdminPage/AdminManageBook" class="nav-link">AdminBook</a>
+    <a asp-page="/AdminPage/AdminManageEmployees" class="nav-link">ManageEmployee</a>
+    <a asp-page="/AdminPage/AdminCreateNewEmployee" class="nav-link">CreateEmployee</a>
 
     <section class='login centered-element' id='login'>
         <div class='head'>
