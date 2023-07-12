@@ -19,13 +19,13 @@
 <body>
 
 
-
-
 <section class="home-section">
-    <div class="container">
-         <h2 class="my-3 d-inline-block">Importation</h2>
+    <div >
+        <div class="text-center">
+            <h2 class="my-3 d-inline-block ">Importation</h2>
+        </div>
         <table class="table table-striped">
-            <thead class="">
+            <thead class="thead-dark">
             <tr>
                 <th>Import Id</th>
                 <th>User Name</th>
@@ -50,7 +50,7 @@
             </tbody>
         </table>
         <!-- Add pagination controls -->
-        @if(Model.TotalPages > 1)
+        @if (Model.TotalPages > 1)
         {
             <div class="d-flex w-100 justify-content-center">
                 <nav aria-label="Page navigation">
