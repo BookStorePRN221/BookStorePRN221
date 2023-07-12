@@ -7,6 +7,7 @@ namespace RazorWeb.Pages
     {
         public void OnGet()
         {
+            
         }
     }
 }
