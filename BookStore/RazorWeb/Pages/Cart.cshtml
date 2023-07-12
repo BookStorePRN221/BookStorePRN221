@@ -1,0 +1,54 @@
+﻿@page "/cart"
+@model RazorWeb.Pages.CartModel
+@{
+}
+
+<div class="home-section">
+    <h1 class="display-4">Cart</h1>
+    @if (Model.CartItems.Count == 0)
+    {
+        <p>Your cart is empty.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>@item.Book_Title</td>
+                        <td>@item.Book_Price</td>
+                        <td>@item.Book_Quantity</td>
+                        <td>
+                            <form asp-page-handler="delete" method="post">
+                                <input type="hidden" name="itemId" value="@item.Book_Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td>@Model.CartTotal</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    
+        <div>
+            <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+        </div>
+    }
+
+</div>
+
