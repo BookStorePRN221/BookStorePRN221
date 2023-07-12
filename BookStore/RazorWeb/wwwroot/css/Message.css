@@ -1,0 +1,24 @@
+﻿
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    z-index: 9999;
+    transition: opacity 0.5s;
+    width:300px;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+.fail {
+    background-color: brown;
+}
+.close {
+    float: right;
+    font-weight: bold;
+    cursor: pointer;
+}

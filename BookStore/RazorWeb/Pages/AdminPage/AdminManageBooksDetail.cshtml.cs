@@ -24,11 +24,25 @@ namespace RazorWeb.Pages.AdminPage
         public List<Category> listCate { get; set; }
         [BindProperty(SupportsGet = true)]
         public Guid Book_Id { get; set; }
+        [BindProperty]
+        public int m_Message { get; set; } = 0;
         public async Task OnGet()
         {
             bookDetail = await _book.GetBookById(Book_Id);
             var list = await _category.GetAllCategory();
-            listCate=list.ToList();
+            listCate=list.ToList(); 
+        }
+        public async Task<IActionResult> OnPost()
+        {
+            var book= _map.Map<Book>(bookDetail);
+            var _update = await _book.UpdateBook(book);
+            if (_update)
+            {
+                m_Message = 1;
+                return Page();
+            }
+            m_Message = 2;
+            return Page();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace RazorWeb.Pages.AdminPage
         public List<User> UserList { get; set; }
         [BindProperty]
         public User User { get; set; }
+        [BindProperty]
+        public int m_Message { get; set; } = 0;
         public async Task OnGet()
         {
             var listUser = await user.GetAllUser();
@@ -23,12 +25,15 @@ namespace RazorWeb.Pages.AdminPage
         }
         public async Task<IActionResult> OnPost()
         {
-          var m_update= await user.UpdateUser(User);
-            if (m_update)
+          var _update= await user.UpdateUser(User);
+            if (_update)
             {
-                return RedirectToPage();
+                m_Message = 1;
+                await OnGet();
+                return Page();
             }
-            return RedirectToPage();
+            m_Message = 2;
+            return Page();
         }
     }
 }

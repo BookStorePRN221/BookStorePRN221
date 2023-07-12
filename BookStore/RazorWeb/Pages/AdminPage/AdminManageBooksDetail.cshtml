@@ -25,13 +25,29 @@
         <!-- link file CSS -->
     
         <link rel="stylesheet" href="~/css/staffBookManageDetail.css">
+        <link rel="stylesheet" href="~/css/Message.css" />
+    <script src="~/js/Message.js"></script>
     </head>
 
     <body>
-    
 
+    @if (Model.m_Message==1)
+    {
+        <div id="success-notification" class="notification success">
+            <span class="close" onclick="closeNotification()">&times;</span>
+            <p style="color:white">Update book success!</p>
+        </div>
+    }
+    @if (Model.m_Message==0)
+    {
+        <div id="success-notification" class="notification fail">
+            <span class="close" onclick="closeNotification()">&times;</span>
+            <p style="color:white">Update book fail!</p>
+        </div>
+    }
     <!-- home content -->
     <section class="home-section">
+      
         <!-- home-content -->
         <div class="categoryText">
             <a style="color: black" href="adminBookAction?action=bookPage1">Category </a> >
@@ -74,8 +90,10 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel" style="margin-left:130px;font-size:28px; color:orange; font-weight:500">UPDATE BOOK</h5>
                     </div>
+                    <form method="post">
                     <div class="modal-body">
-                        <form>
+                            <input type="hidden" asp-for="@Model.bookDetail.Book_Id"/>
+                            <input type="hidden" asp-for="@Model.bookDetail.Image_URL" value="@Model.bookDetail.Image_URL.First()" />
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title:</label>
                                 <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
@@ -94,7 +112,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="yearOfPublic" class="form-label">Year Of Public:</label>
-                                <input type="number" class="form-control" id="yearOfPublic" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                                <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                            </div>
+                            <div class="mb-3">
+                                <label  class="form-label">Description:</label>
+                                <input type="text" class="form-control"  asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category:</label>
@@ -106,12 +128,12 @@
                                     }
                                 </select>
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size:15px;">Close</button>
-                        <button type="button" class="btn btn-primary" style="font-size:15px;">Update</button>
+                        <button type="submit" class="btn btn-primary" style="font-size:15px;">Update</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

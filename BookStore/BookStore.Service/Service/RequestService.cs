@@ -15,23 +15,69 @@ namespace Service.Service
         IUnitOfWorkRepository _unit;
         private BookingRequest m_request;
         public RequestService(IUnitOfWorkRepository unit)
-        { 
+        {
             _unit = unit;
         }
 
-        public async Task<bool> CreateRequest(BookingRequest request)
+        public async Task<bool> CreateRequest(BookingRequest request, bool status)
         {
-            if (request != null)
+            switch (status)
             {
-                var m_list = await GetAllRequest();
-                request.Request_Id = Guid.NewGuid();
-                request.Is_Request_Status = 1;
-                await _unit.Request.Add(request);
-                var result = _unit.Save();
-                if (result > 0) return true;
+                //Book New
+                case true:
+                    if (request != null)
+                    {
+                        //var m_list = await GetAllRequest();
+                        request.Request_Id = Guid.NewGuid();
+                        //nếu là book cũ, sẽ trả lại id đã truyền xuống
+                        request.Book_Id = await GetBookId(request.Book_Id);
+                        request.Is_Request_Status = 1;
+                        await _unit.Request.Add(request);
+                        var result = _unit.Save();
+                        if (result > 0) return true;
+                    }
+                    return false;
+                //Book Exists
+                case false:
+                    if (request != null)
+                    {
+                        //var m_list = await GetAllRequest();
+                        request.Request_Id = Guid.NewGuid();
+                        //nếu là book cũ, sẽ trả lại id đã truyền xuống
+                        request.Book_Id = await GetBookId(request.Book_Id);
+                        var book = await _unit.Books.GetById(request.Book_Id);
+                        request.Request_Book_Name = book.Book_Title;
+                        request.Request_Price = book.Book_Price;
+                        //get image
+                        var listImage = await _unit.Images.GetAll();
+                        request.Request_Image_Url = GetUrl(listImage, book.Book_Id);
+                        request.Is_Request_Status = 1;
+                        await _unit.Request.Add(request);
+                        var result = _unit.Save();
+                        if (result > 0) return true;
+                    }
+                    return false;
             }
-            return false;
+
         }
+        private string GetUrl(IEnumerable<ImageBook> listImage, Guid book_Id)
+        {
+            var url = (from i in listImage where i.Book_Id == book_Id select i.Image_URL).FirstOrDefault();
+            return url;
+        }
+        private async Task<Guid> GetBookId(Guid book_Id)
+        {
+            var book = await _unit.Books.GetById(book_Id);
+            // nếu book id k có chứng tỏ là book mới, gắn tạm book id đã có
+            if (book == null)
+            {
+                var bookList = await _unit.Books.GetAll();
+                var book_Id_Exists = bookList.FirstOrDefault().Book_Id;
+                return book_Id_Exists;
+            }
+            return book_Id;
+        }
+
         public async Task<IEnumerable<BookingRequest>> GetAllRequest()
         {
             var result = await _unit.Request.GetAll();
@@ -46,7 +92,7 @@ namespace Service.Service
         {
             throw new NotImplementedException();
         }
-      
+
         public async Task<bool> UpdateRequest(BookingRequest request)
         {
             var m_update = _unit.Request.SingleOrDefault(m_request, u => u.Request_Id == request.Request_Id);
@@ -54,7 +100,7 @@ namespace Service.Service
             {
                 m_update.Book_Id = request.Book_Id;
                 m_update.Request_Image_Url = request.Request_Image_Url;
-                m_update.Request_Book_Name= request.Request_Book_Name;
+                m_update.Request_Book_Name = request.Request_Book_Name;
                 m_update.Request_Quantity = request.Request_Quantity;
                 m_update.Request_Price = request.Request_Price;
                 m_update.Request_Amount = request.Request_Amount;
@@ -62,7 +108,7 @@ namespace Service.Service
                 m_update.Request_Date_Done = DateTime.Now;
                 m_update.Request_Note = request.Request_Note;
                 m_update.Is_Request_Status = 1;
-                m_update.Is_RequestBook_Status=request.Is_RequestBook_Status;
+                m_update.Is_RequestBook_Status = request.Is_RequestBook_Status;
                 _unit.Request.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
@@ -71,7 +117,7 @@ namespace Service.Service
         }
         public async Task<bool> DeleteRequest(Guid requestId)
         {
-            var m_update = _unit.Request.SingleOrDefault(m_request, u => u.Request_Id==requestId);
+            var m_update = _unit.Request.SingleOrDefault(m_request, u => u.Request_Id == requestId);
             if (m_update != null)
             {
                 m_update.Is_Request_Status = 0;
@@ -92,6 +138,11 @@ namespace Service.Service
                 if (result > 0) return true;
             }
             return false;
+        }
+
+        public Task<bool> CreateRequest(BookingRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }
