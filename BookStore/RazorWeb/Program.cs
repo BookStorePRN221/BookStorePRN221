@@ -1,7 +1,9 @@
+using BookStoreAPI.Infracstructure.Helper;
 using BookStoreAPI.Infracstructure.ServiceExtension;
 using Service.Service.IService;
 using Service.Service;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,9 @@ builder.Services.AddRazorPages(option =>
 {
     option.Conventions.AddPageRoute("/AdminPage/{*path}", "/AdminPage");
 });
+
+builder.Services.AddSession();
+
 builder.Services.AddDIServices(builder.Configuration);
 //Scoped
 builder.Services.AddScoped<IBookService, BookService>();
@@ -46,5 +51,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.UseSession();
 
 app.Run();
