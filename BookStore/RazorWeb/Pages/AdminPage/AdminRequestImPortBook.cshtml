@@ -8,7 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Request Import Book</title>
-
+    @* Modal*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
         <!-- BoxIcon CDN Link -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,63 +19,78 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
               crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- link file CSS -->
         <link rel="stylesheet" href="~/css/adminRequestImportBook.css">
+        <style>
+        .modal {
+            margin-top: 50px;
+            height: 700px !important;
+        }
+
+        .modal-header {
+            width: 100%;
+            padding: 0;
+            background-color: #fab804ea;
+        }
+
+        .modal-body {
+            background-color: #247774;
+            text-align: center;
+        }
+
+        .modal-header ul {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .switch {
+            display: flex !important;
+            justify-content: space-around;
+        }
+
+        .nav-link.active {
+            background-color: #247774 !important;
+            color: whitesmoke !important;
+        }
+
+        .btnCreate{
+            margin-left:0px;
+        }
+
+        .btnCallCreate{
+            font-size: 20px;
+            background-color: #fab804ea;
+            border-radius: 5px;
+            border-color: whitesmoke;
+        }
+        .th{
+            width:110px !important
+            height:30px;
+        }
+        </style>
     </head>
 
     <body>
-        @*Form Create Request*@
-    <button id="registerBtn">Register</button>
 
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Register</h2>
-
-            <div id="addNewBookModal" class="sub-modal">
-                <h3>Add new Book</h3>
-                <form>
-                    <label for="newBookImageUrl">Image URL:</label>
-                    <input type="text" id="newBookImageUrl" name="newBookImageUrl">
-
-                    <label for="newBookName">Book Name:</label>
-                    <input type="text" id="newBookName" name="newBookName">
-
-                    <label for="newBookQuantity">Quantity:</label>
-                    <input type="number" id="newBookQuantity" name="newBookQuantity">
-
-                    <label for="newBookNote">Note:</label>
-                    <textarea id="newBookNote" name="newBookNote"></textarea>
-
-                    <label for="newBookCategory">Select Category:</label>
-                    <select id="newBookCategory" name="newBookCategory">
-                        <option value="category1">Category 1</option>
-                        <option value="category2">Category 2</option>
-                        <option value="category3">Category 3</option>
-                    </select>
-                </form>
-            </div>
-
-            <div id="addOldBookModal" class="sub-modal">
-                <h3>Add old Book</h3>
-                <form>
-                    <label for="oldBookName">Book Name:</label>
-                    <input type="text" id="oldBookName" name="oldBookName">
-
-                    <label for="oldBookQuantity">Quantity:</label>
-                    <input type="number" id="oldBookQuantity" name="oldBookQuantity">
-
-                    <label for="oldBookNote">Note:</label>
-                    <textarea id="oldBookNote" name="oldBookNote"></textarea>
-                </form>
-            </div>
-
-            <div class="button-container">
-                <button id="createBtn">Create</button>
-                <button id="cancelBtn">Cancel</button>
-            </div>
+    @if (Model.m_Message == 1)
+    {
+        <div id="success-notification" class="notification success">
+            <span class="close" onclick="closeNotification()">&times;</span>
+            <p style="color:white">Create Request success!</p>
         </div>
-    </div>
+    }
+    @if (Model.m_Message == 0)
+    {
+        <div id="success-notification" class="notification fail">
+            <span class="close" onclick="closeNotification()">&times;</span>
+            <p style="color:white">Create Request Fail!</p>
+        </div>
+    }
     @*Form Create Request*@
         <!-- home content -->
         <div class="home-section">
@@ -81,14 +98,13 @@
             <div class="home-content">
                 <div class="overview-tableBookRequest">
                     <div class="wraper_addBookingRequest_nameTable">
-                        <a href="./adminCreateBookRequestPage" class="addBookingRequest">
-                            <i class='bx bx-add-to-queue'></i>
-                            <span class="links_name">Add Book Request</span>
-                        </a>
+                    <button type="button"  class="btnCallCreate" data-toggle="modal" data-target="#myModal">
+                        <i class="fa-solid fa-plus"></i> Add book request
+                    </button>
                     </div>
                     <hr style="width: 25.7rem;"/>
                     <h2 id="nameTable">LIST OF BOOK REQUEST</h2>
-                    <div class="tableBookRequest">
+                    <div class="tableBookRequest" >
                             <table class="table">
                                 <thead style="padding-top: 12px;
                                        padding-bottom: 12px;
@@ -96,13 +112,13 @@
                                        background-color: #1d727e;
                                        color: white;
                                        font-size: 1.5rem;">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                <th>Amount</th>
+                                       <tr>
+                                        <th >ID</th>
+                                        <th class="th">Image</th>
+                                        <th class="th">Name</th>
+                                         <th class="th">Quantity</th>
+                                        <th style="width:50px;">Price</th>
+                                        <th>Amount</th>
                                         <th>Date</th>
                                         <th>Date Complete</th>
                                         <th>Note</th>
@@ -155,7 +171,7 @@
                                              @if (r.Is_Request_Status == 2) {
                                             <input value="@r.Request_Date_Done.ToString("yyyy-MM-dd")"  asp-format="{0:yyyy-MM-dd}" readonly />
                                              }else{
-                                                 <p>Request not completed</p>
+                                                 <p></p>
                                              }
                                         </td>
                                         <td>
@@ -199,7 +215,6 @@
                              }
                         </tbody>
                             </table>
-                        </c:if>
                         <c:if test="${empty listBookingRequest}">
                             <h2 style="text-align: center;
                                 align-items: center;
@@ -211,6 +226,82 @@
                 </div>
             </div>
         </div>
+    @*Form Create Request*@
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <ul class="switch nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" id="pills-project-tab" data-toggle="pill" href="#newBook"
+                               role="tab" aria-controls="pills-project" aria-selected="true" style="color:azure">Add New Book</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="pills-illustration-tab" data-toggle="pill" href="#oldBook"
+                               role="tab" aria-controls="pills-illustration" aria-selected="false" style="color:azure">
+                                Add Existing Book
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="newBook" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+                            <div>
+                                <h2 style="color:azure">Create Booking Request</h2><br>
+                                    <form method="post">
+                                <input type="text" placeholder="Image url" asp-for="@Model.request.Request_Image_Url" style="margin-bottom:10px;"><br>
+                                <input type="text" placeholder="Book's name" asp-for="@Model.request.Request_Book_Name" style="margin-bottom:10px;"><br>
+                                <input type="number" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;"><br>
+                                <input type="number" placeholder="Price" asp-for="@Model.request.Request_Price" style="margin-bottom:10px;"><br>
+                                <select class="form-select" asp-for="@Model.request.Category_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;">
+                                    @foreach (var i in Model.listCate)
+                                    {
+                                        <option value="@i.Category_Id">@i.Category_Name</option>
+                                    }
+                                </select><br>
+                                <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;">
+                                <div class="btnCreate">
+                                        <input type="hidden" asp-for="@Model.is_Book_Create" value="true"/>
+                                        <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="true" />
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;margin-right:5px;">Cancel</button>
+                                        <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="oldBook" role="tabpanel"
+                             aria-labelledby="pills-illustration-tab">
+                            <h2 style="color:azure">Create Booking Request</h2><br>
+                                <form method="post">
+                            <select class="form-select" asp-for="@Model.request.Book_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;">
+                            @foreach (var i in Model.books)
+                            {
+                                <option value="@i.Book_Id">@i.Book_Title</option>
+                            }
+                        </select><br>
+                            <input type="number" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;"><br>
+                            <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;">
+                            <div class="btnCreate">
+                                    <input type="hidden" asp-for="@Model.is_Book_Create" value="false" />
+                                    <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="false" />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;;margin-right:5px;">Cancel</button>
+                                    <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <script src="~/js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

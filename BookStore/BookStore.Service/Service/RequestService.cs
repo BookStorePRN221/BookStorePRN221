@@ -31,6 +31,7 @@ namespace Service.Service
                         request.Request_Id = Guid.NewGuid();
                         //nếu là book cũ, sẽ trả lại id đã truyền xuống
                         request.Book_Id = await GetBookId(request.Book_Id);
+                        request.Request_Date= DateTime.Now;
                         request.Is_Request_Status = 1;
                         await _unit.Request.Add(request);
                         var result = _unit.Save();
@@ -48,6 +49,7 @@ namespace Service.Service
                         var book = await _unit.Books.GetById(request.Book_Id);
                         request.Request_Book_Name = book.Book_Title;
                         request.Request_Price = book.Book_Price;
+                        request.Request_Date = DateTime.Now;
                         //get image
                         var listImage = await _unit.Images.GetAll();
                         request.Request_Image_Url = GetUrl(listImage, book.Book_Id);
@@ -88,9 +90,14 @@ namespace Service.Service
             return null;
         }
 
-        public Task<Book> GetRequestById(Guid requestId)
+        public async Task<BookingRequest> GetRequestById(Guid requestId)
         {
-            throw new NotImplementedException();
+            var request = await _unit.Request.GetById(requestId);
+            if (request != null)
+            {
+                return request;
+            }
+            return null;
         }
 
         public async Task<bool> UpdateRequest(BookingRequest request)
@@ -140,9 +147,5 @@ namespace Service.Service
             return false;
         }
 
-        public Task<bool> CreateRequest(BookingRequest request)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
