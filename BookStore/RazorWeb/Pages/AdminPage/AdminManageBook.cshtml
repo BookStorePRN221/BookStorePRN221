@@ -19,7 +19,7 @@
     </head>
 
     <body>
-
+    
         <!-- home content -->
         <section class="home-section">
             @*Category*@
@@ -33,7 +33,7 @@
                 </select>
                 <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
             </form><br/>
-            <div class="itemList row">
+            <div class="itemList row" style="height:800px;">
                 @*Display book*@
             @foreach (BookDTO b in Model.books)
             {
