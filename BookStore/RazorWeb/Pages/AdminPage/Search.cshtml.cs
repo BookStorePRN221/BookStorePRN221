@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorWeb.Pages.AdminPage
 {
-    public class staffManageBooksDetailHistoryModel : PageModel
+    public class SearchModel : PageModel
     {
         public void OnGet()
         {
