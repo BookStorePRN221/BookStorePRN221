@@ -16,7 +16,6 @@ namespace RazorWeb.Pages
 
         public async Task OnGet()
         {
-            var list = await _book.GetAllBook();
         }
     }
 }

@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages(option =>
 {
     option.Conventions.AddPageRoute("/AdminPage/{*path}", "/AdminPage");
+    option.Conventions.AddPageRoute("/StaffPage/{*path}", "/StaffPage");
+    option.Conventions.AddPageRoute("/SellerPage/{*path}", "/SellerPage");
 });
 
 builder.Services.AddSession();

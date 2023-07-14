@@ -17,44 +17,60 @@ namespace Service.Service
         IUnitOfWorkRepository _unit;
         ICategoryRepository _cate;
         IImageService _image;
-        IMapper _mapper;
         Book m_book;
-        
-        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate,IImageService image, IMapper mapper)
+
+        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate, IImageService image)
         {
             _unit = unit;
             _cate = cate;
             _image = image;
-            _mapper = mapper;
             m_book = new Book();
         }
-        public async Task<bool> CreateBook(Book book,string url)
+        public async Task<bool> CreateBook(Book book, string url, Guid Request_Id)
         {
             if (book != null)
             {
-               // var m_list = await GetAllBook();
+                // var m_list = await GetAllBook();
                 book.Book_Id = Guid.NewGuid();
-                book.Is_Book_Status= true;
+                book.Book_Description = "No Data, Please Write Description";
+                book.Is_Book_Status = true;
                 await _unit.Books.Add(book);
                 var result = _unit.Save();
                 if (result > 0)
                 {
-                    var image = new ImageBook();
-                    image.Image_URL = url;
-                    image.Book_Id = book.Book_Id;
                     //add image
-                    await _image.CreateImage(image);
+                    await AddImage(url, book.Book_Id);
+                    //add bookid vào request id
+                    await AddBookIdToRequest(Request_Id, book.Book_Id);
                     return true;
                 }
             }
             return false;
         }
 
-       
+        private async Task AddImage(string url, Guid book_Id)
+        {
+            var image = new ImageBook();
+            image.Image_URL = url;
+            image.Book_Id = book_Id;
+            await _image.CreateImage(image);
+        }
+
+        private async Task AddBookIdToRequest(Guid request_Id, Guid book_Id)
+        {
+            var request = await _unit.Request.GetById(request_Id);
+            if (request != null)
+            {
+                request.Book_Id = book_Id;
+                request.Is_RequestBook_Status = false;
+                _unit.Request.Update(request);
+                _unit.Save();
+            }
+        }
 
         public async Task<bool> DeleteBook(Guid bookId)
         {
-            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id==bookId);
+            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == bookId);
             if (m_update != null)
             {
                 m_update.Is_Book_Status = false;
@@ -65,24 +81,24 @@ namespace Service.Service
             return false;
         }
 
-        public async Task<IEnumerable<BookDTO>> GetAllBook()
+        public async Task<IEnumerable<BookDTO>> GetAllBookDisplay()
         {
             var bookList = await GetBook();
             var listDTO = new List<BookDTO>();
-            listDTO =await GetDisplay(bookList, listDTO);
+            listDTO = await GetDisplay(bookList, listDTO);
             return listDTO;
         }
-       
-       
+
+
         private async Task<List<BookDTO>> GetDisplay(IEnumerable<Book> bookList, List<BookDTO> listDTO)
         {
             var imageList = await _unit.Images.GetAll();
-            var categoryList= await _unit.Category.GetAll();
-            foreach(var item in bookList)
+            var categoryList = await _unit.Category.GetAll();
+            foreach (var item in bookList)
             {
-                var dto= new BookDTO();
-                dto.Book_Id=item.Book_Id;
-                dto.Category_Id=item.Category_Id;
+                var dto = new BookDTO();
+                dto.Book_Id = item.Book_Id;
+                dto.Category_Id = item.Category_Id;
                 dto.Category_Name = GetCategoryName(categoryList, item.Category_Id);
                 dto.Image_URL = GetUrl(imageList, item.Book_Id);
                 dto.Book_Author = item.Book_Author;
@@ -90,7 +106,7 @@ namespace Service.Service
                 dto.Book_Quantity = item.Book_Quantity;
                 dto.Book_Year_Public = item.Book_Year_Public;
                 dto.Book_ISBN = item.Book_ISBN;
-                dto.Book_Title= item.Book_Title;
+                dto.Book_Title = item.Book_Title;
                 dto.Book_Description = item.Book_Description;
                 dto.Is_Book_Status = item.Is_Book_Status;
                 listDTO.Add(dto);
@@ -127,7 +143,7 @@ namespace Service.Service
 
         public async Task<BookDetailDTO> GetBookById(Guid bookId)
         {
-            var result=await _unit.Books.GetById(bookId);
+            var result = await _unit.Books.GetById(bookId);
             var listCate = await _cate.GetAll();
             var imageList = await _unit.Images.GetAll();
             if (result != null)
@@ -137,27 +153,30 @@ namespace Service.Service
                 bookDetail.Book_Id = result.Book_Id;
                 bookDetail.Book_Title = result.Book_Title;
                 bookDetail.Book_Description = result.Book_Description;
-                bookDetail.Category_Id=result.Category_Id;
+                bookDetail.Category_Id = result.Category_Id;
                 bookDetail.Category_Name = GetCategoryName(listCate, result.Category_Id);
                 bookDetail.Image_URL = GetUrlList(imageList, result.Book_Id);
-                bookDetail.Book_Author= result.Book_Author;
-                bookDetail.Book_Price= result.Book_Price;
-                bookDetail.Book_Quantity= result.Book_Quantity;
-                bookDetail.Book_Year_Public= result.Book_Year_Public;
-                bookDetail.Book_ISBN= result.Book_ISBN;
-                bookDetail.Is_Book_Status= result.Is_Book_Status;
+                bookDetail.Book_Author = result.Book_Author;
+                bookDetail.Book_Price = result.Book_Price;
+                bookDetail.Book_Quantity = result.Book_Quantity;
+                bookDetail.Book_Year_Public = result.Book_Year_Public;
+                bookDetail.Book_ISBN = result.Book_ISBN;
+                bookDetail.Is_Book_Status = result.Is_Book_Status;
                 return bookDetail;
             }
             return null;
         }
-       
+
 
         public async Task<IEnumerable<Book>> GetBookByName(string bookName)
         {
             //var result = await _unit.Books.GetByName(bookName);
             var books = await GetBook();
-            var result = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
-            if (result.Count()>0)
+            var result = from b in books
+                         where (b.Book_Title.ToLower().Trim().Contains
+                         (bookName.ToLower().Trim()) && b.Is_Book_Status == true)
+                         select b;
+            if (result.Count() > 0)
             {
                 return result;
             }
@@ -169,15 +188,15 @@ namespace Service.Service
             var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == book.Book_Id);
             if (m_update != null)
             {
-                m_update.Category_Id= book.Category_Id;
-                m_update.Book_Title= book.Book_Title;
-                m_update.Book_Author= book.Book_Author;
-                m_update.Book_Price= book.Book_Price;
-                m_update.Book_Description= book.Book_Description;
-                m_update.Book_Price=book.Book_Price;
-                m_update.Book_Quantity= book.Book_Quantity;
-                m_update.Book_Year_Public= book.Book_Year_Public;
-                m_update.Is_Book_Status= book.Is_Book_Status;
+                m_update.Category_Id = book.Category_Id;
+                m_update.Book_Title = book.Book_Title;
+                m_update.Book_Author = book.Book_Author;
+                m_update.Book_Price = book.Book_Price;
+                m_update.Book_Quantity = book.Book_Quantity;
+                m_update.Book_Description = book.Book_Description;
+                m_update.Book_Price = book.Book_Price;
+                m_update.Book_Year_Public = 2023;
+                m_update.Is_Book_Status = book.Is_Book_Status;
                 _unit.Books.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
@@ -201,12 +220,11 @@ namespace Service.Service
         public async Task<IEnumerable<BookDTO>> GetBookByCategory(int cateId)
         {
             var bookList = await GetBook();
-            var bookListByCateId= from b in bookList where b.Category_Id == cateId select b;
+            var bookListByCateId = from b in bookList where b.Category_Id == cateId select b;
             var listDTO = new List<BookDTO>();
             listDTO = await GetDisplay(bookListByCateId, listDTO);
             return listDTO;
         }
-
         public async Task<IEnumerable<BookDTO>> TakePageBook(int num,IEnumerable<Book> listBooks)
         {
             var bookpage =await _unit.Books.TakePage(num, listBooks);
