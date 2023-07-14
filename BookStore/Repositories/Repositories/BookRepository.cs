@@ -13,6 +13,7 @@ namespace BookStoreAPI.Infracstructure.Repositories
     {
         public BookRepository(DbContextClass context) : base(context)
         {
+
         }
     }
 }

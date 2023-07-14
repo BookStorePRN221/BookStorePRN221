@@ -5,8 +5,10 @@ namespace RazorWeb.Pages.AdminPage
 {
     public class SearchModel : PageModel
     {
-        public void OnGet()
+        public string name_search { get; set; } = default!;
+        public void OnGet(string search)
         {
+
         }
     }
 }
