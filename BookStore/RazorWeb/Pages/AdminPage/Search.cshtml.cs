@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorWeb.Pages.AdminPage
 {
-    public class staffManageBooksDetailHistoryModel : PageModel
+    public class SearchModel : PageModel
     {
-        public void OnGet()
+        public string name_search { get; set; } = default!;
+        public void OnGet(string search)
         {
+
         }
     }
 }
