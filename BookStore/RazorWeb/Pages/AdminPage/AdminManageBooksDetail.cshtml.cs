@@ -12,11 +12,13 @@ namespace RazorWeb.Pages.AdminPage
         private IBookService _book;
         private ICategoryService _category;
         private IMapper _map;
-        public AdminManageBooksDetailModel(IBookService book,IMapper mapper, ICategoryService category)
+        private IInventoryService _inventory;
+        public AdminManageBooksDetailModel(IBookService book,IMapper mapper, ICategoryService category, IInventoryService inventory)
         {
             _book = book;
             _map = mapper;
             _category = category;
+            _inventory = inventory;
         }
         [BindProperty]
         public BookDetailDTO bookDetail { get; set; }
@@ -42,6 +44,10 @@ namespace RazorWeb.Pages.AdminPage
                 return Page();
             }
             m_Message = 2;
+            return Page();
+        }
+        public async Task<IActionResult> OnPostAddInventory()
+        {
             return Page();
         }
     }
