@@ -1,0 +1,16 @@
+﻿@page 
+@model RazorWeb.Pages.StaffPage.ResotreInventoryModel
+@{
+}
+<div class="container">
+    <h1>Restore</h1>
+
+    <h3>Are you sure you want to restore this?</h3>
+    <div class="container">
+        <form method="post">
+            <input type="hidden" />
+            <input type="submit" value="Restore" class="btn btn-danger" /> |
+            <a asp-page="./StaffManageInventoryRstore">Back to List</a>
+        </form>
+    </div>
+</div>
