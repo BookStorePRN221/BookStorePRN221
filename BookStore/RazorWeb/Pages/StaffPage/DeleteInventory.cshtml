@@ -1,0 +1,16 @@
+﻿@page
+@model RazorWeb.Pages.StaffPage.DeleteInventoryModel
+@{
+}
+<div class="container">
+    <h1>Delete</h1>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div class="container">
+        <form method="post">
+            <input type="hidden" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./StaffManageInventory">Back to List</a>
+        </form>
+    </div>
+</div>
