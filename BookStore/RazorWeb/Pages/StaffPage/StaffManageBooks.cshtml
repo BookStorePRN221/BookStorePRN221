@@ -1,5 +1,7 @@
-﻿@page
+﻿@page "/staffBook"
 @model RazorWeb.Pages.StaffPage.StaffManageBooksModel
+@using BookStoreAPI.Core.DTO;
+@using BookStoreAPI.Core.Model;
 @{
 }
 <head>
@@ -22,125 +24,58 @@
 
 <body>
 
-
-    <nav class="sidebar">
-
-        <!-- link in sidebar -->
-        <ul class="nav-links">
-            <li>
-                <a href="staffNodifyPage">
-                    <i class='bx bxs-bell'></i>
-                    <span class="links_name">Notification</span>
-                </a>
-            </li>
-            <li>
-                <a href="staffImportationAction?action=getRequest">
-                    <i class='bx bx-notification'></i>
-                    <span class="links_name">Request</span>
-                </a>
-            </li>
-            <li>
-                <a href="staffImportationAction?action=getImportation">
-                    <i class='bx bx-add-to-queue'></i>
-                    <span class="links_name">Importation</span>
-                </a>
-            </li>
-            <li>
-                <a type="submit" href="staffBookAction?action=bookPage1">
-                    <i class='bx bx-book'></i>
-                    <span class="links_name">Books</span>
-                </a>
-            </li>
-            <li>
-                <a href="staffInventoryAction?action=getInventory">
-                    <i class='bx bx-carousel'></i>
-                    <span class="links_name">Inventory</span>
-                </a>
-            </li>
-            <li>
-                <a href="./logoutAction">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Log out</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
     <!-- home content -->
     <section class="home-section">
-        <%-- Button History--%>
-        <div class="history">
-            <form action="staffBookDeletedAction?action=bookPage1" method="POST">
-                <button id="btnHistory">
-                    <i class="fa-solid fa-recycle"></i>
-                </button>
-            </form>
+        @*Category*@
+        <form class="formCategory" method="POST">
+            <spam class="categoryText">Category</spam>
+            <select class="comboxCategory" name="choiceCategory">
+                @foreach (Category c in Model.categories)
+                {
+                    <option value="@c.Category_Id">@c.Category_Name</option>
+                }
+            </select>
+            <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
+        </form><br />
+        <div class="itemList row" style="height:800px;">
+            @*Display book*@
+            @foreach (BookDTO b in Model.books)
+            {
+                <div class="item col-lg-6">
+                    <form style="height: 325px;width: 450px">
+                        <div class="border">
+                            <img src="@b.Image_URL" />
+                            <p class="name">@b.Book_Title </p>
+                            <p class="price">
+                            <p>@b.Book_Price</p>
+                            <small style="text-decoration:underline">đ</small>
+                                @*call book detail page*@
+                            <a class="viewDetail btn btn-info" asp-page="StaffManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
+                            <p>
+                        </div>
+                    </form>
+                </div>
+            }
         </div>
-        <%-- End Button History--%>
-
-        <!-- home-content -->
-        <div class="formCategory">
-            <form action="staffBookAction" method="POST">
-                <spam class="categoryText">Category</spam>
-                <select class="comboxCategory" name="action">
-                    <option value="Romance">Romance</option>
-                    <option value="Self-help">Self-help</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Fantasy">Fantasy</option>
-                </select>
-                <button class="choice btn btn-secondary" type="submit">Go</button>
-            </form>
-        </div>
-
-        <br />
-        <div class="itemList row">
-            <c:forEach items="${listBook}" var="b">
-                <c:if test="${b.status==true}">
-                    <div style="padding: 0 15px" class="item col-lg-6">
-                        <form style="height: 325px;width: 450px"
-                              action="staffBookAction?action=bookDetail&bookId=${b.book_Id}&categoryId=${b.category}&bookName=${b.name}"
-                              method="POST">
-                            <div class="border">
-                                <img src="<c:url value=" /images/${b.image_Book}" />"/><br />
-                                <p class="name">${b.name}</p>
-                                <p class="price">
-                                    <fmt:formatNumber value="${b.price_Book}" type="number" />
-                                    <small style="text-decoration:underline">đ</small>
-                                    <button class="viewDetail btn btn-info" type="submit">
-                                        View Detail
-                                    </button>
-                                <p>
-                            </div>
-                        </form>
-
-                    </div>
-                </c:if>
-            </c:forEach>
-        </div>
-
-        <%--Start Page--%>
         <div class="page row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4 d-flex justify-content-center">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage1">1</a></li>
-                    <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage3">3</a></li>
-                    <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage4">4</a></li>
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage3">3</a></li>
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage4">4</a></li>
                     <c:if test="${numLastBook>16}">
-                        <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage5">5</a></li>
+                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage5">5</a></li>
                     </c:if>
                     <c:if test="${numLastBook>20}">
-                        <li class="page-item"><a class="page-link" href="staffBookAction?action=bookPage6">6</a></li>
+                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage6">6</a></li>
                     </c:if>
                 </ul>
             </div>
             <div class="col-lg-4"></div>
         </div>
-        <%-- End Page--%>
-
     </section>
-
     <script src="~/js/script.js"></script>
 
 </body>
