@@ -127,7 +127,7 @@
                                         <th>Update</th>
                                     </tr>
                                 </thead>
-                                <tbody style="font-size: 15px">
+                                <tbody style="font-size: 12px">
                             @{
                                 var count = 1;
                             }
@@ -152,24 +152,24 @@
                                             <input asp-for="@Model.request.Request_Book_Name" value="@r.Request_Book_Name" />
                                         </td>
                                         <td>
-                                            <input asp-for="@Model.request.Request_Quantity" value="@r.Request_Quantity" />
+                                            <input asp-for="@Model.request.Request_Quantity" style="width:80px;margin-left:20px;" value="@r.Request_Quantity" />
                                         </td>
                                         <td>
-                                            <input asp-for="@Model.request.Request_Price" value="@r.Request_Price" />
+                                            <input asp-for="@Model.request.Request_Price" style="width:100px;margin-left:20px;" value="@r.Request_Price" />
                                             <small style="text-decoration:underline">đ</small>
                                         </td>
                                         <td>
-                                            <input asp-for="@Model.request.Request_Amount" value="@r.Request_Amount" />
+                                            <input asp-for="@Model.request.Request_Amount" style="width:100px;margin-left:20px;" value="@r.Request_Amount" />
                                             <small style="text-decoration:underline">đ</small>
                                         </td>
                                         <td>
-                                            <input type="hidden" asp-for="@Model.request.Request_Date" value="@r.Request_Date" />
-                                            <input value="@r.Request_Date.ToString("yyyy-MM-dd")" asp-format="{0:yyyy-MM-dd}" readonly />
+                                            <input type="hidden" asp-for="@Model.request.Request_Date"  value="@r.Request_Date" />
+                                            <input value="@r.Request_Date.ToString("yyyy-MM-dd")" style="width:90px;margin-left:20px;" asp-format="{0:yyyy-MM-dd}" readonly />
                                         </td>
                                         <td>
-                                            <input type="hidden" asp-for="@Model.request.Request_Date_Done" value="@r.Request_Date_Done" />
+                                            <input type="hidden" asp-for="@Model.request.Request_Date_Done"  value="@r.Request_Date_Done" />
                                              @if (r.Is_Request_Status == 2) {
-                                            <input value="@r.Request_Date_Done.ToString("yyyy-MM-dd")"  asp-format="{0:yyyy-MM-dd}" readonly />
+                                            <input value="@r.Request_Date_Done.ToString("yyyy-MM-dd")" style="width:90px;margin-left:20px;"  asp-format="{0:yyyy-MM-dd}" readonly />
                                              }else{
                                                  <p></p>
                                              }
@@ -180,17 +180,17 @@
                                         <td id="statusProcess">
 
                                             @if (r.Is_Request_Status == 1) {
-                                                <span style="color: #fab804ea">Proceeding</span>
+                                                <span style="color: #fab804ea;margin-left: 40px;">Proceeding</span>
                                             }
                                             @if (r.Is_Request_Status == 2) {
-                                                <span style="color: #1ace1a">Done</span>
+                                                <span style="color: #1ace1a;margin-left: 40px;">Done</span>
                                             }
                                            @if (r.Is_Request_Status == 3) {
-                                                <span style="color: red;">Un Done</span>
+                                                <span style="color: red;margin-left: 40px;">Un Done</span>
                                            }
                                         </td>
                                         <td>
-                                            <select class="textInforEmployee" asp-for=@Model.request.Is_RequestBook_Status>
+                                            <select class="textInforEmployee" style="margin-left:25px" asp-for=@Model.request.Is_RequestBook_Status>
                                                 @if (r.Is_RequestBook_Status == true)
                                                 {
                                                     <option style="color: green" value="true">New</option>
@@ -204,7 +204,7 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <button type="submit" class="btnUpdate" data-toggle="modal"
+                                            <button type="submit" class="btnUpdate" style="margin-left:25px;" data-toggle="modal"
                                             data-target="#myModalUpdate${loop.index}">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
