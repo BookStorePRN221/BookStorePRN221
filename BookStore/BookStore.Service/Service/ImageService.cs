@@ -21,7 +21,6 @@ namespace Service.Service
             if (image != null)
             {
                 await _unit.Images.Add(image);
-
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
@@ -46,9 +45,18 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateImage(ImageBook image)
+        public async Task<bool> UpdateImage(ImageBook image)
         {
-            throw new NotImplementedException();
+            var m_update = await _unit.Images.GetById(image.Image_Id);
+            if(m_update != null)
+            {
+                m_update.Image_URL = image.Image_URL;
+                m_update.Book_Id = image.Book_Id;
+                _unit.Images.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
     }
 }

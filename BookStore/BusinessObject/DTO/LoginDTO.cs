@@ -10,6 +10,5 @@ namespace BookStoreAPI.Core.DTO
     {
         public string User_Account { get; set; }
         public string User_Password { get; set; }
-        public int Role_Id { get; set; }
     }
 }

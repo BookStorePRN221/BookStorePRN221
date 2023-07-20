@@ -10,6 +10,7 @@ namespace BookStoreAPI.Core.DTO
     {
         public Guid Order_Id { get; set; }
         public Guid User_Id { get; set; }
+        public string Order_Code { get; set; }
         public string Order_Customer_Name { get; set; }
         public string Order_Customer_Address { get; set; }
         public string Order_Customer_Phone { get; set; }
