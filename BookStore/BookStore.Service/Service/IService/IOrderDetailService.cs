@@ -15,5 +15,7 @@ namespace Service.Service.IService
         Task<List<DisplayOrderDetailDTO>> SearchOrder(string bookName);
         Task<IEnumerable<DisplayOrderDetailDTO>> GetDisplayOrderDetail();
         Task<bool> UpdateOrderDetail(OrderDetail orderDetail);
+        Task<IEnumerable<DisplayOrderDetailDTO>> GetOrderDetailByOrderId(Guid order_id);
+
     }
 }

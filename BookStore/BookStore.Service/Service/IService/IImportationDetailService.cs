@@ -12,6 +12,7 @@ namespace Service.Service.IService
     {
         Task<bool> CreateImportDetail(ImportationDetail importDetail);
         Task<IEnumerable<ImportationDetail>> GetAllImportDetail();
+        Task<IEnumerable<DiplayImportationDetailDTO>> GetImportDetailByImportId(Guid Import_Id);
         Task<IEnumerable<DiplayImportationDetailDTO>> GetDiplayImportDetail();
         Task<List<DiplayImportationDetailDTO>> SearchImport(string bookName);
         Task<bool> UpdateImportDetail(ImportationDetail importDetail);
