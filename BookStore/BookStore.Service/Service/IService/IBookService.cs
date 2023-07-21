@@ -20,5 +20,6 @@ namespace Service.Service.IService
         Task<bool> RemoveBook(Guid bookId);
         Task<bool> RestoreBook(Guid bookId);
         Task<IEnumerable<Book>> GetBook();
+        Task<IEnumerable<Book>> TakePage(int number, IEnumerable<Book> books);
     }
 }

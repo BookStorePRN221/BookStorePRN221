@@ -1,4 +1,5 @@
 using AutoMapper;
+using AutoMapper.Execution;
 using BookStoreAPI.Core.DTO;
 using BookStoreAPI.Core.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace RazorWeb.Pages.StaffPage
         public int CurrentPage { get; set; } = 1;
         public int TotalPages { get; set; } = 1;
 
-        public void OnGet(int pageNumber = 1)
+        public async Task OnGetAsync(int pageNumber = 1)
         {
             if (pageNumber < 1)
                 pageNumber = 1;
@@ -36,8 +37,8 @@ namespace RazorWeb.Pages.StaffPage
             CurrentPage = pageNumber;
             var listBook = _book.GetBookByCategory(Id);
             var bookList = _mapper.Map<List<Book>>(listBook.Result.ToList());
-            var listBookPage = _book.TakePageBook(pageNumber, bookList);
-            books = listBookPage.Result.ToList();
+            var listBookPage = await _book.TakePage(pageNumber, bookList);
+            books = _mapper.Map<List<BookDTO>>(listBookPage).ToList();
             var name = _category.GetCategoryById(Id).Result.Category_Name;
             nameCategory = name;
             float i = ((float)listBook.Result.ToList().Count()) / 4;

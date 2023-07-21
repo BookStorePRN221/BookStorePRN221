@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Excel = Microsoft.Office.Interop.Excel;
 using BookStoreAPI.Core.Function;
 using System.Reflection.Metadata;
 using OfficeOpenXml;
@@ -19,19 +18,18 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
-
 namespace Service.Service
 {
-    public class ImportationService : ControllerBase,IImportationService
+    public class ImportationService : ControllerBase, IImportationService
     {
         IUnitOfWorkRepository _unit;
         private Importation m_import;
         IImportationDetailService m_detail;
         // 1: just created, 2: này như true - done, 3: deleted
-        public ImportationService(IUnitOfWorkRepository unit,IImportationDetailService importationDetail)
+        public ImportationService(IUnitOfWorkRepository unit, IImportationDetailService importationDetail)
         {
             _unit = unit;
-            m_detail=importationDetail;
+            m_detail = importationDetail;
         }
         public async Task<bool> CreateImport(Importation import)
         {
@@ -140,7 +138,7 @@ namespace Service.Service
                     amountTotal += x.amount;
                 }
                 // Set background cho các ô trong khoảng từ B6 đến G(i-1)
-                ExcelRange target6 = worksheet.Cells["B6:G" + (i-1)];
+                ExcelRange target6 = worksheet.Cells["B6:G" + (i - 1)];
                 target6.Style.Font.Size = 12;
                 target6.Style.Font.Color.SetColor(Color.Black);
                 target6.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -180,7 +178,7 @@ namespace Service.Service
                 targetTotal.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                 targetTotal.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 // Thông số cho dòng "Total In Words"
-                ExcelRange targetLast = worksheet.Cells["B" + (i+1) + ":G" + (i+1)];
+                ExcelRange targetLast = worksheet.Cells["B" + (i + 1) + ":G" + (i + 1)];
                 targetLast.Style.Font.Size = 10;
                 targetLast.Style.Font.Color.SetColor(Color.Black);
                 targetLast.Style.Font.Italic = true;
@@ -188,9 +186,7 @@ namespace Service.Service
                 targetLast.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 targetLast.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml(colorTitle));
                 targetLast.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                // Thiết lập canh giữa theo chiều dọc và chiều ngang cho toàn bộ phạm vi
-                targetLast.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-                targetLast.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                 // Ghi nội dung tệp Excel vào MemoryStream
                 var stream = new MemoryStream(package.GetAsByteArray());
                 // Trả về tệp Excel dưới dạng FileResult
@@ -200,28 +196,28 @@ namespace Service.Service
 
         private async Task<List<FileExcel>> GetImportDetailByMonth(IEnumerable<Importation> listImportMonth)
         {
-           var listImport= new List<FileExcel>();
-           foreach(var item in listImportMonth)
+            var listImport = new List<FileExcel>();
+            foreach (var item in listImportMonth)
             {
                 var list = await m_detail.GetImportDetailByImportId(item.Import_Id);
-                foreach(var item2 in list)
+                foreach (var item2 in list)
                 {
                     var import = new FileExcel();
                     // gắn biến vào file excel
                     import.Date = item.Import_Date_Done;
                     import.NameBook = item2.Book_Title;
                     import.quantity = item2.Import_Detail_Quantity;
-                    import.price= item2.Import_Detail_Price;
-                    import.amount=item2.Import_Detail_Amount;
+                    import.price = item2.Import_Detail_Price;
+                    import.amount = item2.Import_Detail_Amount;
                     listImport.Add(import);
                 }
             }
-           return listImport;
+            return listImport;
         }
 
         public async Task<bool> DeleteImport(Guid importId)
         {
-            var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id==importId);
+            var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id == importId);
             if (m_update != null)
             {
                 m_update.Is_Import_Status = 3;
@@ -244,16 +240,16 @@ namespace Service.Service
         public async Task<IEnumerable<DisplayImportationDTO>> GetDiplayImport()
         {
             var importList = await _unit.Importation.GetAll();
-            var userList= await _unit.User.GetAll();
+            var userList = await _unit.User.GetAll();
             var display = new List<DisplayImportationDTO>();
             foreach (var item in importList)
             {
                 var import = new DisplayImportationDTO();
                 import.Import_Id = item.Import_Id;
                 import.Import_Quantity = item.Import_Quantity;
-                import.Import_Amount=item.Import_Amount;
+                import.Import_Amount = item.Import_Amount;
                 import.Import_Date_Done = item.Import_Date_Done;
-                import.Is_Import_Status= item.Is_Import_Status;
+                import.Is_Import_Status = item.Is_Import_Status;
                 import.User_Name = GetNameUser(item.User_Id, userList);
                 display.Add(import);
             }
@@ -274,7 +270,7 @@ namespace Service.Service
 
         private async Task<bool> UpdateStatusImport(Guid importId)
         {
-            var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id== importId);
+            var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id == importId);
             if (m_update != null)
             {
                 m_update.Is_Import_Status = 2;
@@ -300,14 +296,14 @@ namespace Service.Service
 
         public async Task<bool> RemoveImport(Guid importId)
         {
-            var import= await _unit.Importation.GetById(importId);
-            var importDetailList= await _unit.ImportationDetail.GetAll();
-            var listDetail= from i in importDetailList where i.Import_Id== importId select i;
+            var import = await _unit.Importation.GetById(importId);
+            var importDetailList = await _unit.ImportationDetail.GetAll();
+            var listDetail = from i in importDetailList where i.Import_Id == importId select i;
             if (import != null)
             {
                 if (listDetail.Count() > 0)
                 {
-                    foreach(var i in listDetail)
+                    foreach (var i in listDetail)
                     {
                         _unit.ImportationDetail.Delete(i);
                         _unit.Save();
@@ -322,8 +318,8 @@ namespace Service.Service
 
         public async Task<Guid> GetImportIdJustCreated()
         {
-           var listImport= await _unit.Importation.GetAll();
-            var importId= (from i in listImport where i.Is_Import_Status==1 select i.Import_Id).FirstOrDefault();
+            var listImport = await _unit.Importation.GetAll();
+            var importId = (from i in listImport where i.Is_Import_Status == 1 select i.Import_Id).FirstOrDefault();
             // sau khi lấy đước rồi thì update lại status import
             await UpdateStatusImport(importId);
             return importId;

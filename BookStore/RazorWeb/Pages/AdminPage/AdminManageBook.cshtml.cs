@@ -1,3 +1,4 @@
+using AutoMapper;
 using BookStoreAPI.Core.DTO;
 using BookStoreAPI.Core.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace RazorWeb.Pages.AdminPage
     {
         IBookService _book;
         ICategoryService _category;
-        public AdminManageBookModel(IBookService book, ICategoryService category)
+        IMapper _map;
+        public AdminManageBookModel(IBookService book, ICategoryService category,IMapper map)
         {
             _book = book;
             _category = category;
+            _map = map;
         }
         [BindProperty]
         public List<BookDTO> books { get; set; }
@@ -26,16 +29,16 @@ namespace RazorWeb.Pages.AdminPage
         public async Task OnGet()
         {
             var listBook = await _book.GetBook();
-            var listBookPage = await _book.TakePageBook(number,listBook);
-            books = listBookPage.ToList();
+            var listBookPage = await _book.TakePage(number,listBook);
+            books =_map.Map<List<BookDTO>>(listBookPage).ToList();
             var listCategory = await _category.GetAllCategory();
             categories = listCategory.ToList();
         }
         public async Task OnPost()
         {
             var searchBook= await _book.GetBookByName(search);
-            var listBookPage = await _book.TakePageBook(number, searchBook);
-            books = listBookPage.ToList();
+            var listBookPage = await _book.TakePage(number, searchBook);
+            books = _map.Map<List<BookDTO>>(listBookPage).ToList();
         }
         public async Task<IActionResult> OnPostCategory()
         {
