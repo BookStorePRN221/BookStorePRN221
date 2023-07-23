@@ -4,7 +4,7 @@
 @using BookStoreAPI.Core.Model;
 @{
 }
-    <head>
+@*    <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,60 +18,60 @@
 
     </head>
 
-    <body>
-    
-        <!-- home content -->
-        <section class="home-section">
-            @*Category*@
-            <form class="formCategory" method="POST">
-                <spam class="categoryText">Category</spam>
-                <select class="comboxCategory" name="choiceCategory">
-                    @foreach (Category c in Model.categories)
-                    {
-                        <option value="@c.Category_Id">@c.Category_Name</option>
-                    }
-                </select>
-                <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
-            </form><br/>
-            <div class="itemList row" style="height:800px;">
-                @*Display book*@
-            @foreach (BookDTO b in Model.books)
-            {
-                <div class="item col-lg-6">
-                    <form style="height: 325px;width: 450px">
-                            <div class="border">
-                            <img src="@b.Image_URL" />
-                                <p class="name">@b.Book_Title </p>
-                                <p class="price">
-                                    <p>@b.Book_Price</p>
-                                    <small style="text-decoration:underline">đ</small>
-                                    @*call book detail page*@
-                            <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
-                                <p>
-                            </div>
-                        </form>
-                </div>
-            }
-            </div>
-            <div class="page row">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-4 d-flex justify-content-center" >
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage1">1</a></li>
-                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage2">2</a></li>
-                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage3">3</a></li>
-                        <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage4">4</a></li>
-                        <c:if test="${numLastBook>16}">
-                            <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage5">5</a></li>
-                        </c:if>
-                        <c:if test="${numLastBook>20}">
-                            <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage6">6</a></li>
-                        </c:if>
-                    </ul>
-                </div>
-                <div class="col-lg-4"></div>
-            </div>
-        </section>
-        <script src="~/js/script.js"></script>
+    <body>*@
 
-    </body>
+<!-- home content -->
+<section class="home-section">
+    @*Category*@
+    <form class="formCategory" method="POST">
+        <spam class="categoryText">Category</spam>
+        <select class="comboxCategory" name="choiceCategory">
+            @foreach (Category c in Model.categories)
+            {
+                <option value="@c.Category_Id">@c.Category_Name</option>
+            }
+        </select>
+        <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
+    </form><br />
+    <div class="itemList row" style="height:800px;">
+        @*Display book*@
+        @foreach (BookDTO b in Model.books)
+        {
+            <div class="item col-lg-6">
+                <form style="height: 325px;width: 450px">
+                    <div class="border">
+                        <img src="@b.Image_URL" />
+                        <p class="name">@b.Book_Title </p>
+                        <p class="price">
+                        <p>@b.Book_Price</p>
+                        <small style="text-decoration:underline">đ</small>
+                            @*call book detail page*@
+                        <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
+                        <p>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+    <div class="page row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage1">1</a></li>
+                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage2">2</a></li>
+                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage3">3</a></li>
+                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage4">4</a></li>
+                <c:if test="${numLastBook>16}">
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage5">5</a></li>
+                </c:if>
+                <c:if test="${numLastBook>20}">
+                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage6">6</a></li>
+                </c:if>
+            </ul>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</section>
+@*        <script src="~/js/script.js"></script>
+
+    </body>*@

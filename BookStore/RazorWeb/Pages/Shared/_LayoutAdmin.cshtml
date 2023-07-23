@@ -4,10 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - RazorWeb</title>
+
+    @* Modal*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- link file CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <!-- link file CSS -->
     <link rel="stylesheet" href="~/css/adminManageBooksStyle.css" />
+    <link rel="stylesheet" href="~/css/adminOverViewStyle.css">
+    <link rel="stylesheet" href="~/css/adminHomeStyle.css">
+    <link rel="stylesheet" href="~/css/adminManageBooksStyle.css">
+    <link rel="stylesheet" href="~/css/staffBookManageDetail.css">
+    <link rel="stylesheet" href="~/css/Message.css" />
+    <link rel="stylesheet" href="~/css/adminManageBooksStyle.css">
+    <link rel="stylesheet" href="~/css/adminManageEmployeesStyle.css">
+    <link rel="stylesheet" href="~/css/adminRequestImportBook.css">
     <!-- BoxIcon CDN Link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Latest compiled and minified CSS -->
@@ -15,6 +27,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="~/js/Message.js"></script>
 </head>
 
 <body>
@@ -25,7 +41,6 @@
                 <div class="sidebar-button__logo" style="padding-right:24px">
                     <div class="sidebar-button">
                         <i class='bx bx-menu sidebarBtn'></i>
-                        <!-- <span class="dashboard">Dashboard</span> -->
                     </div>
 
                     <!-- div of logo -->
@@ -38,7 +53,7 @@
                     <div class="wraper_searchbox_profile">
                         <div class="search-box">
                             <form method="GET" action="search">
-                                <input name="search"  placeholder="Search...">
+                                <input name="search" placeholder="Search...">
                                 <button type='submit'>
                                     <i class='bx bx-search-alt-2'></i>
                                 </button>
@@ -59,29 +74,36 @@
 
     <div class="sidebar">
         <!-- link in sidebar -->
+        <h1>Admin layout</h1>
         <ul class="nav-links">
             <li>
-                <a href="./adminOverViewPage">
+                <a href="/AdminPage/AdminOverView">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Overview</span>
                 </a>
             </li>
             <li>
-                <a href="./adminManageInforDashboard">
+                <a href="/AdminPage/AdminDashBoard">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="./adminShowListEmployees">
+                <a href="/AdminPage/AdminManageEmployees">
                     <i class='bx bx-user'></i>
                     <span class="links_name">Employees</span>
                 </a>
             </li>
             <li>
-                <a href="./adminShowListBookingRequest">
+                <a href="/adminBook">
                     <i class='bx bx-import'></i>
                     <span class="links_name">Booking Request</span>
+                </a>
+            </li>
+            <li>
+                <a href="/adminCategory">
+                    <i class='bx bx-import'></i>
+                    <span class="links_name">Category</span>
                 </a>
             </li>
             <li>
@@ -91,17 +113,11 @@
                 </a>
             </li>
             <li>
-                <a href="./adminShowListImportations">
+                <a href="/adminShowListImportations">
                     <i class='bx bxs-report'></i>
                     <span class="links_name">Importation</span>
                 </a>
             </li>
-            <!--                    <li>
-                <a href="./adminShowListOrders">
-                    <i class='bx bx-list-ol'></i>
-                    <span class="links_name">Order</span>
-                </a>
-            </li>-->
             <li>
                 <a href="/staffpage/StaffManageInventory">
                     <i class='bx bxs-report'></i>
@@ -109,7 +125,7 @@
                 </a>
             </li>
             <li>
-                <a href="./logoutAction">
+                <a href="/logoutAction">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </a>
@@ -133,6 +149,15 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

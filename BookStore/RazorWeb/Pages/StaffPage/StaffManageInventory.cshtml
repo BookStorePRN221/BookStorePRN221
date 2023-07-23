@@ -4,11 +4,17 @@
     int courter = 1;
 }
 <section class="home-section">
-    <div>
-        <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
-        <a class="viewDetail btn btn-info" asp-page="./StaffManageInventoryHistory">
-            <i class='bx bxl-slack-old'></i>
-        </a>
+    <div class="home-content container" style="display:flex">
+        <div>
+            <h2 id="nameTable">LIST OF BOOK INVENTORY</h2>
+        </div>
+        <div class="history" style="margin-left:100px;">
+            <button id="btnHistory">
+                <a class="viewDetail btn btn-info" asp-page="./StaffManageInventoryHistory">
+                    <i class="fa-solid fa-recycle"></i>
+                </a>
+            </button>
+        </div>
     </div>
     <table class="table">
         <thead>
@@ -62,4 +68,3 @@
         </tbody>
     </table>
 </section>
-<script src="~/js/script.js"></script>
