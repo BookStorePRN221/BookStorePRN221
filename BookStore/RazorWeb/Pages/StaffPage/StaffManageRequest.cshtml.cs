@@ -36,18 +36,17 @@ namespace RazorWeb.Pages.StaffPage
             var listRequest = await _request.GetAllRequest();
             requestDTOs = listRequest.ToList();
         }
-        public async Task<IActionResult> OnPost()
-        {
-            var book = _map.Map<Book>(bookDTO);
-            var _update = await _book.CreateBook(book, bookDTO.Image_URL,bookDTO.Request_Id);
-            await OnGet();
-            if (_update)
-            {
-                m_Message = 1;
-                return Page();
-            }
-            m_Message = 2;
-            return Page();
-        }
+        //public async Task<IActionResult> OnPost()
+        //{
+          
+        //    //await OnGet();
+        //    //if (_update)
+        //    //{
+        //    //    m_Message = 1;
+        //    //    return Page();
+        //    //}
+        //    //m_Message = 2;
+        //    //return Page();
+        //}
     }
 }

@@ -108,7 +108,7 @@
             </div>
         </div>
         <table class="table">
-            <thead class="thead-dark" style="font-size: 15px">
+            <thead  style="font-size: 15px">
             <tr>
                                         <th >.No</th>
                                         <th >Image</th>
@@ -208,67 +208,7 @@
                             </tr>
                          }
                         
-                    @*Create Book*@
-                        <div class="modal fade" id="myModal-@number" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content" >
-
-                                <!-- Modal Header -->
-                                    <div class="modal-header" style="background-color: #247774; text-align: center;">
-                                    <h3 style="margin-top: 20px; width: 100%; color:white; font-size:20px;">CREATE BOOK</h3>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body" >
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="newBook" role="tabpanel"
-                                             aria-labelledby="pills-project-tab">
-                                                <form method="post">
-                                            <div>
-                                                <div class="appearBook">
-                                                        <input type="hidden" asp-for="@Model.bookDTO.Request_Id" value="@r.Request_Id" />
-                                                        <input type="hidden" asp-for="@Model.bookDTO.Image_URL" value="@r.Request_Image_Url" />
-                                                        <input asp-for="@Model.bookDTO.Category_Id" value="@r.Category_Id" type="hidden" />
-
-                                                            <div class="item d-flex" style="margin-bottom:10px;">
-                                                        <i class="fa-solid fa-book"></i>
-                                                                <input type="hidden" asp-for="@Model.bookDTO.Book_Title" value="@r.Request_Book_Name" />
-                                                            <p>@r.Request_Book_Name</p>
-                                                    </div>
-                                                            <div class="item d-flex" style="margin-bottom:10px;">
-                                                        <i class="fa-solid fa-user-tie"></i>
-                                                                <input asp-for="@Model.bookDTO.Book_Author" placeholder="Author"  />
-                                                            
-                                                    </div>
-                                                            <div class="item d-flex" style="margin-bottom:10px;">
-                                                        <i class="fa-solid fa-list-ol"></i>
-                                                                <input asp-for="@Model.bookDTO.Book_Quantity" value="@r.Request_Quantity" type="hidden" />
-                                                            <p>@r.Request_Quantity</p>
-                                                    </div>
-                                                            <div class="item d-flex" style="margin-bottom:10px;">
-                                                        <i class="fa-regular fa-money-bill-1"></i>
-                                                                <input asp-for="@Model.bookDTO.Book_Price" value="@r.Request_Price" type="hidden" />
-                                                            <p>@r.Request_Price</p>
-                                                    </div>
-                                                 
-                                                </div>
-
-                                                <div class="d-flex" style="margin-top: 30px; margin-left: 150px;">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:10px;;margin-right:5px;">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary"
-                                                                    style="font-size:10px;;margin-right:5px;">
-                                                        Create Book
-                                                    </button>
-                                                </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @*Create Book*@
+                  
                     }
                 </tbody>
         </table>
