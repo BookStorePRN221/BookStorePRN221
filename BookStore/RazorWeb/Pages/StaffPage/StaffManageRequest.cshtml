@@ -51,23 +51,49 @@
         }
 
         .modal {
-            margin-top:-200px;
-            text-align: center;
-            padding: 0 !important;
+            margin-top: 50px;
+            height: 700px !important;
         }
 
-            .modal:before {
-                content: '';
-                display: inline-block;
-                height: 100%;
-                vertical-align: middle;
-                margin-right: -4px; /* Adjusts for spacing */
-            }
+        .modal-header {
+            width: 100%;
+            padding: 0;
+            background-color: #fab804ea;
+        }
 
-        .modal-dialog {
-            display: inline-block;
-            text-align: left;
-            vertical-align: middle;
+        .modal-body {
+            background-color: #247774;
+            text-align: center;
+        }
+
+        .modal-header ul {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .switch {
+            display: flex !important;
+            justify-content: space-around;
+        }
+
+        .nav-link.active {
+            background-color: #247774 !important;
+            color: whitesmoke !important;
+        }
+
+        .btnCreate {
+            margin-left: 0px;
+        }
+
+        .btnCallCreate {
+            font-size: 20px;
+            background-color: #fab804ea;
+            border-radius: 5px;
+            border-color: whitesmoke;
+        }
+
+        .th {
+            width: 110px !important height:30px;
         }
     </style>
 </head>
@@ -94,21 +120,21 @@
 
     <!-- home content -->
     <div class="home-section">
+           
         <!-- home-content -->
         <div class="home-content">
+                <div class="wraper_addBookingRequest_nameTable">
+                    <button type="button" class="btnCallCreate" data-toggle="modal" data-target="#book" style="width:250px;">
+                        <i class="fa-solid fa-plus"></i> Add book request
+                    </button>
+                </div>
+               @* <hr style="width: 25.7rem;" />*@
             <div>
                 <h2 id="nameTable">LIST OF BOOK REQUEST</h2>
             </div>
-            <div class="history">
-                <form action="staffImportationAction?action=historyRequest" method="POST">
-                    <button id="btnHistory">
-                        <i class="fa-solid fa-recycle"></i>
-                    </button>
-                </form>
-            </div>
         </div>
         <table class="table">
-            <thead  style="font-size: 15px">
+                <thead class="thead-dark" style="font-size: 15px">
             <tr>
                                         <th >.No</th>
                                         <th >Image</th>
@@ -120,7 +146,7 @@
                                         <th>Date Complete</th>
                                         <th>Note</th>
                                         <th>Status</th>
-                                        <th>Status_Book</th>
+                                        <th></th>
                                         <th></th>
             </tr>
             
@@ -194,29 +220,207 @@
                                 <td>
                                     @if(r.Is_RequestBook_Status == true)
                                     {
-                                        <button type="button" class="addBook" data-toggle="modal" data-target="#myModal-@number">
-                                            <i class="fa-solid fa-plus"></i>
+                                        <button type="button" style="outline:none;border:none" data-toggle="modal" data-target="#myModal" onclick="booking(`@r.Request_Id`)">
+                                            <i class='bx bxs-plus-circle'></i>
                                         </button>
                                     }
                                 </td>
                                 <td>
-                                    <button type="submit" class="btnUpdate" data-toggle="modal"
-                                            data-target="#myModalUpdate${loop.index}">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                    <!-- Button to trigger the modal -->
+                                    @if (r.Is_Request_Status == 1 && r.Is_RequestBook_Status == false)
+                                    {
+                                        <button type="button"  data-toggle="modal" data-target="#Again" onclick="booking(`@r.Request_Id`)"
+                                        style="outline:none;border:none">
+                                            <i class="bx bxs-message-square-x"></i>
+                                        </button>
+                                    }
                                 </td>
                             </tr>
                          }
-                        
-                  
+                      
+
+                       
                     }
                 </tbody>
         </table>
        
     </div>
-</div>
+    </div>
 
-<script src="~/js/script.js"></script>
+    @*Again Request*@
+    <div class="modal fade" id="Again" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: #247774; text-align: center;">
+                    <h3 style="margin-top: 20px; width: 100%; color:white; font-size:20px;">Reason Cancel Request</h3>
+                </div>
+
+                <!-- Modal body -->
+                 <div class="modal-body">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="newBook" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+                                <form method="post">
+                                    <input type="hidden" name="number" value="3" />
+                                <input asp-for="@Model.request.Request_Id" id="request" type="hidden" />
+                                    <textarea asp-for="@Model.request.Request_Note" rows="7" cols="56.5"></textarea>
+                                    <div class="d-flex" style="margin-top: 30px; margin-left: 150px;">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:10px;margin-right:5px;">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" style="font-size:10px;margin-right:5px;">
+                                           Cancel Request
+                                        </button>
+                                        </div>
+                                </form>
+                            </div>
+                             </div>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    @*Again Request*@
+    @*Create Book*@
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: #247774; text-align: center;">
+                    <h3 style="margin-top: 20px; width: 100%; color:white; font-size:20px;">CREATE BOOK</h3>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="newBook" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+
+                            <div style="background-color: cornsilk">
+                                <form method="post">
+                                    <input type="hidden" name="number" value="2" />
+                                    <div>
+                                        <div class="appearBook">
+                                            <input asp-for="@Model.bookDTO.Request_Id" id="requestBook" type="hidden" />
+                                            <input asp-for="@Model.bookDTO.Image_URL"  id="url"type="hidden"/>
+                                            <input asp-for="@Model.bookDTO.Category_Id" id="categoryId" type="hidden" />
+
+                                            <div class="item d-flex" style="margin-bottom:10px; margin-left:10px;">
+                                                <i class="fa-solid fa-book"></i>
+                                                <input asp-for="@Model.bookDTO.Book_Title"  id="name" readonly/>
+                                            </div>
+                                            <div class="item d-flex" style="margin-bottom:10px;margin-left:10px;">
+                                                <i class="fa-solid fa-user-tie"></i>
+                                                <input asp-for="@Model.bookDTO.Book_Author" placeholder="Author" />
+
+                                            </div>
+                                            <div class="item d-flex" style="margin-bottom:10px;margin-left:10px;">
+                                                <i class="fa-solid fa-list-ol"></i>
+                                                <input asp-for="@Model.bookDTO.Book_Quantity"  id="quantity" readonly />
+                                            </div>
+                                            <div class="item d-flex" style="margin-bottom:10px;margin-left:10px;">
+                                                <i class="fa-regular fa-money-bill-1"></i>
+                                                <input asp-for="@Model.bookDTO.Book_Price" id="price" readonly />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="d-flex" style="margin-top: 30px; margin-left: 150px;">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:10px;;margin-right:5px;">Cancel</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                    style="font-size:10px;;margin-right:5px;">
+                                                Create Book
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Create Book*@
+    @*Form Create Request*@
+    <div class="modal fade" id="book">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <ul class="switch nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" id="pills-project-tab" data-toggle="pill" href="#newBook"
+                               role="tab" aria-controls="pills-project" aria-selected="true" style="color:azure">Add New Book</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="pills-illustration-tab" data-toggle="pill" href="#oldBook"
+                               role="tab" aria-controls="pills-illustration" aria-selected="false" style="color:azure">
+                                Add Existing Book
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="tab-content" id="pills-tabContent">
+                        @* Create Book new*@
+                        <div class="tab-pane fade show active" id="newBook" role="tabpanel"
+                             aria-labelledby="pills-project-tab">
+                            <div>
+                                <h2 style="color:azure">Create Booking Request</h2><br>
+                                <form method="post">
+                                    <input type="hidden" name="number" value="1" />
+                                    <input type="text" placeholder="Image url" asp-for="@Model.request.Request_Image_Url" style="margin-bottom:10px;"><br>
+                                    <input type="text" placeholder="Book's name" asp-for="@Model.request.Request_Book_Name" style="margin-bottom:10px;"><br>
+                                    <input type="number" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;"><br>
+                                    <input type="number" placeholder="Price" asp-for="@Model.request.Request_Price" style="margin-bottom:10px;"><br>
+                                    <select class="form-select" asp-for="@Model.request.Category_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;">
+                                                                        @foreach (var i in Model.listCate)
+                                                                        {
+                                            <option value="@i.Category_Id">@i.Category_Name</option>
+                                                                        }
+                                    </select><br>
+                                    <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;">
+                                    <div class="btnCreate">
+                                        <input type="hidden" asp-for="@Model.is_Book_Create" value="true" />
+                                        <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="true" />
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;margin-right:5px;">Cancel</button>
+                                        <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @* Create Book Old*@
+                    <div class="tab-pane fade" id="oldBook" role="tabpanel"
+                         aria-labelledby="pills-illustration-tab">
+                        <h2 style="color:azure">Create Booking Request</h2><br>
+                        <form method="post">
+                            <input type="hidden" name="number" value="1" />
+                            <select class="form-select" asp-for="@Model.request.Book_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;">
+                                @foreach (var i in Model.books)
+                                {
+                                    <option value="@i.Book_Id">@i.Book_Title</option>
+                                }
+                            </select><br>
+                            <input type="number" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;"><br>
+                            <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;">
+                            <div class="btnCreate">
+                                <input type="hidden" asp-for="@Model.is_Book_Create" value="false" />
+                                <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="false" />
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;;margin-right:5px;">Cancel</button>
+                                <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Form Create Request*@
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -228,4 +432,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="~/js/booking.js"></script>
+
 </body>
