@@ -125,13 +125,17 @@
         <div class="home-content">
                 <div class="wraper_addBookingRequest_nameTable">
                     <button type="button" class="btnCallCreate" data-toggle="modal" data-target="#book" style="width:250px;">
-                        <i class="fa-solid fa-plus"></i> Add book request
+                        <i class="fa-solid fa-plus"></i> Add Book Request
                     </button>
                 </div>
-               @* <hr style="width: 25.7rem;" />*@
             <div>
                 <h2 id="nameTable">LIST OF BOOK REQUEST</h2>
             </div>
+                <div class="wraper_addBookingRequest_nameTable">
+                    <button type="button" class="history" id="btnHistory" data-toggle="modal" data-target="#book" style="width:220px;">
+                        <i class="fa-solid fa-plus"></i> Add Importation
+                    </button>
+                </div>
         </div>
         <table class="table">
                 <thead class="thead-dark" style="font-size: 15px">
@@ -162,10 +166,9 @@
                             <tr>
                                 
                                 <td>
-                                    <p>@count</p>
-                                    @{
-                                        count++;
-                                        number++;
+                                    @if(r.Is_RequestBook_Status==false && @r.Is_Request_Status == 1)
+                                    {
+                                    <input type="checkbox" /> 
                                     }
                                 </td>
                                 <td>
@@ -371,7 +374,6 @@
                         @* Create Book new*@
                         <div class="tab-pane fade show active" id="newBook" role="tabpanel"
                              aria-labelledby="pills-project-tab">
-                            <div>
                                 <h2 style="color:azure">Create Booking Request</h2><br>
                                 <form method="post">
                                     <input type="hidden" name="number" value="1" />
@@ -391,10 +393,9 @@
                                         <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="true" />
                                         <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;margin-right:5px;">Cancel</button>
                                         <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
-                                </form>
-                            </div>
+                                        </div>
+                                    </form>
                         </div>
-                    </div>
                     @* Create Book Old*@
                     <div class="tab-pane fade" id="oldBook" role="tabpanel"
                          aria-labelledby="pills-illustration-tab">
@@ -414,8 +415,11 @@
                                 <input type="hidden" asp-for="@Model.request.Is_RequestBook_Status" value="false" />
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;;margin-right:5px;">Cancel</button>
                                 <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Create</button>
+                                </div>
                         </form>
                     </div>
+                    </div>
+
                 </div>
             </div>
         </div>
