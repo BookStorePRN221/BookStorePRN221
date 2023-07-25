@@ -1,0 +1,124 @@
+﻿@page
+@model RazorWeb.Pages.AdminPage.Pages_AdminPage_AdminManageRequest
+@{
+}
+
+
+
+
+
+
+<!-- home content -->
+<div class="home-section">
+    <!-- home-content -->
+    <div class="home-content">
+        <h2 id="nameTable">LIST BOOK REQUEST DELETED</h2>
+        <%--       Write   Body Code--%>
+        <table class="table">
+            <thead class="thead-dark" style="font-size: 15px">
+                <tr>
+                    <th>.No</th>
+                    <th>Image</th>
+                    <th>Name Book</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Note</th>
+                    <th>Date Request</th>
+                    <th>Date Complete</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="font-size: 15px">
+
+
+                <c:forEach var="i" items="${listRequest}" varStatus="loop">
+                    <c:if test="${i.request_Status == 0}">
+                        <%-- Start Show Item Request--%>
+
+                        <tr>
+                            <td>${loop.count}</td>
+                            <td>
+                                <img style="height: 100px;width: 100px"
+                                     src="<c:url value=" /images/${i.request_Image}" />"/>
+                            </td>
+                            <td>
+                                <c:if test="${i.status_Book_Request==false}">
+                                    <a href="staffBookAction?action=bookDetailRequest&bookNameRequest=${i.request_Name_Book}&qtyRequest=${i.request_Quantity}&priceRequest=${i.request_Price}">
+                                        ${i.request_Name_Book}
+                                    </a>
+                                </c:if>
+
+                                <c:if test="${i.status_Book_Request==true}">
+
+                                    ${i.request_Name_Book}</a>
+                                </c:if>
+                            </td>
+                            <td>${i.request_Quantity}</td>
+                            <td>
+                                <fmt:formatNumber value="${i.request_Price}" type="number" />
+                                <small style="text-decoration:underline">đ</small>
+                            </td>
+                            <td>${i.request_Note}</td>
+                            <td>${i.request_Date}</td>
+                            <td>${i.request_Date_Done}</td>
+                            <%-- Set Status Deleted Request--%>
+                            <td>
+                                <c:if test="${i.request_Status==0}">
+                                    <p style="color: red">Deleted</p>
+                                </c:if>
+                            </td>
+                            <%-- End Set Status Deleted Request--%>
+
+                            <%-- Button Return--%>
+                            <td>
+                                <button style="font-size: 30px;border: none" data-toggle="modal"
+                                        data-target="#myModal${loop.index}">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                </button>
+                            </td>
+                            <%-- End Button Return--%>
+                        </tr>
+                        <%-- End Show Item Request--%>
+
+                        <%--Delete Request--%>
+                        <div class="modal fade" id="myModal${loop.index}">
+                            <div style="height: 100%" class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <header class="head-form mb-0">
+                                        <h2>Are You Sure To Return The Book ?</h2>
+                                    </header>
+
+                                    <div class="modal-body">
+                                        <%--Form --%>
+                                        <form action="staffImportationAction?action=returnRequestDelete"
+                                              method="POST">
+                                            <input type="hidden" name="count"
+                                                   value="1" />
+                                            <input type="hidden" name="nameBook"
+                                                   value="${i.request_Name_Book}" />
+                                            <input type="hidden" name="request_Id"
+                                                   value="${i.request_Id}" />
+                                            <%--Form --%>
+                                        </form>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger add">Return</button>
+
+                                        <button class="btn btn-warning xclose" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%--End Delete Request--%>
+
+                    </c:if>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>

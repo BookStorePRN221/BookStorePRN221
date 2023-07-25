@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using BookStoreAPI.Core.Model
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,6 +36,7 @@
 </head>
 
 <body>
+   
     <header>
         <div class="header">
             <div class="header-menu">
@@ -62,8 +65,12 @@
                         <div class="profile_details">
                             <img src="~/images/admin1.png" width="50px" height="50px" alt="image admin">
                             <div class="name_role">
-                                <span class="name">@User.Identity.Name</span>
-                                <i class='bx bxs-chevron-down'></i>
+                              @await Component.InvokeAsync("LoggedInUser", new RazorWeb.Pages.Components.LoggedInUser.DefaultModel{})
+                                @if (ViewBag.LoggedInUser != null)
+                                {
+                                    var loggedInUser = (User)ViewBag.LoggedInUser;
+                                    <span class="name">@loggedInUser.User_Name</span>
+                                }
                             </div>
                         </div>
                     </div>
@@ -74,18 +81,11 @@
 
     <div class="sidebar">
         <!-- link in sidebar -->
-        <h1>Admin layout</h1>
         <ul class="nav-links">
             <li>
                 <a href="/AdminPage/AdminOverView">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Overview</span>
-                </a>
-            </li>
-            <li>
-                <a href="/AdminPage/AdminDashBoard">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Dashboard</span>
                 </a>
             </li>
             <li>
@@ -95,37 +95,31 @@
                 </a>
             </li>
             <li>
-                <a href="/adminBook">
+                <a href="/AdminPage/AdminManageRequest">
                     <i class='bx bx-import'></i>
                     <span class="links_name">Booking Request</span>
                 </a>
             </li>
             <li>
-                <a href="/adminCategory">
-                    <i class='bx bx-import'></i>
-                    <span class="links_name">Category</span>
-                </a>
-            </li>
-            <li>
-                <a type="submit" href="adminBookAction?action=bookPage1">
+                <a href="/AdminPage/AdminManageBook">
                     <i class='bx bx-book'></i>
                     <span class="links_name">Books</span>
                 </a>
             </li>
             <li>
-                <a href="/adminShowListImportations">
+                <a href="/AdminPage/AdminManagerImportation">
                     <i class='bx bxs-report'></i>
                     <span class="links_name">Importation</span>
                 </a>
             </li>
             <li>
-                <a href="/staffpage/StaffManageInventory">
+                <a href="/AdminPage/AdminManageInventory">
                     <i class='bx bxs-report'></i>
                     <span class="links_name">Inventory</span>
                 </a>
             </li>
             <li>
-                <a href="/logoutAction">
+                <a href="/Login">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </a>
