@@ -158,10 +158,6 @@
             
             </thead>
                 <tbody style="font-size: 15px">
-                    @{
-                        var count = 1;
-                        var number = 0;
-                    }
                             @foreach (var r in Model.requestDTOs) {
                                 @if (@r.Is_Request_Status > 0)
                                 {
@@ -221,6 +217,10 @@
                                                 {
                                         <span style="color: red;">Un Done</span>
                                                 }
+                                    @if (r.Is_Request_Status == 5)
+                                    {
+                                        <span style="color: #074985">Confirm</span>
+                                    }
                                 </td>
                                 <td>
                                     @if(r.Is_RequestBook_Status == true)

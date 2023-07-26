@@ -32,7 +32,7 @@ namespace Service.Service
                         //nếu là book cũ, sẽ trả lại id đã truyền xuống
                         request.Book_Id = await GetBookId(request.Book_Id);
                         request.Request_Date = DateTime.Now;
-                        request.Is_Request_Status = 1;
+                        request.Is_Request_Status = 5;
                         await _unit.Request.Add(request);
                         var result = _unit.Save();
                         if (result > 0) return true;
@@ -53,7 +53,7 @@ namespace Service.Service
                         //get image
                         var listImage = await _unit.Images.GetAll();
                         request.Request_Image_Url = GetUrl(listImage, book.Book_Id);
-                        request.Is_Request_Status = 1;
+                        request.Is_Request_Status = 5;
                         await _unit.Request.Add(request);
                         var result = _unit.Save();
                         if (result > 0) return true;
@@ -165,6 +165,18 @@ namespace Service.Service
             {
                 m_update.Request_Note = note;
                 m_update.Is_Request_Status = 3;
+                _unit.Request.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+        public async Task<bool> ConfirmRequest(Guid requestId)
+        {
+            var m_update = await _unit.Request.GetById(requestId);
+            if (m_update != null)
+            {
+                m_update.Is_Request_Status= 1;
                 _unit.Request.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
