@@ -1,13 +1,24 @@
 ﻿@page "/bookDetail"
 @model RazorWeb.Pages.AdminPage.AdminManageBooksDetailModel
 @using BookStoreAPI.Core.DTO;
-@{
+
+
+@if (Model.m_Message == 1)
+{
+    <div id="success-notification" class="notification success">
+        <span class="close" onclick="closeNotification()">&times;</span>
+        <p style="color:white">Update book success!</p>
+    </div>
 }
-  <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Book Detail</title>
+@if (Model.m_Message == 0)
+{
+    <div id="success-notification" class="notification fail">
+        <span class="close" onclick="closeNotification()">&times;</span>
+        <p style="color:white">Update book fail!</p>
+    </div>
+}
+<!-- home content -->
+<section class="home-section">
 
         <!-- BoxIcon CDN Link -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -108,153 +119,116 @@
                         <p class="yearPublic">Year Of Public: @Model.bookDetail.Book_Year_Public</p>
                     </div>
 
+
+    @*<%--Form Update Book--%>*@
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: -70px;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left:130px;font-size:28px; color:orange; font-weight:500">UPDATE BOOK</h5>
                 </div>
-                @*<%--   Show Description Book   --%>*@
-                <div class="boxDescription">
-                    <div class="description">
-                        <strong>Information Detail</strong>
-                        <p class="text">@Model.bookDetail.Book_Description</p>
-                    </div>
-                </div>
-                @*<%-- End Show Item Book--%>*@
-        <!-- Phần modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Tiêu đề modal</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <form method="post">
                     <div class="modal-body">
-                        <!-- Nội dung modal -->
-                        <p>Đây là nội dung của modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary">Lưu</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-                @*<%--Form Update Book--%>*@
-               @* <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                     <div style=" margin-top: 70px;" class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <header class="head-form mb-0">
-                                <h2 style="padding-left: 28%;font-size: 30px;color: #0d8cba">Update Book</h2>
-                            </header>
-
-                            <div class="modal-body">
-                                <form method="POST">
-                                      <input type="hidden" name="update"
-                                           value="1"/>
-                                    <input type="hidden" name="bookId"
-                                           value="${b.book_Id}"/>
-                                        <%--  Start Name Book --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-book"></i></span>
-                                            </div>
-                                            <input type="text" name="bookName" class="form-control input-sm"
-                                                   style="font-size: 20px" value="${b.name}">
-                                        </div>
-                                    </div>
-                                      <%--  End Name Book --%>
-
-                                        <%--  Start Author --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-person"></i></span>
-                                            </div>
-                                            <input type="text" name="author" class="form-control input-sm"
-                                                   style="font-size: 20px" placeholder="Author" value="${b.author}">
-                                        </div>
-                                    </div>
-                                       <%--  End Author --%>
-
-                                        <%--  Start Quantity Book --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-arrow-up-9-1"></i></span>
-                                            </div>
-                                            <input type="number" name="quantity"
-                                                   class="form-control input-sm"
-                                                   style="font-size: 20px" value="${b.quantity_Book}">
-                                        </div>
-                                    </div>
-                                       <%--  End Quantity Book --%>
-
-                                        <%--  Start Price Book --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-money-bill-wave"></i></span>
-                                            </div>
-                                            <input type="number" name="price" class="form-control input-sm"
-                                                   style="font-size: 20px" value="${b.price_Book}">
-                                        </div>
-                                    </div>
-                                        <%--  End Price Book --%>
-
-                                        <%--  Start Category Book --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa fa-briefcase"></i></span>
-                                            </div>
-                                            <select style="font-size: 20px" class="form-control"
-                                                    name="categoryId">
-                                                <option value="${categoryId}">${nameCategory}</option>
-                                                <option value="1">Romance</option>
-                                                <option value="2">Self-help</option>
-                                                <option value="3">Novel</option>
-                                                <option value="4">Fantasy</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                       <%--  End Category Book --%>
-
-                                        <%--  Start Public Book --%>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-calendar-days"></i></span>
-                                            </div>
-                                            <input type="number" name="publicOfYear"
-                                                   class="form-control input-sm"
-                                                   style="font-size: 20px" placeholder="Public Of Year"
-                                                   value="${b.year_Of_Public}">
-                                        </div>
-                                    </div>
-                                       %--  End Public Book --%>
-
-                            
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-info add">Update</button>
-                                    </div>
-                                </form>
-                                
-                                <button class="btn btn-warning xclose" data-dismiss="modal">Close</button>
-                            </div>
+                        <input type="hidden" asp-for="@Model.bookDetail.Book_Id" />
+                        <input type="hidden" asp-for="@Model.bookDetail.Image_URL" value="@Model.bookDetail.Image_URL.First()" />
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author:</label>
+                            <input type="text" class="form-control" id="author" asp-for="@Model.bookDetail.Book_Author" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity" asp-for="@Model.bookDetail.Book_Quantity" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" asp-for="@Model.bookDetail.Book_Price" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="yearOfPublic" class="form-label">Year Of Public:</label>
+                            <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description:</label>
+                            <input type="text" class="form-control" asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category:</label>
+                            <select class="form-select" id="category" asp-for="@Model.bookDetail.Category_Id">
+                                <option value="@Model.bookDetail.Category_Id">@Model.bookDetail.Category_Name</option>
+                                @foreach (var i in Model.listCate)
+                                {
+                                    <option value="@i.Category_Id">@i.Category_Name</option>
+                                }
+                            </select>
                         </div>
                     </div>
-                </div>*@
-                @*<%--End Form Update Book--%>*@
-    </section>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/js/popper.js"></script>
-    <script src="~/js/script.js"></script>
-    </body>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size:15px;">Close</button>
+                        <button type="submit" class="btn btn-primary" style="font-size:15px;">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<%--End Form Update Book--%>*@
+
+    @*<%--Form Add Inventory Book--%>*@
+    <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: -70px;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left:130px;font-size:28px; color:orange; font-weight:500">UPDATE BOOK</h5>
+                </div>
+                <form method="post" asp-page-handler="addinventory">
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="@Model.bookDetail.Book_Id" />
+                        <input type="hidden" asp-for="@Model.bookDetail.Image_URL" value="@Model.bookDetail.Image_URL.First()" />
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author:</label>
+                            <input type="text" class="form-control" id="author" asp-for="@Model.bookDetail.Book_Author" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity" asp-for="@Model.bookDetail.Book_Quantity" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" asp-for="@Model.bookDetail.Book_Price" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="yearOfPublic" class="form-label">Year Of Public:</label>
+                            <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description:</label>
+                            <input type="text" class="form-control" asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category:</label>
+                            <select class="form-select" id="category" asp-for="@Model.bookDetail.Category_Id">
+                                <option value="@Model.bookDetail.Category_Id">@Model.bookDetail.Category_Name</option>
+                                @foreach (var i in Model.listCate)
+                                {
+                                    <option value="@i.Category_Id">@i.Category_Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size:15px;">Close</button>
+                        <button type="submit" class="btn btn-primary" style="font-size:15px;">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<%--End Form Update Book--%>*@
+</section>

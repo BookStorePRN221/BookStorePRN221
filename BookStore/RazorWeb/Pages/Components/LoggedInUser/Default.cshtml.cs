@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorWeb.Pages.AdminPage
+namespace RazorWeb.Pages.Components.LoggedInUser
 {
-    public class AdminRequestImPortBookModel : PageModel
+    public class DefaultModel : PageModel
     {
         public void OnGet()
         {

@@ -19,19 +19,67 @@ namespace Service.Service
             _unit = unit;
         }
 
-        public async Task<bool> CreateRequest(BookingRequest request)
+        public async Task<bool> CreateRequest(BookingRequest request, bool status)
         {
-            if (request != null)
+            switch (status)
             {
-                var m_list = await GetAllRequest();
-                request.Request_Id = Guid.NewGuid();
-                request.Is_Request_Status = 1;
-                await _unit.Request.Add(request);
-                var result = _unit.Save();
-                if (result > 0) return true;
+                    //Book New
+                case true:
+                    if (request != null)
+                    {
+                        //var m_list = await GetAllRequest();
+                        request.Request_Id = Guid.NewGuid();
+                        //nếu là book cũ, sẽ trả lại id đã truyền xuống
+                        request.Book_Id = await GetBookId(request.Book_Id);
+                        request.Request_Date = DateTime.Now;
+                        request.Is_Request_Status = 5;
+                        await _unit.Request.Add(request);
+                        var result = _unit.Save();
+                        if (result > 0) return true;
+                    }
+                    return false;
+                    //Book Exists
+                case false:
+                    if (request != null)
+                    {
+                        //var m_list = await GetAllRequest();
+                        request.Request_Id = Guid.NewGuid();
+                        //nếu là book cũ, sẽ trả lại id đã truyền xuống
+                        request.Book_Id = await GetBookId(request.Book_Id);
+                        var book = await _unit.Books.GetById(request.Book_Id);
+                        request.Request_Book_Name = book.Book_Title;
+                        request.Request_Price = book.Book_Price;
+                        request.Request_Date = DateTime.Now;
+                        //get image
+                        var listImage = await _unit.Images.GetAll();
+                        request.Request_Image_Url = GetUrl(listImage, book.Book_Id);
+                        request.Is_Request_Status = 5;
+                        await _unit.Request.Add(request);
+                        var result = _unit.Save();
+                        if (result > 0) return true;
+                    }
+                    return false;
             }
-            return false;
+            
         }
+        private string GetUrl(IEnumerable<ImageBook> listImage, Guid book_Id)
+        {
+            var url = (from i in listImage where i.Book_Id == book_Id select i.Image_URL).FirstOrDefault();
+            return url;
+        }
+        private async Task<Guid> GetBookId(Guid book_Id)
+        {
+           var book=await _unit.Books.GetById(book_Id);
+            // nếu book id k có chứng tỏ là book mới, gắn tạm book id đã có
+            if (book == null)
+            {
+                var bookList = await _unit.Books.GetAll();
+                var book_Id_Exists = bookList.FirstOrDefault().Book_Id;
+                return book_Id_Exists;
+            }
+            return book_Id;
+        }
+
         public async Task<IEnumerable<BookingRequest>> GetAllRequest()
         {
             var result = await _unit.Request.GetAll();
@@ -42,9 +90,14 @@ namespace Service.Service
             return null;
         }
 
-        public Task<Book> GetRequestById(Guid requestId)
+        public async Task<BookingRequest> GetRequestById(Guid requestId)
         {
-            throw new NotImplementedException();
+            var request= await _unit.Request.GetById(requestId);
+            if (request != null)
+            {
+                return request;
+            }
+            return null;
         }
       
         public async Task<bool> UpdateRequest(BookingRequest request)
@@ -87,6 +140,43 @@ namespace Service.Service
             if (m_update != null)
             {
                 m_update.Is_Request_Status = 2;
+                _unit.Request.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> RemoveRequest(Guid requestId)
+        {
+            var user = await _unit.Request.GetById(requestId);
+            if (user != null)
+            {
+                _unit.Request.Delete(user);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+        public async Task<bool> UpdateRequestUnDone(Guid requestId, string note)
+        {
+            var m_update = await _unit.Request.GetById(requestId);
+            if (m_update != null)
+            {
+                m_update.Request_Note = note;
+                m_update.Is_Request_Status = 3;
+                _unit.Request.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+        public async Task<bool> ConfirmRequest(Guid requestId)
+        {
+            var m_update = await _unit.Request.GetById(requestId);
+            if (m_update != null)
+            {
+                m_update.Is_Request_Status= 1;
                 _unit.Request.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;

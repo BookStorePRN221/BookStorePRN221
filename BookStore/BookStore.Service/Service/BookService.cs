@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
-
 
 namespace Service.Service
 {
@@ -17,40 +15,56 @@ namespace Service.Service
         IUnitOfWorkRepository _unit;
         ICategoryRepository _cate;
         IImageService _image;
-        IMapper _mapper;
         Book m_book;
         
-        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate,IImageService image, IMapper mapper)
+        public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate,IImageService image)
         {
             _unit = unit;
             _cate = cate;
             _image = image;
-            _mapper = mapper;
             m_book = new Book();
         }
-        public async Task<bool> CreateBook(Book book,string url)
+        public async Task<bool> CreateBook(Book book, string url, Guid Request_Id)
         {
             if (book != null)
             {
                // var m_list = await GetAllBook();
                 book.Book_Id = Guid.NewGuid();
                 book.Is_Book_Status= true;
+                book.Book_Description = "No Data, Please Write Description";
                 await _unit.Books.Add(book);
                 var result = _unit.Save();
                 if (result > 0)
                 {
-                    var image = new ImageBook();
-                    image.Image_URL = url;
-                    image.Book_Id = book.Book_Id;
                     //add image
-                    await _image.CreateImage(image);
+                    await AddImage(url, book.Book_Id);
+                    //add bookid vào request id
+                   await AddBookIdToRequest(Request_Id,book.Book_Id);
                     return true;
                 }
             }
             return false;
         }
 
-       
+        private async Task AddImage(string url, Guid book_Id)
+        {
+            var image = new ImageBook();
+            image.Image_URL = url;
+            image.Book_Id = book_Id;
+            await _image.CreateImage(image);
+        }
+
+        private async Task AddBookIdToRequest(Guid request_Id, Guid book_Id)
+        {
+           var request=await _unit.Request.GetById(request_Id);
+            if (request != null)
+            {
+                request.Book_Id = book_Id;
+                request.Is_RequestBook_Status = false;
+                 _unit.Request.Update(request);
+                _unit.Save();
+            }
+        }
 
         public async Task<bool> DeleteBook(Guid bookId)
         {
@@ -156,7 +170,8 @@ namespace Service.Service
         {
             //var result = await _unit.Books.GetByName(bookName);
             var books = await GetBook();
-            var result = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
+            var result = from b in books where (b.Book_Title.ToLower().Trim().Contains
+                         (bookName.ToLower().Trim()) && b.Is_Book_Status==true) select b;
             if (result.Count()>0)
             {
                 return result;
@@ -173,9 +188,10 @@ namespace Service.Service
                 m_update.Book_Title= book.Book_Title;
                 m_update.Book_Author= book.Book_Author;
                 m_update.Book_Price= book.Book_Price;
+                m_update.Book_Quantity= book.Book_Quantity;
                 m_update.Book_Description= book.Book_Description;
                 m_update.Book_Price=book.Book_Price;
-                m_update.Book_Year_Public= book.Book_Year_Public;
+                m_update.Book_Year_Public= 2023;
                 m_update.Is_Book_Status= book.Is_Book_Status;
                 _unit.Books.Update(m_update);
                 var result = _unit.Save();
@@ -206,13 +222,22 @@ namespace Service.Service
             return listDTO;
         }
 
-        public async Task<IEnumerable<BookDTO>> TakePageBook(int num,IEnumerable<Book> listBooks)
+        public async  Task<bool> RemoveBook(Guid bookId)
         {
-            var bookpage =await _unit.Books.TakePage(num, listBooks);
-            // get display book từ dto sang book
-            var listDTO = new List<BookDTO>();
-            listDTO = await GetDisplay(bookpage, listDTO);
-            return listDTO;
+            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == bookId);
+            if (m_update != null)
+            {
+                //_unit.Books.Delete(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public Task<IEnumerable<Book>> TakePage(int number, IEnumerable<Book> books)
+        {
+            var list= _unit.Books.TakePage(number, books);
+            return list;
         }
     }
 }

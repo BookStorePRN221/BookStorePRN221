@@ -1,6 +1,7 @@
 ﻿@page
 @model RazorWeb.Pages.LoginModel
 @{
+    Layout = null;
 }
 <head>
     <meta charset="UTF-8">
@@ -12,33 +13,25 @@
 
 <body>
 
-    <c:if test="${countLogin==1}">
-        <div class="toast" data-autohide="false">
-            <div>
-                <h1 class="title">Login Failed</h1>
-            </div>
-            <div class="content">
-                Sorry, an unexpected error occurred.Please try again later <hr />
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-            </div>
-        </div>
-    </c:if>
-
+    @*<a asp-page="/AdminPage/AdminManageBook" class="nav-link">AdminBook</a>
+    <a asp-page="/AdminPage/AdminManageEmployees" class="nav-link">ManageEmployee</a>
+    <a asp-page="/AdminPage/AdminCreateNewEmployee" class="nav-link">CreateEmployee</a>
+    <a asp-page="/staffpage/staffmanagerequest" style="color:red" class="nav-link">staffmanagarequest</a>*@
     <section class='login centered-element' id='login'>
         <div class='head'>
             <h1 class='company'>Phuong Nam Book Store</h1>
         </div>
         <p class='msg'>Welcome to Login</p>
         <div class='form'>
-            <form action="loginAction" method="POST">
-                <input type="hidden" name="countLogin" value="1">
-                <input type="text" placeholder='Username' class='text' id='username' required name="txtAccountId"><br>
-                <input type="password" placeholder='Password' class='password' required name="txtPassword"><br>
+            <form method="post">
+                <input type="text" asp-for="@Model.login.User_Account" placeholder='Username' class='text' id='username' ><br>
+                <input type="password" asp-for="@Model.login.User_Password" placeholder='Password' class='password' ><br>
                 <input type="submit" class='btn-login' value="Login" />
                 <input type="reset" class="btn-cancel" value="Cancel" />
             </form>
         </div>
     </section>
+    
     <!-- partial -->
     <script src="~/js/LoginForm.js"></script>
 </body>

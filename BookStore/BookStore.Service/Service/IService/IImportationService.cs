@@ -1,5 +1,6 @@
 ﻿using BookStoreAPI.Core.DiplayDTO;
 using BookStoreAPI.Core.Model;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,11 @@ namespace Service.Service.IService
         Task<bool> CreateImport(Importation import);
         Task<IEnumerable<Importation>> GetAllImport();
         Task<IEnumerable<DisplayImportationDTO>> GetDiplayImport();
-        Task<Page<DisplayImportationDTO>> GetPaginatedDisplayImport(int pageSize, int currentPage);
         Task<Book> GetImportById(Guid importId);
-        Task<bool> UpdateImport(Importation import);
         Task<bool> DeleteImport(Guid importId);
         Task<bool> RestoreImport(Guid importId);
+        Task<bool> RemoveImport(Guid importId);
+        Task<Guid> GetImportIdJustCreated();
+        Task<FileResult> ExporteExcel(int month);
     }
 }

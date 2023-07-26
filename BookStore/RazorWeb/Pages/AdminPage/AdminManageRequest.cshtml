@@ -1,0 +1,329 @@
+﻿@page
+@model RazorWeb.Pages.AdminPage.AdminManageRequestModel
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Request</title>
+    @* Modal*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- BoxIcon CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+
+    <!-- link file CSS -->
+    <link rel="stylesheet" href="~/css/staffManageRequest.css">
+    <style>
+        .appearBook .item {
+            margin-top: 15px;
+        }
+
+        .appearBook i {
+            background-color: white;
+            margin-left: 10px;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .appearBook p {
+            width: 100px;
+            margin-bottom: 0;
+            text-align: left;
+            padding-left: 15px;
+            background-color: white;
+        }
+
+        .appearBook input {
+            width: 100px;
+            outline: none;
+            border: none;
+            padding-left: 15px;
+        }
+
+        .modal {
+            margin-top: 50px;
+            height: 700px !important;
+        }
+
+        .modal-header {
+            width: 100%;
+            padding: 0;
+            background-color: #fab804ea;
+        }
+
+        .modal-body {
+            background-color: #247774;
+            text-align: center;
+        }
+
+        .modal-header ul {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .switch {
+            display: flex !important;
+            justify-content: space-around;
+        }
+
+        .nav-link.active {
+            background-color: #247774 !important;
+            color: whitesmoke !important;
+        }
+
+        .btnCreate {
+            margin-left: 0px;
+        }
+
+        .btnCallCreate {
+            font-size: 20px;
+            background-color: #fab804ea;
+            border-radius: 5px;
+            border-color: whitesmoke;
+        }
+
+        .th {
+            width: 110px !important height:30px;
+        }
+    </style>
+</head>
+<body>
+<!-- home content -->
+<div class="home-section">
+    <!-- home-content -->
+    <div class="home-content">
+                <div>
+                    <h2 id="nameTable">LIST OF BOOK REQUEST</h2>
+                </div>
+            <div>
+                <a href="javascript:void(0);" onclick="showTable('confirm')">Confirm</a>
+                <a href="javascript:void(0);" onclick="showTable('request')">Request</a>
+            </div>
+
+        <div id="confirmTable" style="display:none;">
+                <table class="table">
+                    <thead class="thead-dark" style="font-size: 15px">
+                        <tr>
+                            <th>.No</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Note</th>
+                            <th>Status</th>
+                            <th>Status Book</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody style="font-size: 15px">
+                        @{
+                            var number=1;
+                        }
+                        @foreach (var r in Model.requestDTOs)
+                        {
+                            @if (@r.Is_Request_Status == 5)
+                            {
+                                <tr>
+
+                                    <td>
+                                      @number
+                                        @{
+                                            number++;
+                                        }
+                                    </td>
+                                    <td>
+                                        <img style="height: 100px;width: 100px" src="@r.Request_Image_Url" alt="..."
+                                             id="imageBookRequest">
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Book_Name</p>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Quantity</p>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Price</p>
+                                        <small style="text-decoration:underline">đ</small>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Amount</p>
+                                        <small style="text-decoration:underline">đ</small>
+                                    </td>
+                                    <td>
+                                        <p asp-format="{0:yyyy-MM-dd}">@r.Request_Date.ToString("yyyy-MM-dd")</p>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Note</p>
+                                    </td>
+                                    <td id="statusProcess">
+                                            <span style="color: #074985">Confirm</span>
+                                    </td>
+                                    <td>
+                                        @if (r.Is_RequestBook_Status == true)
+                                        {
+                                            <span style="color: #1ace1a">New</span>
+                                        }
+                                        else{
+                                        <span style="color: red;">Old</span>
+                                        }
+                                    </td>
+                                    <td>
+                                            <button type="button" class="btn btn-primary">
+                                                Confirm
+                                            </button>
+                                        <button type="button" class="btn btn-danger">
+                                            Cancel
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+        </div>
+
+        <div id="requestTable" style="display:none;">
+                <table class="table">
+                    <thead class="thead-dark" style="font-size: 15px">
+                        <tr>
+                            <th>.No</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Date Complete</th>
+                            <th>Note</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody style="font-size: 15px">
+                        @{
+                            var number2 = 1;
+                        }
+                        @foreach (var r in Model.requestDTOs)
+                        {
+                            @if (@r.Is_Request_Status > 0)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @number2
+                                        @{
+                                            number2++;
+                                        }
+                                    </td>
+                                    <td>
+                                        <img style="height: 100px;width: 100px" src="@r.Request_Image_Url" alt="..."
+                                             id="imageBookRequest">
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Book_Name</p>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Quantity</p>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Price</p>
+                                        <small style="text-decoration:underline">đ</small>
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Amount</p>
+                                        <small style="text-decoration:underline">đ</small>
+                                    </td>
+                                    <td>
+                                        <p asp-format="{0:yyyy-MM-dd}">@r.Request_Date.ToString("yyyy-MM-dd")</p>
+                                    </td>
+                                    <td>
+                                        @if (r.Is_Request_Status == 2)
+                                        {
+                                            <p asp-format="{0:yyyy-MM-dd}">@r.Request_Date.ToString("yyyy-MM-dd")</p>
+                                        }
+                                        else
+                                        {
+                                            <p></p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <p>@r.Request_Note</p>
+                                    </td>
+                                    <td id="statusProcess">
+
+                                        @if (r.Is_Request_Status == 1)
+                                        {
+                                            <span style="color: #fab804ea">Proceeding</span>
+                                        }
+                                        @if (r.Is_Request_Status == 2)
+                                        {
+                                            <span style="color: #1ace1a">Done</span>
+                                        }
+                                        @if (r.Is_Request_Status == 3)
+                                        {
+                                            <span style="color: red;">Un Done</span>
+                                        }
+                                        @if (r.Is_Request_Status == 5)
+                                        {
+                                            <span style="color: #074985">Confirm</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (r.Is_RequestBook_Status == true)
+                                        {
+                                            <span style="color: #1ace1a">New</span>
+                                        }
+                                        else
+                                        {
+                                            <span style="color: red;">Old</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (r.Is_Request_Status == 1 && r.Is_RequestBook_Status == false)
+                                        {
+                                            <button type="button" data-toggle="modal" data-target="#Again" onclick="booking(`@r.Request_Id`)"
+                                                    style="outline:none;border:none">
+                                                <i class="bx bxs-message-square-x"></i>
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+        </div>
+
+        @section Scripts {
+            <script>
+                function showTable(tableType) {
+                    if (tableType === 'confirm') {
+                        document.getElementById('confirmTable').style.display = 'block';
+                        document.getElementById('requestTable').style.display = 'none';
+                    } else if (tableType === 'request') {
+                        document.getElementById('confirmTable').style.display = 'none';
+                        document.getElementById('requestTable').style.display = 'block';
+                    }
+                }
+            </script>
+        }
+
+    </div>
+</div>
+</body>

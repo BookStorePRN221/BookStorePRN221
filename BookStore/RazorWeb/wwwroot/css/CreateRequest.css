@@ -1,0 +1,29 @@
+﻿.modal {
+    margin-top: 50px;
+    height: 700px !important;
+}
+
+.modal-header {
+    width: 100%;
+    padding: 0;
+}
+
+.modal-body {
+    background-color: #fbebb5;
+    text-align: center;
+}
+
+.modal-header ul {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.switch {
+    display: flex !important;
+    justify-content: space-around;
+}
+
+.nav-link.active {
+    background-color: #fbebb5 !important;
+    color: #000000 !important;
+}

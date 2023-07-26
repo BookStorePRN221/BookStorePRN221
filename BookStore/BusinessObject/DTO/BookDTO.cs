@@ -9,6 +9,7 @@ namespace BookStoreAPI.Core.DTO
     public class BookDTO
     {
         public Guid Book_Id { get; set; }
+        public Guid Request_Id { get; set; }
         public int Category_Id { get; set; }
         public string Category_Name { get; set; }
         public string Image_URL { get; set; }

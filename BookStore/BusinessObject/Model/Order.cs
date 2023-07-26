@@ -11,6 +11,7 @@ namespace BookStoreAPI.Core.Model
         public Guid Order_Id { get; set; }
         public Guid User_Id { get; set; }
         public DateTime Order_Date { get; set; }
+        public string Order_Code { get; set; }
         public int Order_Quantity { get; set; }
         public float Order_Amount { get; set; }
         public string Order_Customer_Name { get; set; }

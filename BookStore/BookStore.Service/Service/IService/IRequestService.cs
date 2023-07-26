@@ -9,11 +9,14 @@ namespace Service.Service.IService
 {
     public interface IRequestService
     {
-        Task<bool> CreateRequest(BookingRequest request);
+        Task<bool> CreateRequest(BookingRequest request, bool status);
         Task<IEnumerable<BookingRequest>> GetAllRequest();
-        Task<Book> GetRequestById(Guid requestId);
+        Task<BookingRequest> GetRequestById(Guid requestId);
         Task<bool> UpdateRequest(BookingRequest request);
+        Task<bool> UpdateRequestUnDone(Guid requestId, string note);
         Task<bool> DeleteRequest(Guid requestId);
+        Task<bool> RemoveRequest(Guid requestId);
         Task<bool> RestoreRequest(Guid requestId);
+        Task<bool> ConfirmRequest(Guid requestId);
     }
 }

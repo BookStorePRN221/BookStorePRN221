@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.Service.IService;
 
-namespace RazorWeb.Pages.InventoryPage
+namespace RazorWeb.Pages.StaffPage
 {
-    public class DeleteModel : PageModel
+    public class DeleteInventoryModel : PageModel
     {
         private readonly IInventoryService _inventoryService;
-        public DeleteModel(IInventoryService inventoryService)
+        public DeleteInventoryModel(IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;
         }
@@ -25,7 +25,7 @@ namespace RazorWeb.Pages.InventoryPage
             {
                 Console.WriteLine("delete not success");
             }
-            return RedirectToPage("./Index");
+            return RedirectToPage("./StaffManageInventory");
         }
     }
 }

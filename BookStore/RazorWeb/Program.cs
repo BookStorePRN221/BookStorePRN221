@@ -1,7 +1,10 @@
+﻿using BookStoreAPI.Infracstructure.Helper;
 using BookStoreAPI.Infracstructure.ServiceExtension;
 using Service.Service.IService;
 using Service.Service;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages(option =>
 {
     option.Conventions.AddPageRoute("/AdminPage/{*path}", "/AdminPage");
+    option.Conventions.AddPageRoute("/StaffPage/{*path}", "/StaffPage");
+    option.Conventions.AddPageRoute("/SellerPage/{*path}", "/SellerPage");
+    option.Conventions.AddPageRoute("/StaffManageRequest", "/StaffManageRequest/SaveOptions");
 });
+
+builder.Services.AddSession();
+
 builder.Services.AddDIServices(builder.Configuration);
 //Scoped
 builder.Services.AddScoped<IBookService, BookService>();
@@ -24,7 +33,13 @@ builder.Services.AddScoped<IImportationDetailService, ImportationDetailService>(
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian tồn tại của session (30 phút trong ví dụ này)
+    options.Cookie.HttpOnly = true; // Chỉ sử dụng cookie từ phía máy chủ, không cho phép JavaScript truy cập
+    options.Cookie.IsEssential = true; // Đánh dấu session cookie là bắt buộc cho ứng dụng
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,5 +61,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.UseSession();
 
 app.Run();

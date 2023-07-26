@@ -26,6 +26,7 @@ namespace Service.Service
             {
                // var m_list = await GetAllOrderDetail();
                 order.Order_Detail_Id = Guid.NewGuid();
+
                 await UpdateBookQuantity(order.Book_Id, order.Order_Detail_Quantity);
                 await _unit.OrderDetail.Add(order);
                 var result = _unit.Save();
@@ -73,9 +74,9 @@ namespace Service.Service
             {
                 var order = new DisplayOrderDetailDTO();
                 order.Order_Id = item.Order_Id;
-                order.Order_Detail_Quantity = order.Order_Detail_Quantity;
-                order.Order_Detail_Price = order.Order_Detail_Price;
-                order.Order_Detail_Amount = order.Order_Detail_Amount;
+                order.Order_Detail_Quantity = item.Order_Detail_Quantity;
+                order.Order_Detail_Price = item.Order_Detail_Price;
+                order.Order_Detail_Amount = item.Order_Detail_Amount;
                 order.Book_Title = GetTitle(item.Book_Id, bookList);
                 order.Image_URL = GetUrl(item.Book_Id, image);
                 display.Add(order);
@@ -112,6 +113,17 @@ namespace Service.Service
         public Task<bool> UpdateOrderDetail(OrderDetail orderDetail)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<DisplayOrderDetailDTO>> GetOrderDetailByOrderId(Guid order_id)
+        {
+            var listOrderDetail = await GetAllOrderDetail();
+            var oderDetail = from i in listOrderDetail where i.Order_Id== order_id select i;
+            var display = new List<DisplayOrderDetailDTO>();
+            // get filed để display
+            display = await GetDisplay(display, oderDetail);
+            if (display.Count < 1) return null;
+            return display;
         }
     }
 }

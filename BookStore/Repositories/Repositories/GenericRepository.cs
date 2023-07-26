@@ -35,7 +35,7 @@ namespace BookStoreAPI.Infracstructure.Repositories
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
-        
+
 
         public async Task<T> GetById(int id)
         {
@@ -45,6 +45,11 @@ namespace BookStoreAPI.Infracstructure.Repositories
         {
             _dbContext.Set<T>().Update(entity);
         }
+        public void Delete(T entity)
+        {
+            _dbContext.Set<T>().Remove(entity);
+        }
+
         public T SingleOrDefault(T entity, Func<T, bool> function)
         {
             return _dbContext.Set<T>().SingleOrDefault(function);
@@ -52,7 +57,7 @@ namespace BookStoreAPI.Infracstructure.Repositories
 
         public async Task<IEnumerable<T>> TakePage(int number, IEnumerable<T> list)
         {
-            var numPage = 4;
+            var numPage =4;
             var skip = (numPage * number) - numPage;
             return list.Skip(skip).Take(numPage);
         }

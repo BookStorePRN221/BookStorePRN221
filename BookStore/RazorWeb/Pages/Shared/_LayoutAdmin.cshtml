@@ -1,0 +1,158 @@
+﻿@using BookStoreAPI.Core.Model
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RazorWeb</title>
+
+    @* Modal*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- link file CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/adminManageBooksStyle.css" />
+    <link rel="stylesheet" href="~/css/adminOverViewStyle.css">
+    <link rel="stylesheet" href="~/css/adminHomeStyle.css">
+
+    <link rel="stylesheet" href="~/css/staffBookManageDetail.css">
+    <link rel="stylesheet" href="~/css/Message.css" />
+    <link rel="stylesheet" href="~/css/adminManageCategoryBookStyle.css">
+    <link rel="stylesheet" href="~/css/adminManageEmployeesStyle.css">
+    <link rel="stylesheet" href="~/css/adminRequestImportBook.css">
+    <!-- BoxIcon CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="~/js/Message.js"></script>
+</head>
+
+<body>
+   
+    <header>
+        <div class="header">
+            <div class="header-menu">
+                <!-- even menu sidebar -->
+                <div class="sidebar-button__logo" style="padding-right:24px">
+                    <div class="sidebar-button">
+                        <i class='bx bx-menu sidebarBtn'></i>
+                    </div>
+
+                    <!-- div of logo -->
+                    <div class="logo-details">
+                        <img src="~/images/logo.jpg" width="100" height="100" alt="Logo Phuong Nam Bookstore">
+                        <span class="logo_name">Book Store</span>
+                    </div>
+                </div>
+                <div class="seachbox-profile">
+                    <div class="wraper_searchbox_profile">
+                        <div class="search-box">
+                            <form method="GET" action="search">
+                                <input name="search" placeholder="Search...">
+                                <button type='submit'>
+                                    <i class='bx bx-search-alt-2'></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="profile_details">
+                            <img src="~/images/admin1.png" width="50px" height="50px" alt="image admin">
+                            <div class="name_role">
+                              @await Component.InvokeAsync("LoggedInUser", new RazorWeb.Pages.Components.LoggedInUser.DefaultModel{})
+                                @if (ViewBag.LoggedInUser != null)
+                                {
+                                    var loggedInUser = (User)ViewBag.LoggedInUser;
+                                    <span class="name">@loggedInUser.User_Name</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <!-- link in sidebar -->
+        <ul class="nav-links">
+            <li>
+                <a href="/AdminPage/AdminOverView">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="/AdminPage/AdminManageEmployees">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Employees</span>
+                </a>
+            </li>
+            <li>
+                <a href="/AdminPage/AdminManageRequest">
+                    <i class='bx bx-import'></i>
+                    <span class="links_name">Booking Request</span>
+                </a>
+            </li>
+            <li>
+                <a href="/AdminPage/AdminManageBook">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="/AdminPage/AdminManagerImportation">
+                    <i class='bx bxs-report'></i>
+                    <span class="links_name">Importation</span>
+                </a>
+            </li>
+            <li>
+                <a href="/AdminPage/AdminManageInventory">
+                    <i class='bx bxs-report'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Login">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Log out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="">
+            <!-- &copy; 2023 - RazorWeb - <a asp-area="" asp-page="/Privacy">Privacy</a> -->
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

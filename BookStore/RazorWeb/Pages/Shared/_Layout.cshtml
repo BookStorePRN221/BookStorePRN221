@@ -12,119 +12,128 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-<header>
-    <div class="header">
-        <div class="header-menu">
-            <!-- even menu sidebar -->
-            <div class="sidebar-button__logo" style="padding-right:24px">
-                <div class="sidebar-button">
-                    <i class='bx bx-menu sidebarBtn'></i>
-                    <!-- <span class="dashboard">Dashboard</span> -->
-                </div>
-
-                <!-- div of logo -->
-                <div class="logo-details">
-                    <img src="~/images/logo.jpg" width="100" height="100" alt="Logo Phuong Nam Bookstore">
-                    <span class="logo_name">Book Store</span>
-                </div>
-            </div>
-            <div class="seachbox-profile">
-                <div class="wraper_searchbox_profile">
-                    <div class="search-box">
-                        <form method="GET">
-                            <input type="text" name="search" placeholder="Search...">
-                            <button type='submit'>
-                                <i class='bx bx-search-alt-2'></i>
-                            </button>
-                        </form>
+    <header>
+        <div class="header">
+            <div class="header-menu">
+                <!-- even menu sidebar -->
+                <div class="sidebar-button__logo" style="padding-right:24px">
+                    <div class="sidebar-button">
+                        <i class='bx bx-menu sidebarBtn'></i>
+                        <!-- <span class="dashboard">Dashboard</span> -->
                     </div>
-                    <div class="profile_details">
-                        <img src="~/images/admin1.png" width="50px" height="50px" alt="image admin">
-                        <div class="name_role">
-                            <span class="name">${sessionScope.USER["fullName"]}</span>
-                            <i class='bx bxs-chevron-down'></i>
+
+                    <!-- div of logo -->
+                    <div class="logo-details">
+                        <img src="~/images/logo.jpg" width="100" height="100" alt="Logo Phuong Nam Bookstore">
+                        <span class="logo_name">Book Store</span>
+                    </div>
+                </div>
+                <div class="seachbox-profile">
+                    <div class="wraper_searchbox_profile">
+                        <div class="search-box">
+                            <form method="GET" action="search">
+                                <input name="search"  placeholder="Search...">
+                                <button type='submit'>
+                                    <i class='bx bx-search-alt-2'></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="profile_details">
+                            <img src="~/images/admin1.png" width="50px" height="50px" alt="image admin">
+                            <div class="name_role">
+                                <span class="name">@User.Identity.Name</span>
+                                <i class='bx bxs-chevron-down'></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </header>
+
+    <div class="sidebar">
+        <!-- link in sidebar -->
+        <ul class="nav-links">
+            <li>
+                <a href="./adminOverViewPage">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="./adminManageInforDashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="./adminShowListEmployees">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Employees</span>
+                </a>
+            </li>
+            <li>
+                <a href="./adminShowListBookingRequest">
+                    <i class='bx bx-import'></i>
+                    <span class="links_name">Booking Request</span>
+                </a>
+            </li>
+            <li>
+                <a type="submit" href="adminBookAction?action=bookPage1">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="./adminShowListImportations">
+                    <i class='bx bxs-report'></i>
+                    <span class="links_name">Importation</span>
+                </a>
+            </li>
+            <!--                    <li>
+                <a href="./adminShowListOrders">
+                    <i class='bx bx-list-ol'></i>
+                    <span class="links_name">Order</span>
+                </a>
+            </li>-->
+            <li>
+                <a href="/staffpage/StaffManageInventory">
+                    <i class='bx bxs-report'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="./logoutAction">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Log out</span>
+                </a>
+            </li>
+        </ul>
     </div>
-</header>
-
-<div class="sidebar">
-    <!-- link in sidebar -->
-    <ul class="nav-links">
-        <li>
-            <a href="./adminOverViewPage">
-                <i class='bx bx-home'></i>
-                <span class="links_name">Overview</span>
-            </a>
-        </li>
-        <li>
-            <a href="./adminManageInforDashboard">
-                <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="./adminShowListEmployees">
-                <i class='bx bx-user'></i>
-                <span class="links_name">Employees</span>
-            </a>
-        </li>
-        <li>
-            <a href="./adminShowListBookingRequest">
-                <i class='bx bx-import'></i>
-                <span class="links_name">Booking Request</span>
-            </a>
-        </li>
-        <li>
-            <a type="submit" href="adminBookAction?action=bookPage1">
-                <i class='bx bx-book'></i>
-                <span class="links_name">Books</span>
-            </a>
-        </li>
-        <li>
-            <a href="./adminShowListImportations">
-                <i class='bx bxs-report'></i>
-                <span class="links_name">Importation</span>
-            </a>
-        </li>
-        <!--                    <li>
-            <a href="./adminShowListOrders">
-                <i class='bx bx-list-ol'></i>
-                <span class="links_name">Order</span>
-            </a>
-        </li>-->
-        <li>
-            <a href="./logoutAction">
-                <i class='bx bx-log-out'></i>
-                <span class="links_name">Log out</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
-<footer class="border-top footer text-muted">
     <div class="">
-        <!-- &copy; 2023 - RazorWeb - <a asp-area="" asp-page="/Privacy">Privacy</a> -->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-</footer>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="./js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <footer class="border-top footer text-muted">
+        <div class="">
+            <!-- &copy; 2023 - RazorWeb - <a asp-area="" asp-page="/Privacy">Privacy</a> -->
+        </div>
+    </footer>
 
-@await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,70 @@
+﻿@page
+@model RazorWeb.Pages.AdminPage.AdminManageInventoryModel
+@{
+    int courter = 1;
+}
+<section class="home-section">
+    <div class="home-content container" style="display:flex">
+        <div>
+            <h2 id="nameTable">LIST OF BOOK INVENTORY</h2>
+        </div>
+        <div class="history" style="margin-left:100px;">
+            <button id="btnHistory">
+                <a class="viewDetail btn btn-info" asp-page="./StaffManageInventoryHistory">
+                    <i class="fa-solid fa-recycle"></i>
+                </a>
+            </button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>.NO</th>
+                <th>Image</th>
+                <th>Name Book</th>
+                <th>Quantity</th>
+                <th>Reason</th>
+                <th>Inventory Date</th>
+                <th>Employee Implement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var b in @Model.InventoryDTOs)
+            {
+                <tr>
+                    <td>
+                        @(courter++)
+                    </td>
+                    <td>
+                        <div>
+                            <img style="width:70px;height:80px;" src="@b.Image_URL" />
+                        </div>
+
+                    </td>
+                    <td>
+                        <p>@b.Book_Title</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Quantity</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Note</p>
+                    </td>
+                    <td>
+                        <p>@b.Inventory_Date_Into</p>
+                    </td>
+                    <td>
+                        <p>@b.User_Name</p>
+                    </td>
+                    <td>
+                        <a class="viewDetail btn btn-info" asp-page="./DeleteInventory" asp-route-Inventory_Id="@b.Inventory_Id">
+                            <i class='bx bx-x-circle'></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

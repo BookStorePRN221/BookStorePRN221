@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.DiplayDTO;
+﻿using Azure.Core;
+using BookStoreAPI.Core.DiplayDTO;
 using BookStoreAPI.Core.Interface;
 using BookStoreAPI.Core.Model;
 using Service.Service.IService;
@@ -32,12 +33,25 @@ namespace Service.Service
             {
                 //var m_list= await GetInventory();
                 inventory.Inventory_Id = Guid.NewGuid();
+                inventory.Inventory_Date_Into = DateTime.Now;
+                await UpdateBookQuantity(inventory);
                 inventory.Is_Inventory_Status = true;
                 await _unit.Inventory.Add(inventory);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
+        }
+
+        private async Task UpdateBookQuantity(Inventory inventory)
+        {
+            var book = await _unit.Books.GetById(inventory.Book_Id);
+            if (book != null)
+            {
+                book.Book_Quantity -= inventory.Inventory_Quantity;
+                _unit.Books.Update(book);
+                _unit.Save();
+            }
         }
 
         public async Task<bool> DeleteInventory(Guid inventoryId)
@@ -105,7 +119,8 @@ namespace Service.Service
         public async Task<List<DisplayInventoryDTO>> SearchInventory(string bookName)
         {
             var books = await _unit.Books.GetAll();
-            var inventories = await GetInventory();
+            var inventoryListAll = await GetInventory();
+            var inventories= from i in inventoryListAll where i.Is_Inventory_Status == true select i;
             // lấy nhựng book có name cẩn search
             var bookIdList = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
             // lấy inventory có chứa những book có id cần search
@@ -139,6 +154,18 @@ namespace Service.Service
             {
                 m_update.Is_Inventory_Status = true;
                 _unit.Inventory.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> RemoveInventory(Guid inventoryId)
+        {
+            var user = await _unit.Inventory.GetById(inventoryId);
+            if (user != null)
+            {
+                _unit.Inventory.Delete(user);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }

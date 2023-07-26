@@ -17,5 +17,6 @@ namespace Service.Service.IService
         Task<bool> UpdateInventory(Inventory inventory);
         Task<bool> DeleteInventory(Guid inventoryId);
         Task<bool> RestoreInventory(Guid inventoryId);
+        Task<bool> RemoveInventory(Guid inventoryId);
     }
 }
