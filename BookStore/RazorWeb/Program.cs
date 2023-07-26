@@ -4,6 +4,7 @@ using Service.Service.IService;
 using Service.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddRazorPages(option =>
     option.Conventions.AddPageRoute("/AdminPage/{*path}", "/AdminPage");
     option.Conventions.AddPageRoute("/StaffPage/{*path}", "/StaffPage");
     option.Conventions.AddPageRoute("/SellerPage/{*path}", "/SellerPage");
+    option.Conventions.AddPageRoute("/StaffManageRequest", "/StaffManageRequest/SaveOptions");
 });
 
 builder.Services.AddSession();
