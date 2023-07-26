@@ -37,9 +37,9 @@
         @*Display book*@
         @foreach (BookDTO b in Model.books)
         {
-            <div class="item col-lg-6">
+            <div class="item col-lg-4">
                 <form style="height: 325px;width: 450px">
-                    <div class="border">
+                    <div class="border"style="height:380px;">
                         <img src="@b.Image_URL" />
                         <p class="name">@b.Book_Title </p>
                         <p class="price">
