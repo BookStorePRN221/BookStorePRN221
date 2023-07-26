@@ -20,15 +20,39 @@
 
     <body>*@
 
-<!-- home content -->
-<section class="home-section">
-    @*Category*@
-    <form class="formCategory" method="POST">
-        <spam class="categoryText">Category</spam>
-        <select class="comboxCategory" name="choiceCategory">
-            @foreach (Category c in Model.categories)
+
+        <!-- home content -->
+        <section class="home-section">
+            @*Category*@
+            <form class="formCategory" method="POST">
+                <spam class="categoryText">Category</spam>
+                <select class="comboxCategory" name="choiceCategory">
+                    @foreach (Category c in Model.categories)
+                    {
+                        <option value="@c.Category_Id">@c.Category_Name</option>
+                    }
+                </select>
+                <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
+            </form><br/>
+            <div class="itemList row" style="height:800px">
+                @*Display book*@
+            @foreach (BookDTO b in Model.books)
             {
-                <option value="@c.Category_Id">@c.Category_Name</option>
+                <div class="item col-lg-6">
+                    <form style="height: 325px;width: 450px">
+                            <div class="border" >
+                            <img src="@b.Image_URL" />
+                                <p class="name">@b.Book_Title </p>
+                                <p class="price">
+                                    <p>@b.Book_Price</p>                                   
+                                    <small style="text-decoration:underline">đ</small>
+                                    @*call book detail page*@
+
+                            <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
+                                <p>
+                            </div>
+                        </form>
+                </div>
             }
         </select>
         <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>

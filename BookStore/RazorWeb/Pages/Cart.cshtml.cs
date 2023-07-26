@@ -19,7 +19,6 @@ namespace RazorWeb.Pages
 
         public void OnPostDelete(Guid itemId)
         {
-            Console.WriteLine(itemId);
             GetItemFromSession();
             var itemToRemove = CartItems.FirstOrDefault(item => item.Book_Id == itemId);
             if (itemToRemove != null)

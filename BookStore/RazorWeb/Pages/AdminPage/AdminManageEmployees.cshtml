@@ -3,147 +3,229 @@
 @{
 }
 
-@if (Model.m_Message == 1)
-{
-    <div id="success-notification" class="notification success">
-        <span class="close" onclick="closeNotification()">&times;</span>
-        <p style="color:white">Update Employee success!</p>
-    </div>
-}
-@if (Model.m_Message == 2)
-{
-    <div id="success-notification" class="notification fail">
-        <span class="close" onclick="closeNotification()">&times;</span>
-        <p style="color:white">Update Employee fail!</p>
-    </div>
-}
-<!-- home content -->
-<div class="home-section">
-    <!-- home-content -->
-    <div class="home-content">
-        <div class="overview-tableEmployee">
-            <div class="wraper_addNewEmployee_nameTable">
-                <a href="adminCreateEmployeePage" class="addNewEmployee">
-                    <i class='bx bx-add-to-queue'></i>
-                    <span class="links_name">Add New Employee</span>
-                </a>
-            </div>
-            <hr style="width: 25.7rem;" />
+<body>
+   
+    <div class="wrapper-body">
+        <div class="sidebar">
+            <!-- link in sidebar -->
+            <ul class="nav-links">
+                <li>
+                    <a href="./adminOverViewPage">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./adminManageInforDashboard">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./adminShowListEmployees">
+                        <i class='bx bx-user'></i>
+                        <span class="links_name">Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./adminShowListBookingRequest">
+                        <i class='bx bx-import'></i>
+                        <span class="links_name">Booking Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a type="submit" href="adminBookAction?action=bookPage1">
+                        <i class='bx bx-book'></i>
+                        <span class="links_name">Books</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./adminShowListImportations">
+                        <i class='bx bxs-report'></i>
+                        <span class="links_name">Importation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./logoutAction">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-            <h2 id="nameTable">LIST OF EMPLOYEES</h2>
-            <div class="tableEmployee">
-                <table id="employees">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Account</th>
-                            <th>Password</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            var count = 1;
-                        }
-                        @foreach (var u in Model.UserList)
-                        {
-                            <form method="post">
-                                <input class="textInforEmployee" type="hidden" style="width: 8em" value="@u.User_Id" asp-for="@Model.User.User_Id" readonly />
-                            <tr>
-                                <td>
-                                    <p>@count</p>
-                                        @{
-                                            count++;
-                                        }
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="text" style="width: 8em" value="@u.User_Account" asp-for="@Model.User.User_Account" readonly />
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="text" value="@u.User_Password" asp-for="@Model.User.User_Password" required minlength="5" maxlength="20" />
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="text" value="@u.User_Name" asp-for="@Model.User.User_Name" required minlength="3" maxlength="30" />
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="number" value="@u.User_Phone" asp-for="@Model.User.User_Phone" style="width: 8em" />
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="text" value="@u.User_Address" asp-for="@Model.User.User_Address" required minlength="4" maxlength="30" />
-                                </td>
-                                <td>
-                                    <input class="textInforEmployee" type="text" value="@u.User_Email" asp-for="@Model.User.User_Email" required minlength="4" maxlength="30" />
-                                </td>
-                                <td>
-                                    <select class="textInforEmployee" asp-for=@Model.User.Is_User_Gender>
-                                        <option value="@u.Is_User_Gender">@u.Is_User_Gender</option>
-                                            @if (u.Is_User_Gender == "Male")
-                                            {
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
-                                            }
-                                            else if (u.Is_User_Gender == "Female")
-                                            {
-                                            <option value="Male">Male</option>
-                                            <option value="Other">Other</option>
-                                            }
-                                            else
-                                            {
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            }
-                                    </select>
-                                </td>
-                                <td>
-                                    <select class="textInforEmployee" style="width: 5em" asp-for=@Model.User.Role_Id>
-                                            @if (u.Role_Id == 2)
-                                            {
-                                            <option value="2">Staff</option>
-                                            <option value="3">User</option>
-                                            }
-                                            else
-                                            {
-                                            <option value="2">Staff</option>
-                                            <option value="3">User</option>
-                                            }
-                                    </select>
-                                </td>
-                                <td>
-                                    <select class="textInforEmployee" asp-for=@Model.User.Is_User_Status>
-                                            @if (@u.Is_User_Status == true)
-                                            {
-                                            <option style="color: green" value="true">Active</option>
-                                            <option style="color: red" value="false">Inactive</option>
-                                            }
-                                            else
-                                            {
-                                            <option style="color: red" value="false">Inactive</option>
-                                            <option style="color: green" value="true">Active</option>
-                                            }
-                                    </select>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btnUpdate" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                            </form>
-                        }
-                    </tbody>
-                </table>
-                <c:if test="${empty listEmployees}">
-                    <h2 style="text-align: center;
+        <!-- home content -->
+        <div class="home-section">
+            <!-- home-content -->
+            <div class="home-content">
+                <div class="overview-tableEmployee">
+                    <div class="wraper_addNewEmployee_nameTable">
+                        <a href="adminCreateEmployeePage" class="addNewEmployee">
+                            <i class='bx bx-add-to-queue'></i>
+                            <span class="links_name">Add New Employee</span>
+                        </a>
+                    </div>
+                    <hr style="width: 25.7rem;" />
+                    @*<%-- Show message after update--%>
+                    <c:set var="updateEmpMsg" value="${requestScope.UPDATE_EMPLOYEE_MSG}" />
+                    <c:if test="${not empty updateEmpMsg}">
+                        <div class="toastx">
+                            <div class="toast-icon">
+                                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                            </div>
+                            <div class="toast-body">
+                                <h3 class="toast-title">Successfully</h3>
+                                <p class="toast-msg">${updateEmpMsg}</p>
+                            </div>
+                        </div>
+                    </c:if>
+                    <!--Show msg after duplicate id-->
+                    <c:set var="errUpdateEmpMsg" value="${requestScope.ERROR_UPDATE_EMPLOYEE_MSG}" />
+                    <c:if test="${not empty errUpdateEmpMsg}">
+                        <div class="toastx-inactive">
+                            <div class="toast-icon-inactive">
+                                <i class="fa-sharp fa-solid fa-exclamation"></i>
+                            </div>
+                            <div class="toast-body-inactive">
+                                <h3 class="toast-title-inactive">Error</h3>
+                                <p class="toast-msg-inactive">${errUpdateEmpMsg}</p>
+                            </div>
+                        </div>
+                    </c:if>
+                    <%-- Show message after inactive--%>
+                    <c:set var="inActiveEmpMsg" value="${requestScope.DELETE_EMPLOYEE_MSG}" />
+                    <c:if test="${not empty inActiveEmpMsg}">
+                        <div class="toastx-inactive">
+                            <div class="toast-icon-inactive">
+                                <i class="fa-sharp fa-solid fa-exclamation"></i>
+                            </div>
+                            <div class="toast-body-inactive">
+                                <h3 class="toast-title-inactive">Successfully</h3>
+                                <p class="toast-msg-inactive">${inActiveEmpMsg}</p>
+                            </div>
+                        </div>
+                    </c:if>*@
+                    @*<!--Show msg after Insert-->
+                    <c:set var="insertEmpMsg" value="${requestScope.INSERT_EMPLOYEE_MSG}" />
+                    <c:if test="${not empty insertEmpMsg}">
+                        <div class="toastx">
+                            <div class="toast-icon">
+                                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                            </div>
+                            <div class="toast-body">
+                                <h3 class="toast-title">Successfully</h3>
+                                <p class="toast-msg">${insertEmpMsg}</p>
+                            </div>
+                        </div>
+                    </c:if>*@
+
+                    <h2 id="nameTable">LIST OF EMPLOYEES</h2>
+                    <div class="tableEmployee">
+                        <table id="employees">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Account</th>
+                                        <th>Password</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Gender</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @{
+                                    var count = 1;
+                                }
+                                    @foreach(var u in Model.UserList){
+                                        <form method="post">
+                                        <tr>
+                                            <td>
+                                               <p>@count</p>
+                                                @{
+                                                    count++;
+                                                }
+                                            </td>
+                                            <td>
+                                            <input class="textInforEmployee" type="text" style="width: 8em" asp-for="@u.User_Account" readonly />
+                                            </td>
+                                            <td>
+                                            <input class="textInforEmployee" type="text"  asp-for="@u.User_Password" required minlength="5" maxlength="20" />
+                                            </td>
+                                            <td>
+                                            <input class="textInforEmployee" type="text" asp-for="@u.User_Name" required minlength="3" maxlength="30" />
+                                            </td>
+                                            <td>
+                                                <input class="textInforEmployee" type="number" asp-for="@u.User_Phone" style="width: 8em" />
+                                            </td>
+                                            <td>
+                                            <input class="textInforEmployee" type="text" asp-for="@u.User_Address" required minlength="4" maxlength="30" />
+                                            </td>
+                                            <td>
+                                            <select class="textInforEmployee" asp-for=@Model.User.Is_User_Gender>
+                                                    <option value="@u.Is_User_Gender">@u.Is_User_Gender</option>
+                                                    @if (u.Is_User_Gender == "Male")
+                                                    {
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                    }
+                                                    else if (u.Is_User_Gender == "Female")
+                                                    {
+                                                    <option value="Male">Male</option>
+                                                    <option value="Other">Other</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="Female">Female</option>
+                                                    <option value="Male">Male</option>
+                                                    }
+                                            </select>
+                                            </td>
+                                            <td>
+                                            <select class="textInforEmployee" style="width: 5em" asp-for=@Model.User.Role_Id >
+                                                    @if (u.Role_Id == 2)
+                                                    {
+                                                    <option value="2">Staff</option>
+                                                    <option value="3">User</option>
+                                                    }else{
+                                                    <option value="2">Staff</option>
+                                                    <option value="3">User</option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td>
+                                            <select class="textInforEmployee" asp-for=@Model.User.Is_User_Status >
+                                                    @if (@u.Is_User_Status == true)
+                                                    {
+                                                    <option style="color: green" value="true">Active</option>
+                                                    <option style="color: red" value="false">Inactive</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option style="color: red" value="false">Inactive</option>
+                                                    <option style="color: green" value="true">Active</option>
+                                                    }
+                                            </select>
+                                            </td>
+                                            <td>
+                                                <button type="submit"  class="btn btn-info">
+                                                Update
+                                            </button>
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                        </form>
+                                   }
+                                </tbody>
+                        </table>
+                        <c:if test="${empty listEmployees}">
+                            <h2 style="text-align: center;
                                     align-items: center;
                                     color: red">
                         CAN NOT FIND THIS RECORD !
