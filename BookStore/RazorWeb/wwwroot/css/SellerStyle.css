@@ -1,24 +1,4 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-:root {
-    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
-}
-
-html {
-    font-size: 62.5%;
-}
-
-body {
-    min-height: 100vh;
-    width: 100%;
-    font-size: 1.6rem;
-}
-
+﻿
 /* ========================================================== */
 /* HEADER--LOGO */
 .header {
@@ -305,17 +285,6 @@ body {
     height: 30px;
 }
 
-/*End CategoryBox*/
-
-/*Start Border : Khung border bao quanh book*/
-.border {
-    border-radius: 10px;
-    margin-left: 120px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    height: 360px;
-    width: 355px;
-}
 
 /*End Border*/
 
@@ -346,7 +315,6 @@ body {
     font-size: 15px;
     height: 30px;
     width: 100px;
-    margin-left: 115px;
 }
 
 /*End Item List*/

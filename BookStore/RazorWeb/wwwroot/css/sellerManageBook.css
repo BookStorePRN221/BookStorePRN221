@@ -30,51 +30,51 @@ body {
     width: 100%;
 }
 
-    .header .header-menu {
-        display: flex;
-        align-items: center;
-    }
+.header .header-menu {
+    display: flex;
+    align-items: center;
+}
 
-    .header .sidebar-button__logo {
-        display: flex;
-        max-width: 27rem;
-        background: linear-gradient(to right, #267871, #136a8a);
-    }
+.header .sidebar-button__logo {
+    display: flex;
+    max-width: 27rem;
+    background: linear-gradient(to right, #267871, #136a8a);
+}
 
-        .header .sidebar-button__logo .sidebar-button {
-            max-width: 6rem;
-            height: 8rem;
-            display: flex;
-            color: #fff;
-            font-size: 2rem;
-            align-items: center;
-            background: linear-gradient(to right, #267871, #136a8a);
-            padding: 0 20px;
-        }
+.header .sidebar-button__logo .sidebar-button {
+    max-width: 6rem;
+    height: 8rem;
+    display: flex;
+    color: #fff;
+    font-size: 2rem;
+    align-items: center;
+    background: linear-gradient(to right, #267871, #136a8a);
+    padding: 0 20px;
+}
 
-            .header .sidebar-button__logo .sidebar-button:hover {
-                background-color: #136a8a;
-            }
+.header .sidebar-button__logo .sidebar-button:hover {
+    background-color: #136a8a;
+}
 
-        .header .sidebar-button__logo .logo-details img {
-            max-width: 5rem;
-            max-height: 5rem;
-        }
+.header .sidebar-button__logo .logo-details img {
+    max-width: 5rem;
+    max-height: 5rem;
+}
 
-        .header .sidebar-button__logo .logo-details {
-            height: 8rem;
-            width: 21rem;
-            display: flex;
-            align-items: center;
-            background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
-        }
+.header .sidebar-button__logo .logo-details {
+    height: 8rem;
+    width: 21rem;
+    display: flex;
+    align-items: center;
+    background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
 
-            .header .sidebar-button__logo .logo-details .logo_name {
-                font-size: 2.4rem;
-                font-weight: 600;
-                color: #fab804ea;
-                margin-left: 0.8rem;
-            }
+.header .sidebar-button__logo .logo-details .logo_name {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #fab804ea;
+    margin-left: 0.8rem;
+}
 
 /* HEADER--NAV */
 .header-menu .seachbox-profile {
@@ -86,15 +86,15 @@ body {
     padding: 0 2rem;
 }
 
-    .header-menu .seachbox-profile .wraper_searchbox_profile {
-        width: 90%;
-        height: 100%;
-        object-fit: cover;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: 10rem;
-    }
+.header-menu .seachbox-profile .wraper_searchbox_profile {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10rem;
+}
 
 .seachbox-profile .search-box {
     height: 5rem;
@@ -103,32 +103,32 @@ body {
     position: relative;
 }
 
-    .seachbox-profile .search-box input {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        border-radius: 0.7rem;
-        padding: 0 1.5rem;
-        font-size: 1.7rem;
-        background: #f5f6fa;
-        border: 2px solid #efeef1;
-        outline-color: none;
-    }
+.seachbox-profile .search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+    padding: 0 1.5rem;
+    font-size: 1.7rem;
+    background: #f5f6fa;
+    border: 2px solid #efeef1;
+    outline-color: none;
+}
 
-    .seachbox-profile .search-box .bx-search-alt-2 {
-        position: absolute;
-        height: 4rem;
-        width: 4rem;
-        right: 0.4rem;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #267871;
-        border-radius: 0.7rem;
-        color: #fff;
-        font-size: 2.2rem;
-        line-height: 4rem;
-        text-align: center;
-    }
+.seachbox-profile .search-box .bx-search-alt-2 {
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    right: 0.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #267871;
+    border-radius: 0.7rem;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 4rem;
+    text-align: center;
+}
 
 .seachbox-profile .profile_details {
     position: relative;
@@ -142,25 +142,25 @@ body {
     padding: 0 1.5rem 0 0.2rem;
 }
 
-    .seachbox-profile .profile_details img {
-        height: 4rem;
-        width: 4rem;
-        object-fit: cover;
-        border-radius: 0.6rem;
-    }
+.seachbox-profile .profile_details img {
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+}
 
-    .seachbox-profile .profile_details .name_role .name {
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #333;
-        margin: 0 1rem;
-        white-space: nowrap;
-    }
+.seachbox-profile .profile_details .name_role .name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0 1rem;
+    white-space: nowrap;
+}
 
-    .seachbox-profile .profile_details i {
-        color: #333;
-        font-size: 2.5rem;
-    }
+.seachbox-profile .profile_details i {
+    color: #333;
+    font-size: 2.5rem;
+}
 
 /* ========================================================== */
 /* CSS for SIDEBAR */
@@ -173,52 +173,51 @@ body {
     transition: all 0.5s ease;
 }
 
-    .sidebar.active {
-        width: 6rem;
-    }
+.sidebar.active {
+    width: 6rem;
+}
 
-    .sidebar .nav-links {
-        margin-bottom: 1.6rem;
-    }
+.sidebar .nav-links {
+    margin-bottom: 1.6rem;
+}
 
-        .sidebar .nav-links li {
-            height: 5rem;
-            width: 100%;
-            list-style: none;
-        }
+.sidebar .nav-links li {
+    height: 5rem;
+    width: 100%;
+    list-style: none;
+}
 
-            .sidebar .nav-links li a {
-                height: 100%;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                transition: all 0.4s ease;
-            }
+.sidebar .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
 
-                .sidebar .nav-links li a:hover {
-                    background-color: #0d465b;
-                }
+.sidebar .nav-links li a:hover {
+    background-color: #0d465b;
+}
 
-                .sidebar .nav-links li a i {
-                    min-width: 6rem;
-                    text-align: center;
-                    color: #fff;
-                    font-size: 1.8rem;
-                }
+.sidebar .nav-links li a i {
+    min-width: 6rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.8rem;
+}
 
-                .sidebar .nav-links li a .links_name {
-                    color: #fff;
-                    font-size: 1.5rem;
-                    font-weight: 400;
-                }
+.sidebar .nav-links li a .links_name {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 
 /* ========================================================== */
 /* Home secsion CSS */
 
 .home-section {
-    background-color: #f5f5f5;
-    ;
+    background-color: #f5f5f5;;
     position: relative;
     height: 120vh;
     width: calc(100% - 27rem);
@@ -262,36 +261,36 @@ body {
     margin-left: 40px;
 }
 
-    .item .name {
-        font-size: 35px;
-        padding-bottom: 20px;
-    }
+.item .name {
+    font-size: 35px;
+    padding-bottom: 20px;
+}
 
-    .item .price {
-        margin-top: 20px;
-        font-size: 30px;
-        color: #C92127;
-    }
+.item .price {
+    margin-top: 20px;
+    font-size: 30px;
+    color: #C92127;
+}
 
-    .item .quantity {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
+.item .quantity {
+    font-size: 25px;
+    padding-bottom: 5px;
+}
 
-    .item .author {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
+.item .author {
+    font-size: 25px;
+    padding-bottom: 5px;
+}
 
-    .item .yearPublic {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
+.item .yearPublic {
+    font-size: 25px;
+    padding-bottom: 5px;
+}
 
-    .item .inventory {
-        font-size: 30px;
-        margin-right: 50px;
-    }
+.item .inventory {
+    font-size: 30px;
+    margin-right: 50px;
+}
 
 .button {
     display: flex;
@@ -313,10 +312,10 @@ body {
     margin-left: 10px;
 }
 
-    .description .text {
-        padding-top: 10px;
-        font-size: 15px;
-    }
+.description .text {
+    padding-top: 10px;
+    font-size: 15px;
+}
 
 /*End Description*/
 
