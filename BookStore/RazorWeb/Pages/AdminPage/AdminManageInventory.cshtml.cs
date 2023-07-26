@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.Service.IService;
 
-namespace RazorWeb.Pages.StaffPage
+namespace RazorWeb.Pages.AdminPage
 {
     public class AdminManageInventoryModel : PageModel
     {
