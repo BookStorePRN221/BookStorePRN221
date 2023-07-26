@@ -1,0 +1,62 @@
+﻿@page
+@model RazorWeb.Pages.SellerPage.DeleteOrderModel
+@{
+}
+<div class="container">
+    <h1>Delete</h1>
+
+    <h3>Are you sure you want to delete this Order?</h3>
+
+    <div class="container">
+        <form method="post">
+            <input type="hidden" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./SellerManageOrder">Back to List Order</a>
+            <div class="order">
+				<div class="itemOrder">
+					<p id="id"> Order: @Model.orders.Order_Code</p>
+					<div><p id="date">Date: @Model.orders.Order_Date.ToString("dd-MM-yyyy")</p></div>
+					<div><p id="fullname">Creator: @Model.orders.Order_Customer_Name</p></div>
+				</div>
+				<!--End Show Item Order-->
+
+				<!--Start Show Item Order Detail-->
+				@foreach(var DisplayOrderDetailDTO in Model.orderDetails)
+				{
+					<div class="orderDetail">
+						<div class="itemDetail">
+
+							<div>
+								<img style="height: 100px;width: 100px"
+										src="@DisplayOrderDetailDTO.Image_URL"/>
+							</div>
+							<div>
+								<a href="sellerBookAction?action=bookDetail&amp">
+											
+								</a><br>
+								<div class="price">
+									<p id="quantity">x @DisplayOrderDetailDTO.Order_Detail_Quantity</p>
+									<p id="total">
+										@DisplayOrderDetailDTO.Order_Detail_Amount
+										<small style="text-decoration:underline">đ</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+				<div class="totalOrder">
+					<!--
+						<button id="btnAgain" data-toggle="modal" class="btn btn-danger"
+							data-target="#myAgain${loop.index}">
+							Buy Again
+						</button>
+					-->
+						
+					<p>Total( @Model.orders.Order_Quantity Book): </p>
+					<p id="priceOrder"><fmt:formatNumber type="number" value=" @Model.orders.Order_Amount" /></p>
+				</div>
+			</div>
+        </form>
+    </div>
+</div>
