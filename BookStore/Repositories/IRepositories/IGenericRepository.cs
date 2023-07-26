@@ -13,6 +13,7 @@ namespace BookStoreAPI.Core.Interface
         Task<IEnumerable<T>> GetAll();
         Task Add(T entity);
         Task AddList(IEnumerable<T> entities);
+        void Delete(T entity);
         void Update(T entity);
         T SingleOrDefault(T entity, Func<T, bool> function);
         Task<IEnumerable<T>> TakePage(int number, IEnumerable<T> list);

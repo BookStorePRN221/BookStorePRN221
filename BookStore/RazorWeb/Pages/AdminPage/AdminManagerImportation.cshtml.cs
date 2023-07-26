@@ -32,8 +32,8 @@ public class AdminManagerImportation : PageModel
         
         CurrentPage = pageNumber;
         
-        Page<DisplayImportationDTO> importations = _importationService.GetPaginatedDisplayImport(PageSize, CurrentPage).Result;
-        Importations = importations.Items;
-        TotalPages = importations.TotalPages;
+        //Page<DisplayImportationDTO> importations = _importationService.GetPaginatedDisplayImport(PageSize, CurrentPage).Result;
+        //Importations = importations.Items;
+        //TotalPages = importations.TotalPages;
     }
 }

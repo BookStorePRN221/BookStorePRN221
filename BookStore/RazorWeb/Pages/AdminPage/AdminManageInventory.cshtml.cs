@@ -5,11 +5,11 @@ using Service.Service.IService;
 
 namespace RazorWeb.Pages.StaffPage
 {
-    public class StaffManageInventoryRstoreModel : PageModel
+    public class AdminManageInventoryModel : PageModel
     {
         private readonly IInventoryService _inventoryService;
 
-        public StaffManageInventoryRstoreModel(IInventoryService inventoryService)
+        public AdminManageInventoryModel(IInventoryService inventoryService)
         {
             _inventoryService = inventoryService;
         }
@@ -20,7 +20,7 @@ namespace RazorWeb.Pages.StaffPage
 
         public async Task OnGet()
         {
-            InventoryDTOs = (await _inventoryService.GetAllInventory()).Where(i => i.Is_Inventory_Status == false).ToList() ?? null;
+            InventoryDTOs = (await _inventoryService.GetAllInventory()).Where(i => i.Is_Inventory_Status == true).ToList() ?? null;
         }
     }
 }

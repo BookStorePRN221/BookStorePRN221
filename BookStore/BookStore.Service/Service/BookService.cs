@@ -233,5 +233,11 @@ namespace Service.Service
             }
             return false;
         }
+
+        public Task<IEnumerable<Book>> TakePage(int number, IEnumerable<Book> books)
+        {
+            var list= _unit.Books.TakePage(number, books);
+            return list;
+        }
     }
 }

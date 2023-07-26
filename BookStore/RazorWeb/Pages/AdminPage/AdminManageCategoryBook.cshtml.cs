@@ -37,8 +37,8 @@ namespace RazorWeb.Pages.AdminPage
             CurrentPage = pageNumber;
             var listBook = _book.GetBookByCategory(Id);
             var bookList = _mapper.Map<List<Book>>(listBook.Result.ToList());
-            var listBookPage = _book.TakePageBook(pageNumber, bookList);
-            books = listBookPage.Result.ToList();
+            //var listBookPage = _book.TakePageBook(pageNumber, bookList);
+            //books = listBookPage.Result.ToList();
             var name = _category.GetCategoryById(Id).Result.Category_Name;
             nameCategory = name;
             float i = ((float)listBook.Result.ToList().Count())/4;

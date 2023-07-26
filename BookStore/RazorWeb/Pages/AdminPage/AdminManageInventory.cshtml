@@ -1,17 +1,20 @@
 ﻿@page
-@model RazorWeb.Pages.InventoryPage.IndexModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model RazorWeb.Pages.StaffPage.AdminManageInventoryModel
 @{
     int courter = 1;
-    Layout = "_Layout";
 }
-
 <section class="home-section">
-    <div>
-        <h1 style="text-align:center;">LIST OF BOOK INVENTORY</h1>
-        <a class="viewDetail btn btn-info" asp-page="./HistoryInventory">
-            <i class='bx bxs-chevron-down'></i>
-        </a>
+    <div class="home-content container" style="display:flex">
+        <div>
+            <h2 id="nameTable">LIST OF BOOK INVENTORY</h2>
+        </div>
+        <div class="history" style="margin-left:100px;">
+            <button id="btnHistory">
+                <a class="viewDetail btn btn-info" asp-page="./StaffManageInventoryHistory">
+                    <i class="fa-solid fa-recycle"></i>
+                </a>
+            </button>
+        </div>
     </div>
     <table class="table">
         <thead>
@@ -56,8 +59,8 @@
                         <p>@b.User_Name</p>
                     </td>
                     <td>
-                        <a class="viewDetail btn btn-info" asp-page="./Delete" asp-route-Inventory_Id="@b.Inventory_Id">
-                            <i class='bx bxs-chevron-down'></i>
+                        <a class="viewDetail btn btn-info" asp-page="./DeleteInventory" asp-route-Inventory_Id="@b.Inventory_Id">
+                            <i class='bx bx-x-circle'></i>
                         </a>
                     </td>
                 </tr>
@@ -65,10 +68,3 @@
         </tbody>
     </table>
 </section>
-<script src="~/js/script.js"></script>
-
-
-
-
-
-

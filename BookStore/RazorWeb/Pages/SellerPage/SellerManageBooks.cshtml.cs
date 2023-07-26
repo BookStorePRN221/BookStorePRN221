@@ -30,7 +30,7 @@ namespace RazorWeb.Pages.SellerPage
             if (SelectedCategory == -1)
             {
                
-                Books = _bookService.GetAllBookDisplay().Result.ToList();
+                Books = _bookService.GetAllBook().Result.ToList();
             }
             else
             {

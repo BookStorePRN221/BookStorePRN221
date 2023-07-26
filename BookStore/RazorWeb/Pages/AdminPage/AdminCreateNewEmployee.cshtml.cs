@@ -24,7 +24,7 @@ namespace RazorWeb.Pages.AdminPage
             var checkAccount= (from u in userList where u.User_Account==User.User_Account select u).FirstOrDefault();
             if(checkAccount == null)
             {
-                var result = await _user.CreateUser(User);
+                var result = await _user.CreateUserFE(User);
                 if (result)
                     ViewData["Message"] = "Create Account Success!";
                 else
