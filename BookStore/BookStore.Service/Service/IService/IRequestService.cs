@@ -17,5 +17,6 @@ namespace Service.Service.IService
         Task<bool> DeleteRequest(Guid requestId);
         Task<bool> RemoveRequest(Guid requestId);
         Task<bool> RestoreRequest(Guid requestId);
+        Task<bool> ConfirmRequest(Guid requestId);
     }
 }
