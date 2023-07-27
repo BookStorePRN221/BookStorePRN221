@@ -1,64 +1,125 @@
 ﻿@page 
 @model RazorWeb.Pages.AdminPage.AdminManagerImportation
+{
+}
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seller Importation</title>
+
+	<!-- BoxIcon CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<!--    Link Button CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- link file CSS -->
+	<link rel="stylesheet" href="~/css/sellerManageOrder.css">
+</head>
+
+<body>
+	<div class="wrapper-body">
 
 
-<section class="home-section">
-    <div>
-        <div class="text-center">
-            <h2 class="my-3 d-inline-block ">Importation</h2>
-        </div>
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Import Id</th>
-                    <th>User Name</th>
-                    <th>Import Quantity</th>
-                    <th>Import Amount</th>
-                    <th>Is Import Status</th>
-                    <th>Import Date Done</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var import in Model.Importations)
-                {
-                    <tr>
-                        <td>@import.Import_Id</td>
-                        <td>@import.User_Name</td>
-                        <td>@import.Import_Quantity</td>
-                        <td>@import.Import_Amount</td>
-                        <td>@import.Is_Import_Status</td>
-                        <td>@import.Import_Date_Done</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <!-- Add pagination controls -->
-        @if (Model.TotalPages > 1)
-        {
-            <div class="d-flex w-100 justify-content-center">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=1">First</a>
-                        </li>
-                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage - 1)">Previous</a>
-                        </li>
-                        @for (int i = 1; i <= Model.TotalPages; i++)
-                        {
-                            <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
-                                <a class="page-link" href="?pageNumber=@i">@i</a>
-                            </li>
-                        }
-                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage + 1)">Next</a>
-                        </li>
-                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=@Model.TotalPages">Last</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        }
-    </div>
-</section>
+		<!-- home content -->
+		<div class="home-section">
+			<!-- home-content -->
+				<div>
+					<h2 id="nameTable">LIST OF IMPORTATION BOOK</h2>
+				</div>
+				<!-- Button History
+				<div class="history">
+					<form action="sellerImportationAction?action=historyImportation" method="POST">
+						<button id="btnHistory">
+							<i class="fa-solid fa-recycle"></i>
+						</button>
+					</form>
+				</div>
+				 End Button History-->
+			
+			<!--End Home Content-->
+
+			<!--  Write   Body Code-->
+
+			@foreach (var Importation in Model.Importations)
+			{
+				@if (Importation.Is_Import_Status != 3)
+				{
+					<div class="order">
+					<div class="itemOrder">
+
+						<div><p id="date">Date: @Importation.Import_Date_Done.ToString("dd-MM-yyyy")</p></div>
+						<div><p id="fullname">Creator: @Importation.User_Name</p></div>
+						<!-- Start button Delete Cart-->
+									<a class="btnDelete" asp-page="./DeleteImportation" asp-route-Importation_Id="@Importation.Import_Id">
+								<i class="fa-solid fa-trash"></i>
+							</a>
+						<!-- End button Delte Cart-->
+					</div>
+					<!--End Show Item Importation-->
+
+					<!--Start Show Item Importation Detail-->
+						@foreach(var DisplayImportationDetailDTO in Model.ImportationDetails)
+						{
+							@if(Importation.Import_Id == DisplayImportationDetailDTO.Import_Id)
+								{
+								<div class="orderDetail">
+									<div class="itemDetail">
+
+										<div>
+											<img style="height: 100px;width: 100px"
+													src="@DisplayImportationDetailDTO.Image_URL"/>
+										</div>
+										<div>
+											<a href="sellerBookAction?action=bookDetail&amp">
+											
+											</a><br>
+											<div class="price">
+												<p id="quantity">x @DisplayImportationDetailDTO.Import_Detail_Quantity</p>
+												<p id="total">
+													@DisplayImportationDetailDTO.Import_Detail_Amount
+													<small style="text-decoration:underline">đ</small>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								}
+						}
+						<div class="totalOrder">
+						<!--
+							<button id="btnAgain" data-toggle="modal" class="btn btn-danger"
+								data-target="#myAgain${loop.index}">
+								Buy Again
+							</button>
+						-->
+						
+						<p>Total( @Importation.Import_Quantity Book): </p>
+						<p id="priceImportation"><fmt:formatNumber type="number" value=" @Importation.Import_Amount" /></p>
+					</div>
+				</div>
+				}
+			}
+			
+		</div>
+
+	</div>
+	<script src="~/js/script.js"></script>
+
+
+	<!--Update Book Inventory-->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+
+</body>
