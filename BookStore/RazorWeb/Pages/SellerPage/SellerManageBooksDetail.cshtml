@@ -1,136 +1,98 @@
 ﻿@page
-@using BookStoreAPI.Core.Model
 @model RazorWeb.Pages.SellerPage.SellerManageBooksDetailModel
 @{
 }
 
-<body>
-
-<!-- home content -->
-    <div class="container mx-auto">
-        <div class="categoryText">
-            <a style="color: black" href="sellerBookAction">Category </a>
-        </div>
-        <div class="mt-4 itemList row">
-
-            @* //carousel *@
-            <div id="carouselSellerManageBooksDetail" class=" border col-lg-3 carousel slide" data-ride="carousel">
-
-                @* //indicators *@
-                <div class="carousel-inner">
-                    @for (int i = 0; i < Model.Book.Image_URL.Count; i++)
-                    {
-                        //if i == 0 add active to class
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <img style="object-fit: contain" src="@Model.Book.Image_URL[i]" class="w-100 rounded"/><br/>
-                        </div>
-                    }
-                </div>
-
-                @* //control carousel *@
-                <a class="carousel-control-prev" href="#carouselSellerManageBooksDetail" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselSellerManageBooksDetail" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
-            <div class="item col-lg-5">
-                <strong class="name">@Model.Book.Book_Title</strong>
-                <p class="price">
-                <span>@Model.Book.Book_Price</span>
-                <small style="text-decoration:underline">đ</small>
-                <p><br/>
-                <p class="quantity">Quantity: @Model.Book.Book_Quantity</p>
-                <p class="author">Author: <u>@Model.Book.Book_Author</u></p>
-                <p class="yearPublic">Year Of Public: @Model.Book.Book_Year_Public</p>
-                @* <%-- Button add Add Cart and Importation--%> *@
-                <div class="button">
-                    <button class="inventory btn btn-info" data-toggle="modal"
-                            data-target="#myModal${loop.index}">
-                        Add Cart
-                    </button>
-
-                </div>
-            </div>
-        </div>
-        <div class="boxDescription">
-            <div class="description">
-                <strong>Information Detail</strong>
-                <p class="text">@Model.Book.Book_Description</p>
-            </div>
-        </div>
-        @* <%-- End Show Item Book--%> *@
-        @* <%--Form Add Cart--%> *@
-        <div class="modal fade" id="myModal${loop.index}">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <header class="head-form">
-                        <h2 style="text-align: center;font-size: 25px;color: red">Add Book To Cart</h2>
-                    </header>
-
-                    <div class="modal-body">
-                        @* <%--Form --%> *@
-
-
-                        <form action="sellerCartAction?action=addToCart" method="POST">
-                            @* <%-- ID BOOK Insert To Inventory SQL--%> *@
-                            <input type="hidden" name="book_Id_Cart" value="@Model.Book.Book_Id"/>
-                            <input type="hidden" name="orderId" value="0"/>
-                            @* <input type="number" name="quantityBook" value="${b.quantity_Book}"/> *@
-                            @* <%-- DO Quantity Add to Cart --%> *@
-
-                            <strong class="name">Name: @Model.Book.Book_Title</strong>
-                            <p class="price">
-                                price:
-                                <span>@Model.Book.Book_Price</span>
-                                <small style="text-decoration:underline">đ</small>
-                            </p>
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-address-book"></i>
-                                        </span>
-                                    </div>
-                                    <input type="number" id="quantity" name="quantity" class="form-control input-sm"
-                                           style="font-size: 15px" placeholder="Quantity" required min="1" max="@Model.Book.Book_Quantity">
-                                </div>
-                            </div>
-
-                            <p>Total Price: <span id="totalPrice">0</span> <small>đ</small></p>
-
-                        </form>
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer" id="modal-footer">
-                        <button type="submit" class="btn btn-info add">Add</button>
-
-
-                        <button class="btn btn-warning xclose" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @* <%--End Form Add Cart--%> *@
-        
+<div class="container mx-auto">
+    <div class="categoryText">
+        <a style="color: black" href="sellerBookAction">Category </a>
     </div>
+    <div class="mt-4 itemList row">
 
+        @* //carousel *@
+        <div id="carouselSellerManageBooksDetail" class=" border col-lg-3 carousel slide" data-ride="carousel">
 
-<script src="~/js/script.js"></script>
+            @* //indicators *@
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Book.Image_URL.Count; i++)
+                {
+                    //if i == 0 add active to class
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img style="object-fit: contain" src="@Model.Book.Image_URL[i]" class="w-100 rounded"/><br/>
+                    </div>
+                }
+            </div>
+
+            @* //control carousel *@
+            <a class="carousel-control-prev" href="#carouselSellerManageBooksDetail" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselSellerManageBooksDetail" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="item col-lg-5">
+            <strong class="name">@Model.Book.Book_Title</strong>
+            <p class="price">
+            <span>@Model.Book.Book_Price</span>
+            <small style="text-decoration:underline">đ</small>
+            <p><br/>
+
+            <p class="author">Author: <u>@Model.Book.Book_Author</u></p>
+            <p class="yearPublic">Year Of Public: @Model.Book.Book_Year_Public</p>
+
+            <p class="quantity ">
+                <span>Quantity: </span>
+                <div class="border d-inline-block">
+                    <button class="btn btn-sm btn-outline-secondary " onclick="decrementQuantity()">-</button>
+                    <span id="quantityValue">@Model.CartQuantity</span>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="incrementQuantity()">+</button>
+                </div>
+                <span class="quantity">Quantity in stock: <span id="quantityInStock">@Model.Book.Book_Quantity</span></span>
+            </p>
+            @* <%-- Button add Add Cart and Importation--%> *@
+            <div class="button">
+                <button class="inventory btn btn-info" data-toggle="modal"
+                        data-target="#myModal${loop.index}">
+                    Add Cart
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="boxDescription">
+        <div class="description">
+            <strong>Information Detail</strong>
+            <p class="text">@Model.Book.Book_Description</p>
+        </div>
+    </div>
+    @* <%-- End Show Item Book--%> *@
+    @* <%--Form Add Cart--%> *@
+</div>
+
 <script>
-    // JavaScript to calculate and update total price
-    document.getElementById("quantity").addEventListener("input", function () {
-        let itemPrice = parseFloat("@Model.Book.Book_Price");
-        let quantity = parseInt(this.value, 10);
-        let totalPrice = itemPrice * quantity;
-        document.getElementById("totalPrice").innerText = totalPrice;
-    });
-</script>
+    // Function to increment the quantity
+    var quantityInStock = parseInt(document.getElementById('quantityInStock').innerText);
+    
+    function incrementQuantity() {
+        var quantitySpan = document.getElementById('quantityValue');
+        var currentQuantity = parseInt(quantitySpan.innerText);
+        quantitySpan.innerText = currentQuantity + 1;
+        if (currentQuantity < quantityInStock) {
+    console.log((quantityInStock));
+            quantitySpan.innerText = currentQuantity + 1;
+        }
+    }
 
-</body>
+    // Function to decrement the quantity
+    function decrementQuantity() {
+        var quantitySpan = document.getElementById('quantityValue');
+        var currentQuantity = parseInt(quantitySpan.innerText);
+        if (currentQuantity > 1) {
+            quantitySpan.innerText = currentQuantity - 1;
+        }
+    }
+</script>
