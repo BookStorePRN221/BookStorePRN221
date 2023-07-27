@@ -1,7 +1,6 @@
-﻿@page 
+﻿@page
 @model RazorWeb.Pages.SellerPage.SellerManageBooksModel
 @{
-
 }
 
 <form class="formCategory"  method="get">
@@ -15,54 +14,21 @@
     </select>
     <button class="choice btn btn-secondary" type="submit">Go</button>
 </form><br/>
-<div class="row">
+<div style="max-width: 960px" class="row mx-auto">
     @foreach (var book in Model.Books)
     {
-        <div  class=" item col-lg-6">
-            <form action="sellerBookAction?action=bookDetail&amp;bookId=@book.Book_Id&amp;categoryId=@book.Category_Id&amp;bookName=@book.Book_Title" method="POST">
-                <div class="border d-flex flex-column" style="height:375px;">
-                    <img style="object-fit: contain" src="@book.Image_URL" alt="image book"/><br/>
-                    <p class="name">@book.Book_Title</p>
-                    <p class="price">
-                        <span>@book.Book_Price</span>
-                        <small style="text-decoration: underline">đ</small>
-                    </p>
-                    <button class="viewDetail btn btn-info" type="submit">
-                        View Detail
-                    </button>
-                </div>
-            </form>
+        <div  class="item  mb-4 col-12 col-sm-6 col-md-3">
+            <div class="border rounded p-4 d-flex flex-column align-items-center">
+                <img style="object-fit: fill" class="w-100" src="@book.Image_URL" alt="image book"/><br/>
+                <p class="name">@book.Book_Title</p>
+                <p class="price">
+                    <span>@book.Book_Price</span>
+                    <small style="text-decoration: underline">đ</small>
+                </p>
+                <a href="SellerManageBooksDetail?bookId=@book.Book_Id&amp;categoryId=@book.Category_Id&amp;bookName=@book.Book_Title" style="line-height: 15px; width: 140px" class="viewDetail btn btn-info text-center " type="submit">
+                    View Detail
+                </a>
+            </div>
         </div>
     }
 </div>
-
-
-@* <div class="page row"> *@
-@* *@
-@*     <div class="col-lg-4 d-flex justify-content-center"> *@
-@*         <ul class="pagination"> *@
-@*             <li class="page-item"> *@
-@*                 <a class="page-link" href="sellerBookAction?action=bookPage1">1</a> *@
-@*             </li> *@
-@*             <li class="page-item"> *@
-@*                 <a class="page-link" href="sellerBookAction?action=bookPage2">2</a> *@
-@*             </li> *@
-@*             <li class="page-item"> *@
-@*                 <a class="page-link" href="sellerBookAction?action=bookPage3">3</a> *@
-@*             </li> *@
-@*             <li class="page-item"> *@
-@*                 <a class="page-link" href="sellerBookAction?action=bookPage4">4</a> *@
-@*             </li> *@
-@*             <c:if test="${numLastBook>16}"> *@
-@*                 <li class="page-item"> *@
-@*                     <a class="page-link" href="sellerBookAction?action=bookPage5">5</a> *@
-@*                 </li> *@
-@*             </c:if> *@
-@*             <c:if test="${numLastBook>20}"> *@
-@*                 <li class="page-item"> *@
-@*                     <a class="page-link" href="sellerBookAction?action=bookPage6">6</a> *@
-@*                 </li> *@
-@*             </c:if> *@
-@*         </ul> *@
-@*     </div> *@
-@* </div> *@
