@@ -14,6 +14,5 @@ namespace BookStoreAPI.Core.DiplayDTO
         public float Import_Amount { get; set; }
         public int Is_Import_Status { get; set; }
         public DateTime Import_Date_Done { get; set; }
-
     }
 }
