@@ -17,6 +17,20 @@
         <p style="color:white">Update book fail!</p>
     </div>
 }
+@if (Model.m_Message == 2)
+{
+    <div id="success-notification" class="notification fail">
+        <span class="close" onclick="closeNotification()">&times;</span>
+        <p style="color:white">Update book fail!</p>
+    </div>
+}
+@if (Model.m_Message == 3)
+{
+    <div id="success-notification" class="notification fail">
+        <span class="close" onclick="closeNotification()">&times;</span>
+        <p style="color:white">Update book fail!</p>
+    </div>
+}
 <!-- home content -->
 <section class="home-section">
 
@@ -121,45 +135,19 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left:130px;font-size:28px; color:orange; font-weight:500">UPDATE BOOK</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left:130px;font-size:28px; color:orange; font-weight:500">Create Inventory</h5>
                 </div>
                 <form method="post" asp-page-handler="addinventory">
                     <div class="modal-body">
-                        <input type="hidden" asp-for="@Model.bookDetail.Book_Id" />
-                        <input type="hidden" asp-for="@Model.bookDetail.Image_URL" value="@Model.bookDetail.Image_URL.First()" />
+                        <input type="hidden" asp-for="@Model.Inventorydto.Book_Id" value="@Model.bookDetail.Book_Id" />
+                        
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title:</label>
-                            <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
+                            <label for="title" class="form-label">Reason</label>
+                            <input type="text" class="form-control" id="Reason" asp-for="@Model.Inventorydto.Inventory_Note" style="font-size:15px;">
                         </div>
                         <div class="mb-3">
-                            <label for="author" class="form-label">Author:</label>
-                            <input type="text" class="form-control" id="author" asp-for="@Model.bookDetail.Book_Author" style="font-size:15px;">
-                        </div>
-                        <div class="mb-3">
-                            <label for="quantity" class="form-label">Quantity:</label>
-                            <input type="number" class="form-control" id="quantity" asp-for="@Model.bookDetail.Book_Quantity" style="font-size:15px;">
-                        </div>
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Price:</label>
-                            <input type="number" class="form-control" id="price" asp-for="@Model.bookDetail.Book_Price" style="font-size:15px;">
-                        </div>
-                        <div class="mb-3">
-                            <label for="yearOfPublic" class="form-label">Year Of Public:</label>
-                            <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description:</label>
-                            <input type="text" class="form-control" asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
-                        </div>
-                        <div class="mb-3">
-                            <label for="category" class="form-label">Category:</label>
-                            <select class="form-select" id="category" asp-for="@Model.bookDetail.Category_Id">
-                                <option value="@Model.bookDetail.Category_Id">@Model.bookDetail.Category_Name</option>
-                                @foreach (var i in Model.listCate)
-                                {
-                                    <option value="@i.Category_Id">@i.Category_Name</option>
-                                }
-                            </select>
+                            <label for="title" class="form-label">Quantity</label>
+                            <input type="text" class="form-control" id="quantity" asp-for="@Model.Inventorydto.Inventory_Quantity" style="font-size:15px;">
                         </div>
                     </div>
                     <div class="modal-footer">
