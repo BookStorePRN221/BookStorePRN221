@@ -1,0 +1,160 @@
+﻿@page
+@model RazorWeb.Pages.StaffPage.StaffManageOrderModel
+@{
+}
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seller Order</title>
+
+	<!-- BoxIcon CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<!--    Link Button CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- link file CSS -->
+	<link rel="stylesheet" href="~/css/sellerManageOrder.css">
+</head>
+
+<body>
+	<div class="wrapper-body">
+
+
+		<!-- home content -->
+		<div class="home-section">
+			<!-- home-content -->
+			<div class="home-content">
+				<div>
+					<h2 id="nameTable">LIST OF ORDER BOOK</h2>
+				</div>
+				<!-- Button History
+				<div class="history">
+					<form action="sellerOrderAction?action=historyOrder" method="POST">
+						<button id="btnHistory">
+							<i class="fa-solid fa-recycle"></i>
+						</button>
+					</form>
+				</div>
+				 End Button History-->
+			</div>
+			<!--End Home Content-->
+
+			<!--  Write   Body Code-->
+
+			@foreach (var Order in Model.orders)
+			{
+				@if (Order.Is_Order_Status != 0)
+				{
+					<div class="order">
+					<div class="itemOrder">
+						<p id="id"> Order: @Order.Order_Code</p>
+						<div><p id="date">Date: @Order.Order_Date.ToString("dd-MM-yyyy")</p></div>
+						<div><p id="fullname">Creator: @Order.Order_Customer_Name</p></div>
+						<!-- Start button Delete Cart-->
+									<a class="btnDelete" asp-page="./DeleteOrder" asp-route-Order_Id="@Order.Order_Id">
+								<i class="fa-solid fa-trash"></i>
+							</a>
+						<!-- End button Delte Cart-->
+					</div>
+					<!--End Show Item Order-->
+
+					<!--Start Show Item Order Detail-->
+						@foreach(var DisplayOrderDetailDTO in Model.orderDetails)
+						{
+							@if(Order.Order_Id == DisplayOrderDetailDTO.Order_Id)
+								{
+									<div class="orderDetail">
+										<div class="itemDetail">
+
+											<div>
+												<img style="height: 100px;width: 100px"
+														src="@DisplayOrderDetailDTO.Image_URL"/>
+											</div>
+											<div>
+												<a href="sellerBookAction?action=bookDetail&amp">
+											
+												</a><br>
+												<div class="price">
+													<p id="quantity">x @DisplayOrderDetailDTO.Order_Detail_Quantity</p>
+													<p id="total">
+														@DisplayOrderDetailDTO.Order_Detail_Amount
+														<small style="text-decoration:underline">đ</small>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								}
+						}
+					<div class="totalOrder">
+						<!--
+							<button id="btnAgain" data-toggle="modal" class="btn btn-danger"
+								data-target="#myAgain${loop.index}">
+								Buy Again
+							</button>
+						-->
+						
+						<p>Total( @Order.Order_Quantity Book): </p>
+						<p id="priceOrder"><fmt:formatNumber type="number" value=" @Order.Order_Amount" /></p>
+					</div>
+					
+
+					
+					<!-- Delete Book Order -->
+					<div class="modal fade" id="myModal${loop.index}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<header class="head-form mb-0">
+									<h2>Are You Sure To Delete Order Book ?</h2>
+								</header>
+
+								<div class="modal-body">
+									<!--Form -->
+									<form action="sellerOrderAction?action=deleteOrder" method="POST">
+										<input type="hidden" name="orderId" value="${i.order_Id}" />
+										<input type="hidden" name="count"
+												value="1" />
+										<input type="hidden" name="orderId"
+												value="${i.order_Id}" />
+										<!-- Are You Sure -->
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-danger add">Delete</button>
+
+									<button class="btn btn-warning xclose" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Delete Book Order-->
+				</div>
+				}
+			}
+			
+		</div>
+
+	</div>
+	<script src="~/js/script.js"></script>
+
+
+	<!--Update Book Inventory-->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+
+</body>
