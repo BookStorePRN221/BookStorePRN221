@@ -6,7 +6,7 @@ using OfficeOpenXml.Style;
 using Service.Service;
 using Service.Service.IService;
 
-namespace RazorWeb.Pages.StaffPage
+namespace RazorWeb.Pages.AdminPage
 {
     public class DeleteOrderModel : PageModel
     {
@@ -36,7 +36,7 @@ namespace RazorWeb.Pages.StaffPage
 			{
 				Console.WriteLine("delete not success");
 			}
-			return RedirectToPage("./StaffManageOrder");
+			return RedirectToPage("./AdminManageOrder");
 		}
 	}
 }

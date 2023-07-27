@@ -1,28 +1,4 @@
-﻿/* Google font CDN link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-:root {
-    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
-}
-
-html {
-    font-size: 62.5%;
-    height: 100%;
-}
-
-body {
-    min-height: 100vh;
-    width: 100%;
-    font-size: 1.6rem;
-}
-
+﻿
 /* ========================================================== */
 /* HEADER--LOGO */
 .header {
@@ -30,51 +6,51 @@ body {
     width: 100%;
 }
 
-    .header .header-menu {
-        display: flex;
-        align-items: center;
-    }
+.header .header-menu {
+    display: flex;
+    align-items: center;
+}
 
-    .header .sidebar-button__logo {
-        display: flex;
-        max-width: 27rem;
-        background: linear-gradient(to right, #267871, #136a8a);
-    }
+.header .sidebar-button__logo {
+    display: flex;
+    max-width: 27rem;
+    background: linear-gradient(to right, #267871, #136a8a);
+}
 
-        .header .sidebar-button__logo .sidebar-button {
-            max-width: 6rem;
-            height: 8rem;
-            display: flex;
-            color: #fff;
-            font-size: 2rem;
-            align-items: center;
-            background: linear-gradient(to right, #267871, #136a8a);
-            padding: 0 20px;
-        }
+.header .sidebar-button__logo .sidebar-button {
+    max-width: 6rem;
+    height: 8rem;
+    display: flex;
+    color: #fff;
+    font-size: 2rem;
+    align-items: center;
+    background: linear-gradient(to right, #267871, #136a8a);
+    padding: 0 20px;
+}
 
-            .header .sidebar-button__logo .sidebar-button:hover {
-                background-color: #136a8a;
-            }
+.header .sidebar-button__logo .sidebar-button:hover {
+    background-color: #136a8a;
+}
 
-        .header .sidebar-button__logo .logo-details img {
-            max-width: 5rem;
-            max-height: 5rem;
-        }
+.header .sidebar-button__logo .logo-details img {
+    max-width: 5rem;
+    max-height: 5rem;
+}
 
-        .header .sidebar-button__logo .logo-details {
-            height: 8rem;
-            width: 21rem;
-            display: flex;
-            align-items: center;
-            background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
-        }
+.header .sidebar-button__logo .logo-details {
+    height: 8rem;
+    width: 21rem;
+    display: flex;
+    align-items: center;
+    background-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
 
-            .header .sidebar-button__logo .logo-details .logo_name {
-                font-size: 2.4rem;
-                font-weight: 600;
-                color: #fab804ea;
-                margin-left: 0.8rem;
-            }
+.header .sidebar-button__logo .logo-details .logo_name {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #fab804ea;
+    margin-left: 0.8rem;
+}
 
 /* HEADER--NAV */
 .header-menu .seachbox-profile {
@@ -86,15 +62,15 @@ body {
     padding: 0 2rem;
 }
 
-    .header-menu .seachbox-profile .wraper_searchbox_profile {
-        width: 90%;
-        height: 100%;
-        object-fit: cover;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: 10rem;
-    }
+.header-menu .seachbox-profile .wraper_searchbox_profile {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10rem;
+}
 
 .seachbox-profile .search-box {
     height: 5rem;
@@ -103,32 +79,32 @@ body {
     position: relative;
 }
 
-    .seachbox-profile .search-box input {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        border-radius: 0.7rem;
-        padding: 0 1.5rem;
-        font-size: 1.7rem;
-        background: #f5f6fa;
-        border: 2px solid #efeef1;
-        outline-color: none;
-    }
+.seachbox-profile .search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+    padding: 0 1.5rem;
+    font-size: 1.7rem;
+    background: #f5f6fa;
+    border: 2px solid #efeef1;
+    outline-color: none;
+}
 
-    .seachbox-profile .search-box .bx-search-alt-2 {
-        position: absolute;
-        height: 4rem;
-        width: 4rem;
-        right: 0.4rem;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #267871;
-        border-radius: 0.7rem;
-        color: #fff;
-        font-size: 2.2rem;
-        line-height: 4rem;
-        text-align: center;
-    }
+.seachbox-profile .search-box .bx-search-alt-2 {
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    right: 0.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #267871;
+    border-radius: 0.7rem;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 4rem;
+    text-align: center;
+}
 
 .seachbox-profile .profile_details {
     position: relative;
@@ -142,25 +118,25 @@ body {
     padding: 0 1.5rem 0 0.2rem;
 }
 
-    .seachbox-profile .profile_details img {
-        height: 4rem;
-        width: 4rem;
-        object-fit: cover;
-        border-radius: 0.6rem;
-    }
+.seachbox-profile .profile_details img {
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+}
 
-    .seachbox-profile .profile_details .name_role .name {
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #333;
-        margin: 0 1rem;
-        white-space: nowrap;
-    }
+.seachbox-profile .profile_details .name_role .name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0 1rem;
+    white-space: nowrap;
+}
 
-    .seachbox-profile .profile_details i {
-        color: #333;
-        font-size: 2.5rem;
-    }
+.seachbox-profile .profile_details i {
+    color: #333;
+    font-size: 2.5rem;
+}
 
 /* ========================================================== */
 /* CSS for SIDEBAR */
@@ -173,184 +149,182 @@ body {
     transition: all 0.5s ease;
 }
 
-    .sidebar.active {
-        width: 6rem;
-    }
+.sidebar.active {
+    width: 6rem;
+}
 
-    .sidebar .nav-links {
-        margin-bottom: 1.6rem;
-    }
+.sidebar .nav-links {
+    margin-bottom: 1.6rem;
+}
 
-        .sidebar .nav-links li {
-            height: 5rem;
-            width: 100%;
-            list-style: none;
-        }
+.sidebar .nav-links li {
+    height: 5rem;
+    width: 100%;
+    list-style: none;
+}
 
-            .sidebar .nav-links li a {
-                height: 100%;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                transition: all 0.4s ease;
-            }
+.sidebar .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
 
-                .sidebar .nav-links li a:hover {
-                    background-color: #0d465b;
-                }
+.sidebar .nav-links li a:hover {
+    background-color: #0d465b;
+}
 
-                .sidebar .nav-links li a i {
-                    min-width: 6rem;
-                    text-align: center;
-                    color: #fff;
-                    font-size: 1.8rem;
-                }
+.sidebar .nav-links li a i {
+    min-width: 6rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.8rem;
+}
 
-                .sidebar .nav-links li a .links_name {
-                    color: #fff;
-                    font-size: 1.5rem;
-                    font-weight: 400;
-                }
+.sidebar .nav-links li a .links_name {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 
-/* ========================================================== */
 /* Home secsion CSS */
-
 .home-section {
     background-color: #f5f5f5;
-    ;
     position: relative;
-    height: 120vh;
+    min-height: 120vh;
     width: calc(100% - 27rem);
     left: 27rem;
     transition: all 0.5s ease;
 }
 
-body {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+.sidebar.active ~ .home-section {
+    width: calc(100% - 6rem);
+    left: 6rem;
 }
 
-/*Start Border : Khung border bao quanh book*/
-.border {
-    border-radius: 20px;
-    margin-left: 140px;
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
-    width: 800px;
+.home-section nav .sidebar-button {
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 500;
 }
 
-/*Start Category*/
+.home-section nav .sidebar-button i {
+    font-size: 35rem;
+    margin-right: 1rem;
+}
+
+@media (max-width: 1216px) {
+    .sidebar {
+        width: 6rem;
+    }
+
+    .sidebar.active {
+        width: 27rem;
+    }
+
+    .home-section {
+        width: calc(100% - 6rem);
+        left: 6rem;
+        transition: all 0.5s ease;
+    }
+
+    .sidebar.active ~ .home-section {
+        width: calc(100% - 27rem);
+        left: 27rem;
+    }
+}
+
+@media (max-width: 836px) {
+    .home-content .overview-boxes .box {
+        width: calc(100% / 2 - 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    .header .sidebar-button__logo .logo-details {
+        /* display: none; */
+        width: 52px;
+    }
+
+    .header .sidebar-button__logo .logo-details .logo_name {
+        /* color: #ffffff; */
+        display: none;
+    }
+}
+
+/* ========================================================== */
+
+
+/* ========================================================== */
+/*Start CategoryBox*/
+.home-section .choice {
+    font-size: 15px;
+    margin-left: 10px;
+    height: 30px;
+    width: 50px;
+    padding: 0px 0px 0px 0px;
+}
+
 .home-section .categoryText {
     margin-left: 10px;
     font-size: 20px;
     height: 40px;
-    color: black;
 }
 
-/*End Category*/
+.home-section .comboxCategory {
+    color: #17A2B8;
+    margin-left: 10px;
+    width: 115px;
+    height: 100%;
+    font-size: 18px;
+}
+
+.home-section .formCategory {
+    height: 30px;
+}
+
+
+/*End Border*/
 
 /*Start Item List: Weight height font book name, price*/
-.itemList img {
+.item {
     width: 50%;
-    height: 350px;
-    width: 400px;
 }
 
 .item {
-    margin-left: 40px;
+    padding-left: 100px;
 }
 
-    .item .name {
-        font-size: 35px;
-        padding-bottom: 20px;
-    }
+.item img {
+    height: 230px;
+    width: 330px;
+}
 
-    .item .price {
-        margin-top: 20px;
-        font-size: 30px;
-        color: #C92127;
-    }
+.item .name {
+    font-size: 23px;
+    margin-bottom: 0px;
+}
 
-    .item .quantity {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
+.item .price {
+    font-size: 20px;
+}
 
-    .item .author {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
-
-    .item .yearPublic {
-        font-size: 25px;
-        padding-bottom: 5px;
-    }
-
-    .item .inventory {
-        font-size: 30px;
-        margin-right: 50px;
-    }
-
-.button {
-    display: flex;
+.item .viewDetail {
+    font-size: 15px;
+    height: 30px;
+    width: 100px;
 }
 
 /*End Item List*/
 
-/*Start Description*/
-.boxDescription {
-    border-radius: 15px;
-    background-color: rgba(224, 219, 219, 0.68);
+/*Page Start*/
+.page {
+    font-size: 25px;
+}
+
+.page a {
     margin-left: 10px;
-    margin-top: 30px;
+    color: #000000;
 }
-
-.description {
-    margin-top: 20px;
-    font-size: 22px;
-    margin-left: 10px;
-}
-
-    .description .text {
-        padding-top: 10px;
-        font-size: 15px;
-    }
-
-/*End Description*/
-
-/*Start Form Add To Inventory*/
-.modal-dialog {
-    height: 100%;
-}
-
-.modal-content {
-    margin-top: 200px;
-}
-
-.input-group {
-    height: 40px;
-}
-
-.form-control {
-    height: 40px;
-}
-
-.add {
-    width: 70px;
-    height: 28px;
-    margin-right: 10px;
-    font-size: 15px;
-}
-
-.xclose {
-    width: 70px;
-    height: 28px;
-    margin-right: 10px;
-    font-size: 15px;
-}
-
-/*End Form Add To Inventory*/
-
-
