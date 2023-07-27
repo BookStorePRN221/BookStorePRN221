@@ -44,23 +44,22 @@
             <p class="author">Author: <u>@Model.Book.Book_Author</u></p>
             <p class="yearPublic">Year Of Public: @Model.Book.Book_Year_Public</p>
 
-            <p class="quantity ">
-                <span>Quantity: </span>
-                <div class="border d-inline-block">
-                    <button class="btn btn-sm btn-outline-secondary " onclick="decrementQuantity()">-</button>
-                    <input id="quantityValue">@Model.CartQuantity</input>
-                    <button class="btn btn-sm btn-outline-secondary" onclick="incrementQuantity()">+</button>
-                </div>
-                <span class="quantity">Quantity in stock: <span id="quantityInStock">@Model.Book.Book_Quantity</span></span>
-            </p>
-            @* <%-- Button add Add Cart and Importation--%> *@
-            <div class="button">
-                <button class="inventory btn btn-info" data-toggle="modal"
-                        data-target="#myModal${loop.index}">
+            <form class="" method="POST" onsubmit="return submitForm();">
+                <p class="quantity">
+                    <span>Quantity: </span>
+                    <div class="border d-inline-block">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="decrementQuantity()" type="button">-</button>
+                        <input name="cartQuantity" class="ml-1 text-center h-100 bg-transparent border-0" style="width: 30px;" readonly id="quantityValue" value="1" />
+                        <button class="btn btn-sm btn-outline-secondary" onclick="incrementQuantity()" type="button">+</button>
+                    </div>
+                    <span class="quantity opacity-50">Quantity in stock: <span id="quantityInStock">@Model.Book.Book_Quantity</span></span>
+                </p>
+                <input value="@Model.Book.Book_Id" name="bookId" hidden />
+                <button class="inventory btn btn-info" data-toggle="modal" type="submit">
                     Add Cart
                 </button>
+            </form>
 
-            </div>
         </div>
     </div>
     <div class="boxDescription">
@@ -76,23 +75,31 @@
 <script>
     // Function to increment the quantity
     var quantityInStock = parseInt(document.getElementById('quantityInStock').innerText);
-    
+
     function incrementQuantity() {
-        var quantitySpan = document.getElementById('quantityValue');
-        var currentQuantity = parseInt(quantitySpan.innerText);
-        quantitySpan.innerText = currentQuantity + 1;
+        var quantityInput = document.getElementById('quantityValue');
+        var currentQuantity = parseInt(quantityInput.value);
+
         if (currentQuantity < quantityInStock) {
-    console.log((quantityInStock));
-            quantitySpan.innerText = currentQuantity + 1;
+            quantityInput.value = currentQuantity + 1;
         }
     }
 
     // Function to decrement the quantity
     function decrementQuantity() {
-        var quantitySpan = document.getElementById('quantityValue');
-        var currentQuantity = parseInt(quantitySpan.innerText);
+        var quantityInput = document.getElementById('quantityValue');
+        var currentQuantity = parseInt(quantityInput.value);
+
         if (currentQuantity > 1) {
-            quantitySpan.innerText = currentQuantity - 1;
+            quantityInput.value = currentQuantity - 1;
         }
+    }
+
+    // Function to handle form submission
+    function submitForm() {
+        // Disable the "Add Cart" button to prevent double submission
+        var addButton = document.querySelector('.inventory');
+        addButton.disabled = true;
+        return true; // Allow form submission to proceed
     }
 </script>

@@ -22,8 +22,9 @@
       "executablePath": "dotnet.exe",
       "workingDirectory": "$(ProjectDir)",
       "commandLineArgs": "watch run",
-      "launchBrowser": true,
-        "launchUrl": "Login"
+      "launchUrl": "Login",
+      "launchBrowser": false
+      
     }
   },
   "iisSettings": {
