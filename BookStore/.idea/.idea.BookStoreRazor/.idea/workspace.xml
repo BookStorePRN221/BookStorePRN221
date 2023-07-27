@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="757e6f53-872b-4464-a41c-5eae45939e49" name="Changes" comment="" />
+    <list default="true" id="757e6f53-872b-4464-a41c-5eae45939e49" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookStoreRazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookStoreRazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageBooksDetail.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageBooksDetail.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageBooksDetail.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageBooksDetail.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageCart.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageCart.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageCart.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Pages/SellerPage/SellerManageCart.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Pages/Shared/_LayoutSeller.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Pages/Shared/_LayoutSeller.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RazorWeb/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RazorWeb/appsettings.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +57,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -146,7 +156,8 @@
       <workItem from="1689577088442" duration="7023000" />
       <workItem from="1689671839488" duration="24000" />
       <workItem from="1690381672800" duration="14254000" />
-      <workItem from="1690456226225" duration="7350000" />
+      <workItem from="1690456226225" duration="17573000" />
+      <workItem from="1690483568033" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="add importation manager page">
       <created>1689022032031</created>
