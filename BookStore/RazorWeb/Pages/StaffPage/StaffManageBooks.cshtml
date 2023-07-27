@@ -17,18 +17,18 @@
         </select>
         <button class="choice btn btn-secondary" asp-page-handler="Category" type="submit">Go</button>
     </form><br />
-    <div class="itemList row" style="height:800px;">
+    <div class="itemList row" style="height:800px;margin-bottom:60px;">
         @*Display book*@
         @foreach (BookDTO b in Model.books)
         {
-            <div class="item col-lg-6">
-                <form style="height: 325px;width: 450px">
-                    <div class="border">
-                        <img src="@b.Image_URL" />
+            <div class="item col-lg-4">
+                <form >
+                    <div class="border" style="height: 415px;width: 355px">
+                        <img style="height: 230px; width: 330px;" src="@b.Image_URL" />
                         <p class="name">@b.Book_Title </p>
                         <p class="price"/>
-                        <p>@b.Book_Price</p>
-                        <small style="text-decoration:underline">đ</small>
+                        <p style="font-size:15px;">@b.Book_Price<small style="text-decoration:underline">đ</small></p>
+                        
                             @*call book detail page*@
                         <a class="viewDetail btn btn-info" asp-page="StaffManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
                         <p>
