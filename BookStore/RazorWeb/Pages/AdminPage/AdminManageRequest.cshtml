@@ -93,26 +93,116 @@
             border-color: whitesmoke;
         }
 
+        /* Thiết lập các thuộc tính của nút */
+        .red-button {
+            background-color: #FF0000; /* Màu nền đỏ */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px; /* Bo tròn các góc */
+        }
+
+            /* Khi di chuột qua nút */
+            .red-button:hover {
+                background-color: #CC0000; /* Màu đỏ nhạt */
+            }
+
+            /* Khi nhấn vào nút */
+            .red-button:active {
+                background-color: #990000; /* Màu đỏ đậm */
+            }
+
+        /* Thiết lập các thuộc tính của nút */
+        .green-button {
+            background-color: #4CAF50; /* Màu nền xanh lá */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px; /* Bo tròn các góc */
+        }
+
+            /* Khi di chuột qua nút */
+            .green-button:hover {
+                background-color: #45a049; /* Màu xanh lá nhạt */
+            }
+
+            /* Khi nhấn vào nút */
+            .green-button:active {
+                background-color: #3e8e41; /* Màu xanh lá đậm */
+            }
+
         .th {
             width: 110px !important height:30px;
+        }
+        /* Thiết lập kiểu cho navbar */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            height:60px;
+            width:100%;
+            text-align:center;
+        }
+
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                .navbar a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+        /* Tùy chỉnh cho phần hiển thị trang hiện tại */
+        .active {
+            background-color: #666;
+        }
+
+        #nameTableAdmin {
+            margin-left: 200px;
+            color: #fab804ea;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 <!-- home content -->
 <div class="home-section">
-    <!-- home-content -->
-    <div class="home-content">
-                <div>
-                    <h2 id="nameTable">LIST OF BOOK REQUEST</h2>
-                </div>
-            <div>
-                <a href="javascript:void(0);" onclick="showTable('confirm')">Confirm</a>
+        <div>
+            <h2 id="nameTableAdmin">LIST OF BOOK REQUEST</h2>
+        </div>
+            <div class="navbar">
+                <a  href="javascript:void(0);" onclick="showTable('confirm')">Confirm</a>
                 <a href="javascript:void(0);" onclick="showTable('request')">Request</a>
             </div>
+        <!-- home-content -->
 
-        <div id="confirmTable" style="display:none;">
-                <table class="table">
+        <div>
+        <div id="confirmTable" style="display:none;width:100%;margin-top:0px;">
+                <table class="table" >
                     <thead class="thead-dark" style="font-size: 15px">
                         <tr>
                             <th>.No</th>
@@ -138,7 +228,6 @@
                             @if (@r.Is_Request_Status == 5)
                             {
                                 <tr>
-
                                     <td>
                                       @number
                                         @{
@@ -156,12 +245,14 @@
                                         <p>@r.Request_Quantity</p>
                                     </td>
                                     <td>
-                                        <p>@r.Request_Price</p>
-                                        <small style="text-decoration:underline">đ</small>
+                                        <p>@r.Request_Price
+                                            <small style="text-decoration:underline">đ</small>
+                                        </p>
                                     </td>
                                     <td>
-                                        <p>@r.Request_Amount</p>
-                                        <small style="text-decoration:underline">đ</small>
+                                        <p>@r.Request_Amount
+                                            <small style="text-decoration:underline">đ</small>
+                                        </p>
                                     </td>
                                     <td>
                                         <p asp-format="{0:yyyy-MM-dd}">@r.Request_Date.ToString("yyyy-MM-dd")</p>
@@ -182,14 +273,18 @@
                                         }
                                     </td>
                                     <td>
-                                            <button type="button" class="btn btn-primary">
+                                            <button type="button" class="green-button" style="font-size:15px;" data-action="confirm" onclick="submitForm(this)">
                                                 Confirm
                                             </button>
-                                        <button type="button" class="btn btn-danger">
+                                            <button type="button" class="red-button" style="font-size:15px;" data-action="cancel" onclick="submitForm(this)">
                                             Cancel
                                         </button>
                                     </td>
                                 </tr>
+                                <form id="yourFormId" method="post">
+                                    <input type="hidden" id="isCheckInput" name="isCheck" value="" />
+                                    <input  type="hidden" asp-for="@Model.requestId" value="@r.Request_Id"/>
+                                </form>
                             }
                         }
                     </tbody>
@@ -242,12 +337,14 @@
                                         <p>@r.Request_Quantity</p>
                                     </td>
                                     <td>
-                                        <p>@r.Request_Price</p>
-                                        <small style="text-decoration:underline">đ</small>
+                                        <p>@r.Request_Price
+                                            <small style="text-decoration:underline">đ</small>
+                                        </p>
                                     </td>
                                     <td>
-                                        <p>@r.Request_Amount</p>
+                                        <p>@r.Request_Amount
                                         <small style="text-decoration:underline">đ</small>
+                                        </p>
                                     </td>
                                     <td>
                                         <p asp-format="{0:yyyy-MM-dd}">@r.Request_Date.ToString("yyyy-MM-dd")</p>
@@ -295,11 +392,18 @@
                                         }
                                     </td>
                                     <td>
-                                        @if (r.Is_Request_Status == 1 && r.Is_RequestBook_Status == false)
+                                        @if (r.Is_Request_Status == 3 && r.Is_RequestBook_Status== true)
                                         {
                                             <button type="button" data-toggle="modal" data-target="#Again" onclick="booking(`@r.Request_Id`)"
                                                     style="outline:none;border:none">
-                                                <i class="bx bxs-message-square-x"></i>
+                                                <i class='bx bx-edit'></i>
+                                            </button>
+                                        }
+                                        @if (r.Is_Request_Status == 3 && r.Is_RequestBook_Status == false)
+                                        {
+                                            <button type="button" data-toggle="modal" data-target="#Again2" onclick="booking(`@r.Request_Id`)"
+                                                    style="outline:none;border:none">
+                                                <i class='bx bx-edit'></i>
                                             </button>
                                         }
                                     </td>
@@ -309,9 +413,94 @@
                     </tbody>
                 </table>
         </div>
+            @*Again Request New*@
+            <div class="modal fade" id="Again" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
 
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: #247774; text-align: center;">
+                            <h3 style="margin-top: 20px; width: 100%; color:white; font-size:20px;">Update Request</h3>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="tab-content" id="pills-tabContent" style="background-color:#fab804ea;">
+                               
+                                <form method="post">
+                                        <input type="hidden" name="isCheck" value="2" />
+                                        
+                                        <input asp-for="@Model.request.Category_Id" id="categoryId" type="hidden" />
+                                        <input asp-for="@Model.request.Request_Id" id="request" type="hidden" />
+                                        <input type="text" id="url" placeholder="Image url" asp-for="@Model.request.Request_Image_Url" style="margin-bottom:10px;"/><br>
+                                        <input type="text" id="name" placeholder="Book's name" asp-for="@Model.request.Request_Book_Name" style="margin-bottom:10px;"/><br>
+                                        <input type="number" id="quantity" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;"/><br>
+                                        <input type="number" id="price" placeholder="Price" asp-for="@Model.request.Request_Price" style="margin-bottom:10px;"/><br>
+                                        <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;"/>
+                                        <select class="form-select" asp-for="@Model.request.Category_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;">
+                                            @foreach (var i in Model.listCate)
+                                            {
+                                                <option value="@i.Category_Id">@i.Category_Name</option>
+                                            }
+                                        </select><br>
+                                        <div class="btnCreate">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;margin-right:5px;">Cancel</button>
+                                            <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Update</button>
+                                        </div>
+                                       
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*Again Request New*@
+            @*Again Request Old*@
+            <div class="modal fade" id="Again2" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: #247774; text-align: center;">
+                            <h3 style="margin-top: 20px; width: 100%; color:white; font-size:20px;">Update Request</h3>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="tab-content" id="pills-tabContent" style="background-color:#fab804ea;">
+
+                                <form method="post">
+                                    <input type="hidden" name="isCheck" value="3" />
+                                    <input asp-for="@Model.request.Request_Id" id="requestBook" type="hidden" />
+                                    <select class="form-select" asp-for="@Model.request.Book_Id" style="width:205.33px; height: 27.56px; font-size:15px;margin:0 0 0 136px;" autocomplete="off">
+                                        @foreach (var i in Model.books)
+                                        {
+                                            <option value="@i.Book_Id">@i.Book_Title</option>
+                                        }
+                                    </select><br>
+                                    <input type="number" id="quantity" placeholder="Quantity" asp-for="@Model.request.Request_Quantity" style="margin-bottom:10px;" autocomplete="off"><br>
+                                    <input type="text" placeholder="Note" asp-for="@Model.request.Request_Note" style="margin-bottom:10px;" autocomplete="off">
+                                    <div class="btnCreate">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;margin-right:5px;">Cancel</button>
+                                        <button onclick="oldBookRequest()" class="btn btn-primary" type="submit" style="font-size:20px;;margin-right:5px;">Update</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*Again Request Od*@
         @section Scripts {
             <script>
+                    // Đảm bảo mã JavaScript được thực thi sau khi tải trang xong
+                    window.onload = function () {
+                        // Gọi hàm showTable('confirm') khi tải trang xong
+                        showTable('confirm');
+                    };
                 function showTable(tableType) {
                     if (tableType === 'confirm') {
                         document.getElementById('confirmTable').style.display = 'block';
@@ -321,9 +510,17 @@
                         document.getElementById('requestTable').style.display = 'block';
                     }
                 }
+                    function submitForm(button) {
+                        var action = button.getAttribute("data-action");
+                        var isCheck = (action === "confirm") ? 1 : 0;
+                        document.getElementById("isCheckInput").value = isCheck;
+                        document.getElementById("yourFormId").submit();
+                    }
+                    
             </script>
         }
 
     </div>
 </div>
+    <script src="~/js/booking.js"></script>
 </body>

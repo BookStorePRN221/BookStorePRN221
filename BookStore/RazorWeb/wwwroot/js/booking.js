@@ -1,4 +1,6 @@
-﻿function win(userId) {
+﻿const { Modal } = require("bootstrap");
+
+function win(userId) {
     console.log(userId);
     var checkboxes = document.getElementsByName('myCheckBox');
     var checkedValues = [];
@@ -114,7 +116,6 @@ async function booking(id) {
     document.getElementById("categoryId").value = data.category_Id
     document.getElementById("quantity").value = data.request_Quantity
     document.getElementById("price").value = data.request_Price
-   /* document.getElementById("name").innerHTML = data.request_Book_Name*/
 }
 
 
