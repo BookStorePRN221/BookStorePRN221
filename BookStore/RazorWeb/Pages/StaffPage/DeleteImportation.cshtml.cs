@@ -25,7 +25,7 @@ namespace RazorWeb.Pages.StaffPage
 			{
 				Console.WriteLine("delete not success");
 			}
-			return RedirectToPage("./StaffManageInventory");
+			return RedirectToPage("./StaffManageImportation");
 		}
 	}
 }
