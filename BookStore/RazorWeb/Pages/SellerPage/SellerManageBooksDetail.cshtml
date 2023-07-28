@@ -5,7 +5,8 @@
 
 <div class="container mx-auto">
     <div class="categoryText">
-        <a style="color: black" href="sellerBookAction">Category </a>
+        <a style="color: black" asp-page="/SellerPage/SellerManageBooks">Category </a> >
+        <a style="color: #17A2B8" asp-page="/SellerPage/SellerManageBooks" asp-route-SelectedCategory="@Model.Book.Category_Id"> @Model.Book.Category_Name</a>
     </div>
     <div class="mt-4 itemList row">
 
