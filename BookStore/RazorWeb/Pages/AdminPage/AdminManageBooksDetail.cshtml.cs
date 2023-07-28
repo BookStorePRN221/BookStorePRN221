@@ -59,7 +59,7 @@ namespace RazorWeb.Pages.AdminPage
         {
             Book_Id = Inventorydto.Book_Id;
             bookDetail = await _book.GetBookById(Book_Id);
-            if (Inventorydto.Inventory_Quantity > bookDetail.Book_Quantity)
+            if (Inventorydto.Inventory_Quantity > bookDetail.Book_Quantity || Inventorydto.Inventory_Quantity <= 0)
             {
                 
                 var list = await _category.GetAllCategory();
