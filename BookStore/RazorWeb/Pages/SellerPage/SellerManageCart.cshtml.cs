@@ -100,6 +100,7 @@ namespace RazorWeb.Pages.SellerPage
                     order_Id = orderId,
                     book_Id = key,
                     order_Detail_Quantity = value,
+                    order_Detail_Amount = CartItems[key].Book_Price * value,
                     order_Detail_Price = CartItems[key].Book_Price
                 };
                 
