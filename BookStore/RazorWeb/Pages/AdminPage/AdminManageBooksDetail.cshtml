@@ -28,7 +28,7 @@
 {
     <div id="success-notification" class="notification fail">
         <span class="close" onclick="closeNotification()">&times;</span>
-        <p style="color:white">Update book fail!</p>
+        <p style="color:white">Create Inventory fail !! </p>
     </div>
 }
 <!-- home content -->
@@ -52,13 +52,13 @@
         <div class="item col-lg-5">
             <strong class="name">@Model.bookDetail.Book_Title</strong>
             <p class="price">
-            <p>@Model.bookDetail.Book_Price</p>
-            <small style="text-decoration:underline">đ</small>
+            <p style="font-size:25px;">@Model.bookDetail.Book_Price <small style="text-decoration:underline">đ</small></p>
+           
             <p><br />
             <p class="quantity">Quantity: @Model.bookDetail.Book_Quantity</p>
             <p class="author">Author: <u>@Model.bookDetail.Book_Author</u></p>
             <p class="yearPublic">Year Of Public: @Model.bookDetail.Book_Year_Public</p>
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+            <button class="btn btn-danger" style="font-size:20px;" data-bs-toggle="modal" data-bs-target="#inventoryModal">
                 Inventory
             </button>
         </div>
@@ -86,38 +86,65 @@
                         <input type="hidden" asp-for="@Model.bookDetail.Book_Id" />
                         <input type="hidden" asp-for="@Model.bookDetail.Image_URL" value="@Model.bookDetail.Image_URL.First()" />
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title:</label>
-                            <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
+                            <div class="form-group">
+                                <label for="title" class="form-label">Title:</label>
+                                <input type="text" class="form-control" id="title" asp-for="@Model.bookDetail.Book_Title" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Title" class="text-danger"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="author" class="form-label">Author:</label>
-                            <input type="text" class="form-control" id="author" asp-for="@Model.bookDetail.Book_Author" style="font-size:15px;">
+                            <div class="form-group">
+                                <label for="author" class="form-label">Author:</label>
+                                <input type="text" class="form-control" id="author" asp-for="@Model.bookDetail.Book_Author" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Author" class="text-danger"></span>
+                            </div>
+                            
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Quantity:</label>
-                            <input type="number" class="form-control" id="quantity" asp-for="@Model.bookDetail.Book_Quantity" style="font-size:15px;">
+                            <div class="form-group">
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <input type="number" class="form-control" id="quantity" asp-for="@Model.bookDetail.Book_Quantity" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Quantity" class="text-danger"></span>
+                            </div>
+                            
                         </div>
                         <div class="mb-3">
-                            <label for="price" class="form-label">Price:</label>
-                            <input type="number" class="form-control" id="price" asp-for="@Model.bookDetail.Book_Price" style="font-size:15px;">
+                            <div class="form-group">
+                                <label for="price" class="form-label">Price:</label>
+                                <input type="number" class="form-control" id="price" asp-for="@Model.bookDetail.Book_Price" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Price" class="text-danger"></span>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="yearOfPublic" class="form-label">Year Of Public:</label>
-                            <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                            <div class="form-group">
+                                <label for="yearOfPublic" class="form-label">Year Of Public:</label>
+                                <input type="number" class="form-control" asp-for="@Model.bookDetail.Book_Year_Public" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Year_Public" class="text-danger"></span>
+                            </div>
+                            
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description:</label>
-                            <input type="text" class="form-control" asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
+                            <div class="form-group">
+                                <label class="form-label">Description:</label>
+                                <input type="text" class="form-control" asp-for="@Model.bookDetail.Book_Description" style="font-size:15px;">
+                                <span asp-validation-for="bookDetail.Book_Description" class="text-danger"></span>
+                            </div>
+                            
                         </div>
                         <div class="mb-3">
-                            <label for="category" class="form-label">Category:</label>
-                            <select class="form-select" id="category" asp-for="@Model.bookDetail.Category_Id">
-                                <option value="@Model.bookDetail.Category_Id">@Model.bookDetail.Category_Name</option>
-                                @foreach (var i in Model.listCate)
-                                {
-                                    <option value="@i.Category_Id">@i.Category_Name</option>
-                                }
-                            </select>
+                            <div class="form-group">
+                                <label for="category" class="form-label">Category:</label>
+                                <select class="form-select" id="category" asp-for="@Model.bookDetail.Category_Id">
+                                    <option value="@Model.bookDetail.Category_Id">@Model.bookDetail.Category_Name</option>
+                                    @foreach (var i in Model.listCate)
+                                    {
+                                        <option value="@i.Category_Id">@i.Category_Name</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="bookDetail.Category_Id" class="text-danger"></span>
+                            </div>
+                            
+                            
                         </div>
                     </div>
                     <div class="modal-footer">

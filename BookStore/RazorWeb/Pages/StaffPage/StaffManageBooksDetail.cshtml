@@ -26,7 +26,7 @@
 {
     <div id="success-notification" class="notification fail">
         <span class="close" onclick="closeNotification()">&times;</span>
-        <p style="color:white">Update book fail!</p>
+        <p style="color:white">Create Inventory fail!</p>
     </div>
 }
 <!-- home content -->
@@ -34,8 +34,8 @@
 
     <!-- home-content -->
     <div class="categoryText">
-        <a style="color: black" href="adminBookAction?action=bookPage1">Category </a> >
-        <a style="color: #17A2B8" href="adminBookAction?action=${nameCategory}"> @Model.bookDetail.Category_Name</a>
+        <a style="color: black" asp-page="/StaffPage/StaffManageBooks">Category </a> >
+        <a style="color: #17A2B8" asp-page="/StaffPage/StaffManageCategoryBook" asp-route-idc="@Model.bookDetail.Category_Id"> @Model.bookDetail.Category_Name</a>
     </div>
     <button class="Check"><i class="fa-regular fa-circle-check"></i></button>
     @*<%--  Item Book Need Show--%>*@
@@ -46,13 +46,13 @@
         <div class="item col-lg-5">
             <strong class="name">@Model.bookDetail.Book_Title</strong>
             <p class="price">
-            <p>@Model.bookDetail.Book_Price</p>
-            <small style="text-decoration:underline">đ</small>
+            <p style="font-size:25px;">@Model.bookDetail.Book_Price<small style="text-decoration:underline">đ</small></p>
+            
             <p><br />
             <p class="quantity">Quantity: @Model.bookDetail.Book_Quantity</p>
             <p class="author">Author: <u>@Model.bookDetail.Book_Author</u></p>
             <p class="yearPublic">Year Of Public: @Model.bookDetail.Book_Year_Public</p>
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+            <button class="btn btn-danger" style="font-size:20px;" data-bs-toggle="modal" data-bs-target="#inventoryModal">
                 Inventory
             </button>
         </div>
