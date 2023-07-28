@@ -43,13 +43,8 @@
 					<div class="itemOrder">
 
 						<div><p id="date">Date: @Importation.Import_Date_Done.ToString("dd-MM-yyyy")</p></div>
-						<div><p id="fullname" style="margin-left:580px;">Creator: @Importation.User_Name</p></div>
-						<!-- Start button Delete Cart-->
-									<a class="btnDelete" asp-page="./DeleteImportation" asp-route-Importation_Id="@Importation.Import_Id">
-								<i style="margin-left: 300px;" class="fa-solid fa-trash"></i>
-							</a>
-						<!-- End button Delte Cart-->
-					</div>
+						<div><p id="fullname" style="margin-left:450px;">Creator: @Importation.User_Name</p></div>
+										</div>
 					<!--End Show Item Importation-->
 
 					<!--Start Show Item Importation Detail-->
@@ -88,7 +83,7 @@
 						-->
 						
 						<p>Total( @Importation.Import_Quantity Book): </p>
-							<p id="priceImportation">@Importation.Import_Amount</p>
+							<p id="priceImportation">@Importation.Import_Amount<small style="text-decoration:underline">đ</small></p>
 					</div>
 				</div>
 				}
