@@ -41,8 +41,6 @@ namespace RazorWeb.Pages.AdminPage
         }
         public async Task<IActionResult> OnPost()
         {
-            if (ModelState.IsValid)
-            {
                 var book = _map.Map<Book>(bookDetail);
                 var _update = await _book.UpdateBook(book);
                 if (_update)
@@ -52,8 +50,6 @@ namespace RazorWeb.Pages.AdminPage
                 }
                 m_Message = 0;
                 return Page();
-            }
-            return Page();
         }
         public async Task<IActionResult> OnPostAddInventory()
         {
