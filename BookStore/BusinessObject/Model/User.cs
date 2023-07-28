@@ -10,7 +10,7 @@ namespace BookStoreAPI.Core.Model
     public class User
     {
         public Guid User_Id { get; set; }
-        [Required]
+        
         public int Role_Id { get; set; }
         [Required]
         [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]

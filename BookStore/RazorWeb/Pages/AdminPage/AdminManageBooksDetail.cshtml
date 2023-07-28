@@ -36,8 +36,8 @@
 
     <!-- home-content -->
     <div class="categoryText">
-        <a style="color: black" href="adminBookAction?action=bookPage1">Category </a> >
-        <a style="color: #17A2B8" href="adminBookAction?action=${nameCategory}"> @Model.bookDetail.Category_Name</a>
+        <a style="color: black" asp-page="/AdminPage/AdminManageBook">Category </a> >
+        <a style="color: #17A2B8" asp-page="/AdminPage/AdminManageCategoryBook" asp-route-idc="@Model.bookDetail.Category_Id"> @Model.bookDetail.Category_Name</a>
     </div>
     <button class="Check"><i class="fa-regular fa-circle-check"></i></button>
     @*<%--  Button Update--%>*@
