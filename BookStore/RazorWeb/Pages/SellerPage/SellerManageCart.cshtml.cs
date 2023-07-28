@@ -40,8 +40,7 @@ namespace RazorWeb.Pages.SellerPage
             }
             
             var user = JsonSerializer.Deserialize<User>(loginJson);
-
-
+            
             int order_Quantity = Cart?.Count ?? 0;
             float order_Amount = GetTotalPrice();
 
@@ -80,6 +79,20 @@ namespace RazorWeb.Pages.SellerPage
             }
 
             return Page();
+        }
+
+        public void OnPostCartUpdate(Guid bookId, int quantityUpdate)
+        {
+            GetCart();
+            Cart[bookId] = quantityUpdate;
+            HttpContext.Session.Set("Cart", JsonSerializer.SerializeToUtf8Bytes(Cart));
+        }
+
+        public void OnPostCartDelete(Guid bookId)
+        {
+            GetCart();
+            Cart.Remove(bookId);
+            HttpContext.Session.Set("Cart", JsonSerializer.SerializeToUtf8Bytes(Cart));
         }
 
         private async Task<bool> PostOrderDetail()
@@ -134,7 +147,7 @@ namespace RazorWeb.Pages.SellerPage
             return orderId;
         }
 
-        private float GetTotalPrice()
+        public float GetTotalPrice()
         {
             float sum = 0;
 

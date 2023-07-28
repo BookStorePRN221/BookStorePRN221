@@ -11,8 +11,6 @@
 
     @* <%-- Write Body Code--%> *@
 
-
-
     @* <%-- Button Buy --%> *@
     @if (Model.Cart != null && Model.Cart.Count > 0)
     {
@@ -41,8 +39,8 @@
                     </div>
 
                     @* Button Update and Delete *@
-                    <div class="d-flex flex-column mr-4 gap-2">
-                        <button class="btn-outline-primary" style="font-size: 20px;border: none" id="btnUpdate" data-toggle="modal"
+                    <div class="d-flex flex-column mr-4 ">
+                        <button class="btn-outline-primary mb-4" style="font-size: 20px;border: none" id="btnUpdate" data-toggle="modal"
                                 data-target="#CartModalUpdate_@key">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
@@ -53,58 +51,24 @@
                     </div>
                 </div>
 
-                @* <%--Delete Book Cart--%> *@
-                <div class="modal fade" id="CartModalDelete_@key" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <header class="head-form mb-0">
-                                <h2>Are You Sure To Delete The Book ?</h2>
-                            </header>
-
-                            <div class="modal-body">
-                                @* <%--Form --%> *@
-                                <form action="sellerCartAction?action=deleteCart" method="POST">
-                                    <input type="hidden" name="count"
-                                           value="1"/>
-                                    <input type="hidden" name="nameBook"
-                                           value="${x.bookName}"/>
-                                    <input type="hidden" name="bookId" value="${x.bookId}"/>
-                                    @* <%-- Are You Sure --%> *@
-                                </form>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-danger add">Delete</button>
-
-                                <button class="btn btn-warning xclose" data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @* <%--End Delete Book Cart--%> *@
-
                 @* <%--Update Cart--%> *@
                 <div class="modal fade" id="CartModalUpdate_@key" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <form asp-page-handler="CartUpdate" method="POST">
+                            <div class="modal-content">
 
-                            <header class="head-form">
-                                <h2>Update Quantity Book</h2>
-                            </header>
+                                <header class="head-form">
+                                    <h2>Update Quantity Book</h2>
+                                </header>
 
-                            <div class="modal-body">
-                                @* <%--Form --%> *@
-                                <form action="sellerCartAction?action=modifyCart" method="POST">
+                                <div class="modal-body">
+                                    @* <%--Form --%> *@
                                     @* <%-- ID BOOK Insert To Inventory SQL--%> *@
                                     <input type="hidden" name="update"
                                            value="1"/>
                                     <input type="hidden" name="nameBook"
-                                           value="${x.bookName}"/>
-                                    <input type="hidden" name="bookId" value="${x.bookId}"/>
+                                           value="@Model.CartItems[key].Book_Title"/>
+                                    <input type="hidden" name="bookId" value="@key"/>
                                     @* <%-- DO Quantity Add to Cart --%> *@
                                     <div class="form-group">
                                         <div class="input-group">
@@ -114,21 +78,57 @@
                                                 </span>
                                             </div>
                                             <input type="number" name="quantityUpdate" class="form-control input-sm"
-                                                   style="font-size: 15px" placeholder="Quantity" required min="1" max="${x.quantity_Book}">
+                                                   style="font-size: 15px" placeholder="Quantity" value="@value" min="1" max="100">
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <!-- Modal footer -->
-                            <div class="modal-footer" id="modal-footer">
-                                <button type="submit" class="btn btn-info add">Update</button>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer" id="modal-footer">
+                                    <button type="submit" class="btn btn-info add ">Update</button>
 
-                                <button class="btn btn-warning xclose" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-warning xclose" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 @* <%--End Update Cart--%> *@
+
+                @* <%--Delete Book Cart--%> *@
+                <div class="modal fade" id="CartModalDelete_@key" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                        <form asp-page-handler="CartDelete" method="POST">
+                            <div class="modal-content p-3">
+
+                                <header class="head-form mb-0">
+                                    <h2>Are You Sure To Delete The Book ?</h2>
+                                </header>
+
+                                <div class="modal-body">
+                                    @* <%--Form --%> *@
+                                        <input type="hidden" name="count"
+                                               value="1"/>
+                                        <input type="hidden" name="nameBook"
+                                               value="${x.bookName}"/>
+                                        <input type="hidden" name="bookId" value="@key"/>
+                                        @* <%-- Are You Sure --%> *@
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger add">Delete</button>
+
+                                    <button class="btn btn-warning " data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @* <%--End Delete Book Cart--%> *@
+
+
             </div>
             <hr/>
         }
@@ -138,7 +138,7 @@
             <div class="totalCart">
                 <p id="priceCart">
                     <h1>
-                        Total: <fmt:formatNumber type="number" value="${total}"/>
+                        Total: <span>@Model.GetTotalPrice()</span>
                         <small style="text-decoration:underline">đ</small>
                     </h1>
                 </p>
