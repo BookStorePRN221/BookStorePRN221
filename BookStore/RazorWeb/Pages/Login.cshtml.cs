@@ -17,7 +17,8 @@ namespace RazorWeb.Pages
         }
         [BindProperty]
         public LoginDTO login { get; set; }
-       
+        [BindProperty]
+        public int m_Message { get; set; } = 0;
         public async Task<IActionResult> OnPost()
         {
             var check = await _user.CheckLogin(login);
@@ -37,11 +38,24 @@ namespace RazorWeb.Pages
             }
             else
             {
-                ViewData["Message"] = "Wrong Account Or Password, Please Login Again!";
-                return Page();
+                m_Message = 3;
             }
             return Page();
         }
+        public async Task<IActionResult> OnPostEmail(string email)
+        {
+            var result = await _user.RecoverPassword(email);
+            if (result)
+            {
+                m_Message = 1;
+            }
+            else
+            {
+                m_Message = 2;
+            }
+            return Page();
+        }
+
 
     }
 }
