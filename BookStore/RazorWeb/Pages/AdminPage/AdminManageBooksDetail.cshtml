@@ -52,13 +52,13 @@
         <div class="item col-lg-5">
             <strong class="name">@Model.bookDetail.Book_Title</strong>
             <p class="price">
-            <p>@Model.bookDetail.Book_Price</p>
-            <small style="text-decoration:underline">đ</small>
+            <p style="font-size:25px;">@Model.bookDetail.Book_Price <small style="text-decoration:underline">đ</small></p>
+           
             <p><br />
             <p class="quantity">Quantity: @Model.bookDetail.Book_Quantity</p>
             <p class="author">Author: <u>@Model.bookDetail.Book_Author</u></p>
             <p class="yearPublic">Year Of Public: @Model.bookDetail.Book_Year_Public</p>
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+            <button class="btn btn-danger" style="font-size:20px;" data-bs-toggle="modal" data-bs-target="#inventoryModal">
                 Inventory
             </button>
         </div>
