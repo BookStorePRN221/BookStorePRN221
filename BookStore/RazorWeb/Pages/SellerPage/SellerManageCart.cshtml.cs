@@ -97,6 +97,7 @@ namespace RazorWeb.Pages.SellerPage
 
         private async Task<bool> PostOrderDetail()
         {
+            var status = false;
             var apiClient = _clientFactory.CreateClient("Api");
             
             string orderId = await GetOrderIdJustCreated();
@@ -108,6 +109,7 @@ namespace RazorWeb.Pages.SellerPage
             
             foreach (var (key, value) in Cart)
             {
+             
                 var data = new
                 {
                     order_Id = orderId,
@@ -123,11 +125,11 @@ namespace RazorWeb.Pages.SellerPage
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadAsStringAsync();
-                    return true;
+                    status = true;
                 }
             }
 
-            return false;
+            return status;
         }
 
         private async Task<string> GetOrderIdJustCreated()
