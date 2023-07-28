@@ -43,48 +43,11 @@
             color:red;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
+      
     </style>
 </head>
 
 <body>
-    <!-- Các phần tử khác trong body -->
-    <div class="toast" id="myToast">This is a simple toast message.</div>
-
-    <script>
-        function showToast(message) {
-            var toast = document.getElementById('myToast');
-            toast.innerText = message;
-            toast.style.opacity = 1;
-
-            setTimeout(function () {
-                toast.style.opacity = 0;
-            }, 3000);
-        }
-
-        // Hiển thị toast khi trang được load
-        window.onload = function () {
-            var message = @Model.m_Message;
-            if (message === 1) {
-                showToast("Recover Password Successfully!");
-            } else if (message === 2) {
-                showToast("Email Not Register In The System!");
-            } else if (message === 3) {
-                showToast("Wrong Account Or Password, Please Login Again!");
-            }
-        };
-    </script>
 
     <section class='login centered-element' id='login'>
         <div class='head'>
@@ -126,15 +89,7 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
-        window.onload = function () {
-            var message = @Model.m_Message;
-
-            if (message === 1 || message === 2 || message === 3) {
-                var toastElement = document.getElementById('success-notification');
-                var toast = new bootstrap.Toast(toastElement);
-                toast.show();
-            }
-        };
+       
       
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
