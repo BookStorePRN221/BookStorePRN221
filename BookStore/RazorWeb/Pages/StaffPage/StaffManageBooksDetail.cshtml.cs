@@ -72,7 +72,7 @@ namespace RazorWeb.Pages.StaffPage
             if (IsCreate)
             {
                 m_Message = 2;
-                return RedirectToPage("/AdminPage/AdminManageInventory");
+                return RedirectToPage("/StaffPage/StaffManageInventory");
             }
             m_Message = 3;
             return Page();
