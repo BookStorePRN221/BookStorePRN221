@@ -20,28 +20,23 @@ namespace RazorWeb.Pages.AdminPage
         }
         public async Task<IActionResult> OnPost()
         {
-            var user = User;
-            if (ModelState.IsValid)
-            {
+                var user = User;
                 var userList = await _user.GetAllUser();
                 var checkAccount = (from u in userList where u.User_Account == User.User_Account select u).FirstOrDefault();
                 if (checkAccount == null)
                 {
                     user.Is_User_Status = true;
                     var result = await _user.CreateUserFE(User);
-                    if (result)
+                    if (result) { 
                         ViewData["Message"] = "Create Account Success!";
-                    else
-                    {
-                        ViewData["Message"] = "Create Account Fail!";
-                        IsAccount = false;
+                    return RedirectToPage("/AdminPage/AdminManageEmployees");
                     }
-                    return Page();
+
+                ViewData["Message"] = "Create Account Fail!";
+                        IsAccount = false;
                 }
                 IsAccount = false;
                 return Page();
-            }
-            return Page();
         }
     }
 }

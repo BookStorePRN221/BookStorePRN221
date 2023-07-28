@@ -23,11 +23,19 @@ public class AdminManagerImportation : PageModel
 	public List<DisplayImportationDTO> Importations { get; set; }
 	[BindProperty(SupportsGet = true)]
 	public List<DiplayImportationDetailDTO> ImportationDetails { get; set; }
-
+	[BindProperty]
+	public bool isCheck { get; set; } = false;
 	public void OnGet()
 	{
 		Importations = _importationService.GetDiplayImport().Result.ToList();
 		ImportationDetails = _ImportationDetailService.GetDiplayImportDetail().Result.ToList();
 	}
+	public async Task<IActionResult> OnPost()
+	{
+		// Gọi service để xuất file Excel
+		var excelData= await _importationService.ExporteExcel(7);
 
+		return excelData;
+	}
 }
+
