@@ -1,4 +1,25 @@
-﻿
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: -webkit-linear-gradient(to right, #267871, #136a8a);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+
 /* ========================================================== */
 /* HEADER--LOGO */
 .header {
