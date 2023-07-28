@@ -6,17 +6,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="~/css/loginFormStyle.css">
+    @* Modal*@
+    
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Màu mờ là màu đen */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width:450px;
+            height:150px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size:30px;
+            color:red;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Các phần tử khác trong body -->
+    <div class="toast" id="myToast">This is a simple toast message.</div>
 
-    @*<a asp-page="/AdminPage/AdminManageBook" class="nav-link">AdminBook</a>
-    <a asp-page="/AdminPage/AdminManageEmployees" class="nav-link">ManageEmployee</a>
-    <a asp-page="/AdminPage/AdminCreateNewEmployee" class="nav-link">CreateEmployee</a>
-    <a asp-page="/staffpage/staffmanagerequest" style="color:red" class="nav-link">staffmanagarequest</a>*@
+    <script>
+        function showToast(message) {
+            var toast = document.getElementById('myToast');
+            toast.innerText = message;
+            toast.style.opacity = 1;
+
+            setTimeout(function () {
+                toast.style.opacity = 0;
+            }, 3000);
+        }
+
+        // Hiển thị toast khi trang được load
+        window.onload = function () {
+            var message = @Model.m_Message;
+            if (message === 1) {
+                showToast("Recover Password Successfully!");
+            } else if (message === 2) {
+                showToast("Email Not Register In The System!");
+            } else if (message === 3) {
+                showToast("Wrong Account Or Password, Please Login Again!");
+            }
+        };
+    </script>
+
     <section class='login centered-element' id='login'>
         <div class='head'>
             <h1 class='company'>Phuong Nam Book Store</h1>
@@ -29,15 +98,49 @@
                 <input type="submit" class='btn-login' value="Login" />
                 <input type="reset" class="btn-cancel" value="Cancel" />
             </form>
+            <p>Did you forget your password? <button type="button" class="btn btn-outline-info" onclick="openModal()">Recover Password</button></p>
         </div>
     </section>
-    
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 style="font-size:25px;font-weight:100">Recover Password By Your Email</h2>
+            <form method="post" asp-page-handler="Email">
+                <input type="text" placeholder="Enter your email" class="form-control" name="email">
+            <button type="submit" style="width:150px;margin-top:5px;margin: 10px auto; display: block;" class="btn btn-primary">Send Email</button>
+            </form>
+        </div>
+    </div>
+   
     <!-- partial -->
     <script src="~/js/LoginForm.js"></script>
+    <!-- JavaScript cho modal -->
+    <script>
+        function openModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+        window.onload = function () {
+            var message = @Model.m_Message;
+
+            if (message === 1 || message === 2 || message === 3) {
+                var toastElement = document.getElementById('success-notification');
+                var toast = new bootstrap.Toast(toastElement);
+                toast.show();
+            }
+        };
+      
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.toast').toast('show');

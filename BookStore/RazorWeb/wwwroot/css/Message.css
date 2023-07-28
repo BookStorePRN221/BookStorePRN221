@@ -1,24 +1,46 @@
-﻿
+﻿/* CSS cho toast */
 .notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px;
-    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336; /* Màu nền */
     color: white;
-    z-index: 9999;
-    transition: opacity 0.5s;
-    width:300px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999; /* Đảm bảo toast hiển thị trên các phần tử khác */
 }
 
-.success {
-    background-color: #4CAF50;
+    /* Hiệu ứng cho toast xuất hiện */
+    .notification.fade-in {
+        animation: fade-in 3s;
+        opacity: 1;
+    }
+
+    /* Hiệu ứng cho toast biến mất */
+    .notification.fade-out {
+        animation: fade-out 3s;
+        opacity: 0;
+    }
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
-.fail {
-    background-color: brown;
-}
-.close {
-    float: right;
-    font-weight: bold;
-    cursor: pointer;
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
