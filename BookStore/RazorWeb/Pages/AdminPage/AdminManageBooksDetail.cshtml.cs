@@ -41,14 +41,18 @@ namespace RazorWeb.Pages.AdminPage
         }
         public async Task<IActionResult> OnPost()
         {
-            var book= _map.Map<Book>(bookDetail);
-            var _update = await _book.UpdateBook(book);
-            if (_update)
+            if (ModelState.IsValid)
             {
-                m_Message = 1;
+                var book = _map.Map<Book>(bookDetail);
+                var _update = await _book.UpdateBook(book);
+                if (_update)
+                {
+                    m_Message = 1;
+                    return Page();
+                }
+                m_Message = 0;
                 return Page();
             }
-            m_Message = 0;
             return Page();
         }
         public async Task<IActionResult> OnPostAddInventory()

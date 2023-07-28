@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.Service.IService;
 using BookStoreAPI.Core.Model;
 using BookStoreAPI.Core.DiplayDTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorWeb.Pages.SellerPage
 {
 	public class SellerManageOrderModel : PageModel
 	{
-
-		private readonly IOrderService _orderService;
+        private readonly IHttpContextAccessor _context;
+        private readonly IOrderService _orderService;
 		private readonly IOrderDetailService _orderDetailService;
-		private readonly ICategoryService _categoryService;
 
 		public SellerManageOrderModel(IOrderService orderService, IOrderDetailService orderDetailService)
 		{
@@ -25,7 +25,7 @@ namespace RazorWeb.Pages.SellerPage
 
 		public void OnGet()
 		{
-			orders = _orderService.GetAllOrder().Result.ToList();
+            orders = _orderService.GetAllOrder().Result.ToList();
 			orderDetails = _orderDetailService.GetDisplayOrderDetail().Result.ToList();
 		}
 
