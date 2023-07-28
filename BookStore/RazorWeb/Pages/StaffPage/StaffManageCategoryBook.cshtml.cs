@@ -13,12 +13,15 @@ namespace RazorWeb.Pages.StaffPage
         IBookService _book;
         ICategoryService _category;
         IMapper _mapper;
-        public StaffManageCategoryBookModel(IBookService book, ICategoryService category, IMapper mapper)
+        IImageService _imageService;
+        public StaffManageCategoryBookModel(IBookService book, ICategoryService category, IMapper mapper, IImageService imageService)
         {
             _book = book;
             _category = category;
             _mapper = mapper;
-        }
+            _imageService = imageService;
+
+		}
         [BindProperty]
         public string search { get; set; }
         public string nameCategory { get; set; }
@@ -39,7 +42,11 @@ namespace RazorWeb.Pages.StaffPage
             var bookList = _mapper.Map<List<Book>>(listBook.Result.ToList());
             var listBookPage = await _book.TakePage(pageNumber, bookList);
             books = _mapper.Map<List<BookDTO>>(listBookPage).ToList();
-            var name = _category.GetCategoryById(Id).Result.Category_Name;
+			foreach (var book in books)
+			{
+				book.Image_URL = (await _imageService.GetAllImage(book.Book_Id)).ToList().First().Image_URL;
+			}
+			var name = _category.GetCategoryById(Id).Result.Category_Name;
             nameCategory = name;
             float i = ((float)listBook.Result.ToList().Count()) / 4;
             var checkI = i - (float)Math.Round(i);

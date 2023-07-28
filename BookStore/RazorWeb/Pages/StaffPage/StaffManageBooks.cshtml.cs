@@ -10,34 +10,48 @@ namespace RazorWeb.Pages.StaffPage
     public class StaffManageBooksModel : PageModel
     {
         IBookService _book;
-        IMapper _map;
         ICategoryService _category;
-        public StaffManageBooksModel(IBookService book, ICategoryService category,IMapper mapper)
+        IImageService _image;
+        IMapper _map;
+        public StaffManageBooksModel(IBookService book, ICategoryService category, IMapper map, IImageService image)
         {
             _book = book;
             _category = category;
-            _map = mapper;
+            _map = map;
+            _image = image;
         }
         [BindProperty]
         public List<BookDTO> books { get; set; }
         public List<Category> categories { get; set; }
         [BindProperty(SupportsGet = true)]
         public string search { get; set; }
-        public int number { get; set; }
         public string choice { get; set; }
-        public async Task OnGet()
+        public int CurrentPage { get; set; } = 1;
+        public int TotalPages { get; set; } = 1;
+        public async Task OnGet(int pageNumber = 1)
         {
+            if (pageNumber < 1)
+                pageNumber = 1;
+            CurrentPage = pageNumber;
             var listBook = await _book.GetBook();
-            var listBookPage = await _book.TakePage(number, listBook);
+            var listBookPage = await _book.TakePage(pageNumber, listBook);
             books = _map.Map<List<BookDTO>>(listBookPage).ToList();
+            foreach (var book in books)
+            {
+                book.Image_URL = (await _image.GetAllImage(book.Book_Id)).ToList().First().Image_URL;
+            }
             var listCategory = await _category.GetAllCategory();
             categories = listCategory.ToList();
-        }
-        public async Task OnPost()
-        {
-            var searchBook = await _book.GetBookByName(search);
-            var listBookPage = await _book.TakePage(number, searchBook);
-            books = _map.Map<List<BookDTO>>(listBookPage).ToList();
+            float i = ((float)listBook.ToList().Count()) / 4;
+            var checkI = i - (float)Math.Round(i);
+            if (checkI > 0)
+            {
+                TotalPages = (int)Math.Round(i + 0.5);
+            }
+            else
+            {
+                TotalPages = (int)Math.Round(i);
+            }
         }
         public async Task<IActionResult> OnPostCategory()
         {

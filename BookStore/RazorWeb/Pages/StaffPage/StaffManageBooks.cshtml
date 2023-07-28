@@ -37,22 +37,32 @@
             </div>
         }
     </div>
-    <div class="page row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 d-flex justify-content-center">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage1">1</a></li>
-                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage2">2</a></li>
-                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage3">3</a></li>
-                <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage4">4</a></li>
-                <c:if test="${numLastBook>16}">
-                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage5">5</a></li>
-                </c:if>
-                <c:if test="${numLastBook>20}">
-                    <li class="page-item"><a class="page-link" href="adminBookAction?action=bookPage6">6</a></li>
-                </c:if>
-            </ul>
+    <br />
+    @if (Model.TotalPages > 1)
+    {
+        <div class="d-flex w-100 justify-content-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" href="?pageNumber=1">First</a>
+                    </li>
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" href="?pageNumber=@(Model.CurrentPage - 1)">Previous</a>
+                    </li>
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                            <a class="page-link" href="?pageNumber=@i">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="?pageNumber=@(Model.CurrentPage + 1)">Next</a>
+                    </li>
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="?pageNumber=@Model.TotalPages">Last</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <div class="col-lg-4"></div>
-    </div>
+    }
 </section>
