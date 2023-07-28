@@ -53,7 +53,7 @@ namespace RazorWeb.Pages
             {
                 m_Message = 2;
             }
-            return Page();
+            return RedirectToPage("/Login");
         }
 
 

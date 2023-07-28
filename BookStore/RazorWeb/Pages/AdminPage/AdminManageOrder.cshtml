@@ -54,11 +54,7 @@
 						<p id="id"> Order: @Order.Order_Code</p>
 						<div><p style="margin-left:400px;" id="date">Date: @Order.Order_Date.ToString("dd-MM-yyyy")</p></div>
 							<div><p style="margin-left:500px;" id="fullname">Creator: @Order.Order_Customer_Name</p></div>
-						<!-- Start button Delete Cart-->
-									<a class="btnDelete" asp-page="./DeleteOrder" asp-route-Order_Id="@Order.Order_Id">
-								<i style="margin-left:300px;" class="fa-solid fa-trash"></i>
-							</a>
-						<!-- End button Delte Cart-->
+					
 					</div>
 					<!--End Show Item Order-->
 
@@ -75,10 +71,9 @@
 														src="@DisplayOrderDetailDTO.Image_URL"/>
 											</div>
 											<div>
+											<p style="color:brown;margin-left:15px; font-weight:500; font-size:30px;">
 												@DisplayOrderDetailDTO.Book_Title
-												<a href="sellerBookAction?action=bookDetail&amp">
-											
-												</a><br>
+												</p>
 												<div class="price">
 													<p id="quantity">x @DisplayOrderDetailDTO.Order_Detail_Quantity</p>
 													<p id="total">
