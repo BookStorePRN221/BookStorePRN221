@@ -19,12 +19,12 @@
     },
     "Watch": {
       "commandName": "Executable",
-      "executablePath": "dotnet.exe",
+      "executablePath": "dotnet",
       "workingDirectory": "$(ProjectDir)",
       "commandLineArgs": "watch run",
       "launchUrl": "Login",
-      "launchBrowser": false
-      
+      "launchBrowser": true,
+      "dotnetRunMessages": "true"
     }
   },
   "iisSettings": {

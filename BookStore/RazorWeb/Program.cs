@@ -8,6 +8,12 @@ using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient("Api", client =>
+{
+    client.BaseAddress = new Uri("https://book0209.azurewebsites.net/");
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages(option =>
 {
