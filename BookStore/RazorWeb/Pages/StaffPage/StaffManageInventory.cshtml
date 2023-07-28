@@ -8,13 +8,7 @@
         <div>
             <h2 id="nameTable">LIST OF BOOK INVENTORY</h2>
         </div>
-        <div class="history" style="margin-left:100px;">
-            <button id="btnHistory">
-                <a class="viewDetail btn btn-info" asp-page="./StaffManageInventoryHistory">
-                    <i class="fa-solid fa-recycle"></i>
-                </a>
-            </button>
-        </div>
+        
     </div>
     <table class="table" style="font-size:15px;">
         <thead>
@@ -26,7 +20,6 @@
                 <th>Reason</th>
                 <th>Inventory Date</th>
                 <th>Employee Implement</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -58,11 +51,7 @@
                     <td>
                         <p>@b.User_Name</p>
                     </td>
-                    <td>
-                        <a class="viewDetail btn btn-info" asp-page="./DeleteInventory" asp-route-Inventory_Id="@b.Inventory_Id">
-                            <i class='bx bx-x-circle'></i>
-                        </a>
-                    </td>
+                    
                 </tr>
             }
         </tbody>
