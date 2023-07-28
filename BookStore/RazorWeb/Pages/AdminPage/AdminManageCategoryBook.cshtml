@@ -10,18 +10,18 @@
     <div class="categoryText">
         <a style="color: black" asp-page="/AdminPage/AdminManageBook" class="nav-link">Category > @Model.nameCategory</a>
     </div><br />
-    <div class="itemList row">
+    <div class="itemList row" >
         @*Display book*@
         @foreach (BookDTO b in Model.books)
         {
-            <div class="item col-lg-4">
+            <div class="item col-lg-4" style="height:435px;">
                 <form style="height: 325px;width: 450px">
-                    <div class="border">
+                    <div class="border" style="height:385px;">
                         <img src="@b.Image_URL" />
                         <p class="name">@b.Book_Title </p>
                         <p class="price">
-                        <p>@b.Book_Price</p>
-                        <small style="text-decoration:underline">đ</small>
+                        <p style="font-size:15px;">@b.Book_Price<small style="text-decoration:underline">đ</small></p>
+                        
                             @*call book detail page*@
                         <a class="viewDetail btn btn-info" asp-page="AdminManageBooksDetail" asp-route-Book_Id="@b.Book_Id">View Detail</a>
                         <p>
