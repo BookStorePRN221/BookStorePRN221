@@ -53,16 +53,22 @@ namespace RazorWeb.Pages.StaffPage
         }
         public async Task<IActionResult> OnPostAddInventory()
         {
+            Book_Id = Inventorydto.Book_Id;
+            bookDetail = await _book.GetBookById(Book_Id);
+            if (Inventorydto.Inventory_Quantity > bookDetail.Book_Quantity)
+            {
+
+                var list = await _category.GetAllCategory();
+                listCate = list.ToList();
+                m_Message = 3;
+                return Page();
+            }
             var data = _context.HttpContext.Session.GetString("UserLogin");
             var user = JsonConvert.DeserializeObject<User>(data);
             if (user == null) { }
             var inventory = _map.Map<Inventory>(Inventorydto);
             inventory.User_Id = user.User_Id;
             var IsCreate = await _inventory.CreateInventory(inventory);
-            Book_Id = inventory.Book_Id;
-            bookDetail = await _book.GetBookById(Book_Id);
-            var list = await _category.GetAllCategory();
-            listCate = list.ToList();
             if (IsCreate)
             {
                 m_Message = 2;
