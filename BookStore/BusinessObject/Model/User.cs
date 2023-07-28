@@ -13,22 +13,23 @@ namespace BookStoreAPI.Core.Model
         
         public int Role_Id { get; set; }
         [Required]
-        [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
         public string User_Account { get; set; }
         [Required]
-        [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 1)]
         public string User_Password { get; set; }
         [Required]
-        [RegularExpression(@"^[A-Z].*$", ErrorMessage = "Tên phải bắt đầu bằng chữ hoa.")]
+        [RegularExpression(@"^[A-Z].*$", ErrorMessage = "Name User Must Begin Capital Letter.")]
+        [StringLength(20, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
         public string User_Name { get; set; }
         [Required]
-        [EmailAddress]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Format Email: abc@gmail.com")]
         public string User_Email { get; set; }
         [Required]
         [StringLength(30, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
         public string User_Address { get; set; }
         [Required]
-        [Phone]
+        [StringLength(13, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 10)]
         public string User_Phone { get; set; }
         [Required]
         public string Is_User_Gender { get; set; }

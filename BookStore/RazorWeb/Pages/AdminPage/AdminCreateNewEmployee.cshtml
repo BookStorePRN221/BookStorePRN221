@@ -26,97 +26,53 @@
         <p class='msg'>Welcome to Create Account</p>
         <div class='form' >
             <form  method="POST">
-                <!--
-                    <input type="text" placeholder='Account' class='text' asp-for="Model.User.User_Account" required minlength="4" maxlength="25"><br>
-                    if (!Model.IsAccount)
-                    {
-                            <span class='text' style="color: red">Model.User.User_Account did exists</span>
-                    }
-                    <input type="password" placeholder='Password' asp-for="Model.User.User_Password" class='password' required minlength="5" maxlength="20"><br>
-
-                    <input type="text" placeholder='Name' asp-for="Model.User.User_Name" class='text' required minlength="3" maxlength="30"><br>
-                    <input type="text" placeholder='Phone' asp-for="Model.User.User_Phone" class='text' id='phone'><br>
-
-                    <input type="text" placeholder='Address' asp-for="Model.User.User_Address" class='text' id='address' minlength="4" maxlength="30" required><br>
-                    <input type="text" placeholder='Email' asp-for="Model.User.User_Email" class='text' id='address' minlength="4" maxlength="30" required><br>
-                    <table border="0">
-                        <tbody class="text">
-                            <tr>
-                                <td>Gender</td>
-                                <td><input type="radio" asp-for="Model.User.Is_User_Gender" class="radio" value="Male" checked="checked"> Male</td>
-                                <td><input type="radio" asp-for="Model.User.Is_User_Gender" class="radio" value="Female"> Female</td>
-                                <td><input type="radio" asp-for="Model.User.Is_User_Gender" class="radio" value="Other"> Other</td>
-                            </tr>
-                            <tr>
-                                <td>Role</td>
-                                <td><input type="radio" asp-for="Model.User.Role_Id" class="radio" value="3" checked="checked"> Seller<br /></td>
-                                <td><input type="radio" asp-for="Model.User.Role_Id" class="radio" value="2"> Staff<br /></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="wrapper-button">
-                        <a href="./adminShowListEmployees" class='btn-login'>Back Manage Employees</a>
-                        <button type="submit" class='btn-signup' > Create Account</button>
-                    </div>
-                -->
                 <div class="form-group">
                     <input type="text" placeholder='Account' class='text' asp-for="User.User_Account><br>
                     @if (!Model.IsAccount)
                     {
-                        <span class='text' style="color: red">@Model.User.User_Account did exists</span>
+                    <span class='text' style="color: orange;font-weight:200">@Model.User.User_Account did exists</span>
                     }
                     <span asp-validation-for="User.User_Account" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="password" placeholder='Password' asp-for="User.User_Password" class='password'><br>
-                    <span asp-validation-for="User.User_Password" class="text-danger"></span>
+                    <span asp-validation-for="User.User_Password" class="text-danger" style="color:orange;font-weight:200"></span>
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder='Name' asp-for="User.User_Name" class='text'><br>
-                    <span asp-validation-for="User.User_Name" class="text-danger"></span>
+                    <span asp-validation-for="User.User_Name" class="text-danger" style="color:orange;font-weight:200"></span>
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder='Phone' asp-for="User.User_Phone" class='text' id='phone'><br>
-                    <span asp-validation-for="User.User_Phone" class="text-danger"></span>
+                    <span asp-validation-for="User.User_Phone" class="text-danger" style="color:orange;font-weight:200"></span>
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder='Address' asp-for="User.User_Address" class='text' id='address'><br>
-                    <span asp-validation-for="User.User_Address" class="text-danger"></span>
+                    <span asp-validation-for="User.User_Address" class="text-danger" style="color:orange;font-weight:200"></span>
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder='Email' asp-for="User.User_Email" class='text' id='address'><br>
-                    <span asp-validation-for="User.User_Email" class="text-danger"></span>
+                    <span asp-validation-for="User.User_Email" class="text-danger" style="color:orange;font-weight:200"></span>
                 </div>
-
-                
-                
-                <table border="0">
-                    <tbody class="text">
-                        <tr>
-                            <td>Gender</td>
+               
+                            <p>Gender</p>
                             <div class="form-group">
                                 <td><input type="radio" asp-for="User.Is_User_Gender" class="radio" value="Male" checked="checked"> Male</td>
                                 <td><input type="radio" asp-for="User.Is_User_Gender" class="radio" value="Female"> Female</td>
                                 <td><input type="radio" asp-for="User.Is_User_Gender" class="radio" value="Other"> Other</td>
-                                <span asp-validation-for="User.Is_User_Gender" class="text-danger"></span>
+                            <span asp-validation-for="User.Is_User_Gender" class="text-danger" style="color:orange"></span>
                             </div>
                             
-                        </tr>
-                        <tr>
-                            <td>Role</td>
+                       
+                            <p>Role</td>
                             <div class="form-group">
                                 <td><input type="radio" asp-for="User.Role_Id" class="radio" value="3" checked="checked"> Seller<br /></td>
                                 <td><input type="radio" asp-for="User.Role_Id" class="radio" value="2"> Staff<br /></td>
-                                <span asp-validation-for="User.Role_Id" class="text-danger"></span>
+                                <span asp-validation-for="User.Role_Id" class="text-danger" style="color:orange"></span>
                             </div>
                             
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
                 <div class="wrapper-button">
-                    <a href="./adminShowListEmployees" class='btn-login'>Back Manage Employees</a>
+            <a href="/AdminPage/AdminManageEmployees" class='btn-login'>Back Manage Employees</a>
                     <button type="submit" class='btn-signup'> Create Account</button>
                 </div>
             </form>

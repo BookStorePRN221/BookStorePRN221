@@ -22,28 +22,19 @@
 
 <body>
 	<div class="wrapper-body">
-
-
+		<div>
+			<h2 id="nameTable">LIST OF IMPORTATION BOOK</h2>
+		</div>
 		<!-- home content -->
 		<div class="home-section">
+			<div style="display:flex;justify-content:flex-end">
+				<form method="post">
+					<button type="submit" class="btn btn-info" style="font-size:20px;margin-bottom:10px;">
+						Export Excel
+					</button>
+				</form>
+			</div>
 			<!-- home-content -->
-				<div>
-					<h2 id="nameTable">LIST OF IMPORTATION BOOK</h2>
-				</div>
-				<!-- Button History
-				<div class="history">
-					<form action="sellerImportationAction?action=historyImportation" method="POST">
-						<button id="btnHistory">
-							<i class="fa-solid fa-recycle"></i>
-						</button>
-					</form>
-				</div>
-				 End Button History-->
-			
-			<!--End Home Content-->
-
-			<!--  Write   Body Code-->
-
 			@foreach (var Importation in Model.Importations)
 			{
 				@if (Importation.Is_Import_Status != 3)
@@ -74,10 +65,8 @@
 													src="@DisplayImportationDetailDTO.Image_URL"/>
 										</div>
 										<div>
-											@DisplayImportationDetailDTO.Book_Title
-											<a href="sellerBookAction?action=bookDetail&amp">
+											<p style="color:brown;margin-left:15px; font-weight:500; font-size:30px;">@DisplayImportationDetailDTO.Book_Title</p>
 											
-											</a><br>
 											<div class="price">
 												<p id="quantity">x @DisplayImportationDetailDTO.Import_Detail_Quantity</p>
 												<p id="total">
